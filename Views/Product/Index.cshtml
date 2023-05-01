@@ -1,0 +1,44 @@
+﻿@using FleaMarket.Models;
+@using FleaMarket.Models.ViewModels;
+@using FleaMarket.Services;
+@inject ProductService productService
+
+@{
+    ViewData["Title"] = "Alla produkter";
+    var products = await productService.GetAllAsync();
+
+    var ulvaProducts = productService.GetUlvaKvarnAsync();
+}
+
+<h3>Vilken marknad?</h3>
+
+<select name="Marknader">
+    <option value="UlvaKvarn">Ulva Kvarn (Uppsala)</option>
+    <option value="vaksalaTorg">Vaksala Torg (Uppsala)</option>
+</select>
+
+<h2>Alla produkter på Vaksala Torg idag</h2>
+<br />
+<br />
+
+@foreach (var product in products)
+{
+    <h1>@product.Title</h1>   
+    <h5>@product.Price kr</h5>
+    <h6>@product.SelectMarket</h6>
+    <p>Plats: @product.TableNumber</p>
+}
+
+<h2>Alla produkter på Ulva Kvarn idag</h2>
+<br />
+<br />
+
+@foreach (var ulvaProduct in ulvaProducts)
+{
+    <h1>@ulvaProduct.Title</h1>
+    <h5>@ulvaProduct.Price kr</h5>
+    <h6>@ulvaProduct.SelectMarket</h6>
+    <p>Plats: @ulvaProduct.TableNumber</p>
+}
+
+

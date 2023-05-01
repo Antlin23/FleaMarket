@@ -1,0 +1,39 @@
+﻿@using FleaMarket.Models.ViewModels;
+@model AddProductViewModel
+@{
+    ViewData["Title"] = "Lägg till en produkt";
+}
+<div class="create-form">                                                                                                                       
+<p class="mb-4">Skapa en produkt</p>
+
+<section class="container">
+    <form method="post" novalidate>
+
+            <div asp-validation-summary="ModelOnly" class=""></div>
+
+        <div class="form-group">
+            <label asp-for="Title">Titel</label>
+            <input asp-for="Title" type="text" />
+        </div>                              
+        <div class="form-group">
+            <label asp-for="Price">Pris (kr)</label>
+            <input asp-for="Price" type="number" min="0" />
+        </div>
+            <div class="form-group">
+            <label asp-for="SelectMarket">Marknad</label>
+            <select name="SelectMarket">
+                <option disabled selected>-- välj ett alternativ --</option>
+                <option value="Ulva Kvarn">Ulva Kvarn (Uppsala)</option>
+                <option value="Vaksala Torg">Vaksala Torg (Uppsala)</option>
+            </select>
+            </div>
+        <div class="form-group">
+            <label asp-for="TableNumber">Bordsnummer</label>
+            <input asp-for="TableNumber" type="number" min="0" />
+        </div>
+
+        <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
+    </form>
+</section>
+
+</div>
