@@ -19,6 +19,13 @@ namespace FleaMarket.Models.Entities
 
         [Column(TypeName = "varchar(30)")]
         public int TableNumber { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string? Category { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string? Brand { get; set; }
+
         public DateTime TimeAdded { get; set; } = DateTime.Now;
     }
 }

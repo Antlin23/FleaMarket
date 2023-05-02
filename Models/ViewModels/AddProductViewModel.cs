@@ -21,6 +21,14 @@ namespace FleaMarket.Models.ViewModels
         [Display(Name = "Bordsnummer")]
         public int TableNumber { get; set; }
 
+        [Display(Name = "Kategori")]
+        public string? Category { get; set; }
+
+
+        [Display(Name = "Brand")]
+        public string? Brand { get; set; }
+
+
 
         public DateTime TimeAdded { get; set; } = DateTime.Now;
     }

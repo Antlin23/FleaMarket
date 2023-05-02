@@ -1,9 +1,23 @@
+body{
+    text-align:center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+    a:hover {
+        font-weight: bold;
+        color: black;
+    }
+
 /*Header*/
 header{
     font-size: 20px;
     background-color: lightgray;
     padding: 2rem;
     margin-bottom: 2rem;
+    border-bottom: 1px solid gray;
 }
 
     header .container{
@@ -27,15 +41,9 @@ header a{
 }
 
         .home-container a {
-            text-decoration: none;
-            color: black;
             margin: 2rem;
         }
 
-            .home-container a:hover {
-                font-weight: bold;
-                color: black;
-            }
 
 /*Create form*/
 
@@ -43,6 +51,8 @@ header a{
 .create-form{
     display:flex;
     justify-content:center;
+    text-align:left;
+    max-width:200px;
 }
 
 .form-group{

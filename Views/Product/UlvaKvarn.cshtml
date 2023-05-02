@@ -1,0 +1,39 @@
+﻿@using FleaMarket.Services;
+@inject ProductService productService
+
+@{
+    ViewData["Title"] = "Ulva Kvarn";
+    var ulvaProducts = productService.GetUlvaKvarn();
+}
+
+<a asp-controller="Product" asp-action="Index">Välj en annan marknad</a>
+
+<h2>Alla produkter på Ulva Kvarn idag</h2>
+    <br />
+    <br />
+
+@foreach (var ulvaProduct in ulvaProducts)
+{
+    <hr />
+    <h1>@ulvaProduct.Title</h1>
+
+    if (ulvaProduct.Price != 0)
+    {
+        <h5>@ulvaProduct.Price kr</h5>
+    }
+    else
+    {
+        <h5>Pris: Skänkes</h5>    
+    
+    }
+
+    <h6>@ulvaProduct.SelectMarket</h6>
+    <p>Plats: @ulvaProduct.TableNumber</p>
+
+    if (ulvaProduct.Brand != null)
+    {
+        <p>Märke: @ulvaProduct.Brand</p>
+    }
+    else{ continue; }
+
+}

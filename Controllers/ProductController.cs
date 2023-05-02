@@ -20,6 +20,15 @@ namespace FleaMarket.Controllers
         {
             return View();
         }
+
+        public IActionResult UlvaKvarn()
+        {
+            return View();
+        }
+        public IActionResult VaksalaTorg()
+        {
+            return View();
+        }
         public IActionResult CreateProduct()
         {
             return View();
@@ -32,7 +41,6 @@ namespace FleaMarket.Controllers
             if (ModelState.IsValid)
             {
 
-                //om den lyckas skapa en användare 
                 if (await _productService.AddProduct(productEntity)) //lyckas den skapa returnas sant
                 {
                     return RedirectToAction("ProductCreated", "product");

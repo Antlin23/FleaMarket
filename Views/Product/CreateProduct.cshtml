@@ -3,37 +3,65 @@
 @{
     ViewData["Title"] = "Lägg till en produkt";
 }
-<div class="create-form">                                                                                                                       
-<p class="mb-4">Skapa en produkt</p>
 
-<section class="container">
-    <form method="post" novalidate>
+<h2 class="mb-4">Skapa en produkt</h2>
 
-            <div asp-validation-summary="ModelOnly" class=""></div>
+<div class="d-flex justify-content-center">                                                                                                                       
 
-        <div class="form-group">
-            <label asp-for="Title">Titel</label>
-            <input asp-for="Title" type="text" />
-        </div>                              
-        <div class="form-group">
-            <label asp-for="Price">Pris (kr)</label>
-            <input asp-for="Price" type="number" min="0" />
-        </div>
+    <section class="container create-form">
+        <form method="post" novalidate>
+
+                <div asp-validation-summary="ModelOnly" class=""></div>
+
+            <div class="form-group">
+                <label asp-for="Title">Titel</label>
+                <input asp-for="Title" type="text" />
+            </div>                              
+            <div class="form-group">
+                <label asp-for="Price">Pris (kr)</label>
+                <input asp-for="Price" type="text" min="0" />
+            </div>
+
             <div class="form-group">
             <label asp-for="SelectMarket">Marknad</label>
             <select name="SelectMarket">
-                <option disabled selected>-- välj ett alternativ --</option>
+                <option disabled selected>välj ett alternativ</option>
                 <option value="Ulva Kvarn">Ulva Kvarn (Uppsala)</option>
                 <option value="Vaksala Torg">Vaksala Torg (Uppsala)</option>
             </select>
             </div>
-        <div class="form-group">
-            <label asp-for="TableNumber">Bordsnummer</label>
-            <input asp-for="TableNumber" type="number" min="0" />
-        </div>
 
-        <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
-    </form>
-</section>
+            <div class="form-group">
+                <label asp-for="TableNumber">Bordsnummer</label>
+                <input asp-for="TableNumber" type="number" min="0" />
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Category">Kategori (valfritt)</label>
+                <select name="Category">
+                    <option disabled selected>välj ett alternativ</option>
+
+                    <optgroup label="För hemmet">
+                        <option value="Kläder">Kläder</option>
+                        <option value="Elektronik">Elektronik</option>
+                    </optgroup>
+                    <optgroup label="Personligt">
+                        <option value="Böcker/Filmer/Spel">Böcker/Filmer</option>
+                        <option value="Möbler">Möbler</option>
+                    </optgroup>
+
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Brand">Märke (valfritt)</label>
+                <input asp-for="Brand" type="text"/>
+            </div>
+
+            <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
+        </form>
+    </section>
+
+
 
 </div>

@@ -1,0 +1,38 @@
+﻿@using FleaMarket.Services;
+@inject ProductService productService
+
+@{
+    ViewData["Title"] = "Vaksala Torg";
+    var vaksalaProducts = productService.GetVaksalaTorg();
+}
+
+<a asp-controller="Product" asp-action="Index">Välj en annan marknad</a>
+
+<h2>Alla produkter på Vaksala Torg idag</h2>
+    <br />
+    <br />
+
+@foreach (var vaksalaProduct in vaksalaProducts)
+{
+    <hr />
+    <h1>@vaksalaProduct.Title</h1>
+
+    if (vaksalaProduct.Price != 0)
+    {
+        <h5>@vaksalaProduct.Price kr</h5>
+    }
+    else
+    {
+        <h5>Pris: Skänkes</h5>    
+    
+    }
+
+    <h6>@vaksalaProduct.SelectMarket</h6>
+    <p>Plats: @vaksalaProduct.TableNumber</p>
+
+    if (vaksalaProduct.Brand != null)
+    {
+        <p>Märke: @vaksalaProduct.Brand</p>
+    }
+    else { continue; }
+}

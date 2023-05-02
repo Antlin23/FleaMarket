@@ -23,10 +23,16 @@ namespace FleaMarket.Services
             return await _context.Products.ToListAsync();
         }
 
-        //gets products from database
-        public IEnumerable<ProductEntity> GetUlvaKvarnAsync()
+        //gets Ulva Kvarn products from database
+        public IEnumerable<ProductEntity> GetUlvaKvarn()
         {
             return _context.Products.ToList().Where(x => x.SelectMarket == "Ulva Kvarn");
+        }
+
+        //gets products from database
+        public IEnumerable<ProductEntity> GetVaksalaTorg()
+        {
+            return _context.Products.ToList().Where(x => x.SelectMarket == "Vaksala Torg");
         }
 
 

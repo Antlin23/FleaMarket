@@ -5,41 +5,39 @@
 
 @{
     ViewData["Title"] = "Alla produkter";
-    var products = await productService.GetAllAsync();
+    var vaksalaProducts = productService.GetVaksalaTorg();
 
-    var ulvaProducts = productService.GetUlvaKvarnAsync();
+    var ulvaProducts = productService.GetUlvaKvarn();
 }
 
-<h3>Vilken marknad?</h3>
+<div class="home-container mt-5">
+    <div>
+        <h2 class="mb-3">Välj en marknad</h2>
 
-<select name="Marknader">
-    <option value="UlvaKvarn">Ulva Kvarn (Uppsala)</option>
-    <option value="vaksalaTorg">Vaksala Torg (Uppsala)</option>
-</select>
+        <a asp-controller="Product" asp-action="UlvaKvarn">Ulva kvarn</a>
+        <a asp-controller="Product" asp-action="VaksalaTorg">Vaksala Torg</a>
 
-<h2>Alla produkter på Vaksala Torg idag</h2>
-<br />
-<br />
+    </div>
+</div>
 
-@foreach (var product in products)
-{
-    <h1>@product.Title</h1>   
-    <h5>@product.Price kr</h5>
-    <h6>@product.SelectMarket</h6>
-    <p>Plats: @product.TableNumber</p>
-}
+<div class="container mt-5">
+    <h2 class="mb-5">Aktiva marknader just nu</h2>
 
-<h2>Alla produkter på Ulva Kvarn idag</h2>
-<br />
-<br />
-<br />
+    <hr />
+    <h3><a asp-controller="Product" asp-action="UlvaKvarn">Ulva kvarn</a></h3>
+    <p>Söndagar 10:00-14:00</p>
+    <p><b>Stad:</b> Uppsala</p>
+    <p><b>Adress:</b> Ulva Kvarn Uppsala</p>
 
-@foreach (var ulvaProduct in ulvaProducts)
-{
-    <h1>@ulvaProduct.Title</h1>
-    <h5>@ulvaProduct.Price kr</h5>
-    <h6>@ulvaProduct.SelectMarket</h6>
-    <p>Plats: @ulvaProduct.TableNumber</p>
-}
+    <a href="https://www.ulvakvarn.com/ulva-bakluckeloppis-besokare/" target="_blank">Mer info</a>
+
+    <hr />
+    <h3><a asp-controller="Product" asp-action="VaksalaTorg">Vaksala Torg</a></h3>
+    <p>Söndagar 9:00-16:00</p>
+    <p><b>Stad:</b> Uppsala</p>
+    <p><b>Adress:</b> Vaksala Torg Uppsala</p>
+
+</div>
+
 
 
