@@ -6,11 +6,20 @@
     var ulvaProducts = productService.GetUlvaKvarn();
 }
 
-<a asp-controller="Product" asp-action="Index">Välj en annan marknad</a>
+<a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
 
-<h2>Alla produkter på Ulva Kvarn idag</h2>
+<h2>Produkter på Ulva Kvarn idag</h2>
+   
+<!--
+<br />
+        <select name="SelectCategoryToShow">
+            <option selected value="Alla kategorier">Alla kategorier</option>
+            <option value="För hemmet">För hemmet</option>
+            <option value="Personligt">Personligt</option>
+        </select>
     <br />
-    <br />
+-->
+
 
 @foreach (var ulvaProduct in ulvaProducts)
 {
@@ -35,5 +44,12 @@
         <p>Märke: @ulvaProduct.Brand</p>
     }
     else{ continue; }
+
+    if(ulvaProduct.Category != null)
+    {
+        <p>Kategori: @ulvaProduct.Category</p>
+
+    }
+    else { continue; }
 
 }

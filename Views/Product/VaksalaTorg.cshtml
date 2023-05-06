@@ -6,7 +6,7 @@
     var vaksalaProducts = productService.GetVaksalaTorg();
 }
 
-<a asp-controller="Product" asp-action="Index">Välj en annan marknad</a>
+<a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
 
 <h2>Alla produkter på Vaksala Torg idag</h2>
     <br />
@@ -33,6 +33,13 @@
     if (vaksalaProduct.Brand != null)
     {
         <p>Märke: @vaksalaProduct.Brand</p>
+    }
+    else { continue; }
+
+    if (vaksalaProduct.Category != null)
+    {
+        <p>Kategori: @vaksalaProduct.Category</p>
+
     }
     else { continue; }
 }

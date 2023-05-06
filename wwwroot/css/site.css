@@ -42,6 +42,7 @@ header a{
 
         .home-container a {
             margin: 2rem;
+            text-decoration: underline;
         }
 
 
