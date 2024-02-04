@@ -1,4 +1,5 @@
 ﻿using FleaMarket.Models.Entities;
+using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +15,6 @@ namespace FleaMarket.Controllers
             _productService = productService;
         }
 
-        
-
         public IActionResult Index()
         {
             return View();
@@ -25,6 +24,30 @@ namespace FleaMarket.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult UlvaKvarn(SearchProductViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Category != null && viewModel.Category != "Alla kategorier")
+                {
+                    viewModel = _productService.GetProductsByCategory(viewModel);
+                    return View(viewModel);
+                }
+                else if (viewModel.Category == "Alla kategorier")
+                {
+                    viewModel.NoProducts = null;
+                }
+                else
+                {
+                    viewModel.NoProducts = "No products was found";
+
+                }
+            }
+            return View(viewModel);
+        }
+
         public IActionResult VaksalaTorg()
         {
             return View();
