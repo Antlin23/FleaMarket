@@ -3,6 +3,8 @@ using FleaMarket.Models;
 using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace FleaMarket.Services
@@ -23,11 +25,28 @@ namespace FleaMarket.Services
         }
 
         //gets category products from database
-        public SearchProductViewModel GetProductsByCategory(SearchProductViewModel viewModel)
+        public SearchProductViewModel GetProductsByFilter(SearchProductViewModel viewModel)
         {
-            viewModel.Products = _context.Products.ToList().Where(x => x.Category == viewModel.Category);
+            if(viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
+            {
+                viewModel.Products = _context.Products
+                    .ToList()
+                    .Where(x => x.Category == viewModel.Category && x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
+            }
+            else if (viewModel.Category == null || viewModel.Category == "Alla kategorier" && viewModel.SearchString != null)
+            {
+                viewModel.Products = _context.Products
+                    .ToList()
+                    .Where(x => x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
+            }
+            else if (viewModel.Category != null || viewModel.Category != "Alla kategorier" && viewModel.SearchString == null)
+            {
+                viewModel.Products = _context.Products
+                    .ToList()
+                    .Where(x => x.Category == viewModel.Category);
+            }
 
-            if(viewModel.Products == null) {
+            if (viewModel.Products == null) {
                 viewModel.NoProducts = "No products was found";
             }
 

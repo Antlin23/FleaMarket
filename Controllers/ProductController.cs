@@ -30,9 +30,9 @@ namespace FleaMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (viewModel.Category != null && viewModel.Category != "Alla kategorier")
+                if (viewModel.Category != null && viewModel.Category != "Alla kategorier" || viewModel.SearchString != null)
                 {
-                    viewModel = _productService.GetProductsByCategory(viewModel);
+                    viewModel = _productService.GetProductsByFilter(viewModel);
                     return View(viewModel);
                 }
                 else if (viewModel.Category == "Alla kategorier")

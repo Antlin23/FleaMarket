@@ -11,9 +11,11 @@
 
 <form method="post">
     <div class="form-group">
-        <input asp-for="SearchString" type="text" placeholder="Vad letar du efter?"/>
+        <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?"/>
+        <button onclick="document.getElementById('searchString').value = ''">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </div>
-
     <div class="form-group">
         <select asp-for=@Model.Category name="Category">
             <option value="Alla kategorier" selected>Alla kategorier</option>
@@ -33,7 +35,7 @@
             <option value="Övrigt">Övrigt</option>
         </select>
     </div>
-    <button class="mt-4" type="submit">Filtrera</button>
+    <button class="mt-4 btn-success btn" type="submit">Filtrera</button>
 </form>
 
 
