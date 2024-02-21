@@ -1,6 +1,7 @@
 ﻿using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FleaMarket.Controllers
@@ -52,19 +53,20 @@ namespace FleaMarket.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult CreateProduct()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductEntity productEntity)
+        public async Task<IActionResult> CreateProduct(AddProductViewModel viewModel)
         {
 
             if (ModelState.IsValid)
             {
 
-                if (await _productService.AddProduct(productEntity)) //lyckas den skapa returnas sant
+                if (await _productService.AddProduct(viewModel))
                 {
                     return RedirectToAction("ProductCreated", "product");
                 }
@@ -74,7 +76,7 @@ namespace FleaMarket.Controllers
                 }
                 
             }
-            return View(productEntity);
+            return View(viewModel);
         }
 
         public IActionResult ProductCreated()

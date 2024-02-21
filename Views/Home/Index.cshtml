@@ -1,4 +1,7 @@
-﻿@{
+﻿@using FleaMarket.Models.Entities;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<UserEntity> signInManager
+@{
     ViewData["Title"] = "Hem";
 }
 
@@ -6,8 +9,12 @@
 
 <div class="home-container mt-5">
     <div>
+        @if (signInManager.IsSignedIn(User))
+        {
+            <p>Välkommen @User.Identity.Name</p>
+        }
         <h2 class="mb-5">Vad vill du göra?</h2>
         <a asp-controller="Product" asp-action="Index">Se produkter</a>
-        <a asp-controller="Product" asp-action="CreateProduct">Skapa en produkt</a>
+        <a asp-controller="Product" asp-action="CreateProduct">Lägg upp en produkt</a>
     </div>
 </div>

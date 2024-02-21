@@ -1,6 +1,8 @@
 using FleaMarket.Contexts;
+using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,21 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("sql")));
 
+builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>
+{
+    x.SignIn.RequireConfirmedAccount = false;
+    x.User.RequireUniqueEmail = true;
+    x.Password.RequiredLength = 6;
+}).AddEntityFrameworkStores<DataContext>();
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/Authentication/LoginUser";
+    x.AccessDeniedPath = "/denied";
+});
+
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<UserService>();
 
 
 

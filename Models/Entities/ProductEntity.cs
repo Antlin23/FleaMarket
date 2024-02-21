@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FleaMarket.Models.Entities
@@ -25,7 +26,10 @@ namespace FleaMarket.Models.Entities
 
         [Column(TypeName = "nvarchar(100)")]
         public string? Brand { get; set; }
-
         public DateTime TimeAdded { get; set; } = DateTime.Now;
+
+        [ForeignKey("User")]
+        public string UserId { get; set; } = null!;
+        public UserEntity User { get; set; } = null!;
     }
 }

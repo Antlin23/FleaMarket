@@ -2,6 +2,7 @@
 using FleaMarket.Models;
 using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace FleaMarket.Services
     public class ProductService
     {
         private readonly DataContext _context;
+        private readonly UserManager<UserEntity> _userManager;
 
-        public ProductService(DataContext context)
+        public ProductService(DataContext context, UserManager<UserEntity> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         //gets products from database
@@ -70,15 +73,17 @@ namespace FleaMarket.Services
         {
             try
             {
+                var newUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == productEntity.UserId);
+
+                productEntity.UserId = newUser.Id;
+
                 _context.Products.Add(productEntity);
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch
             {
-
                 return false;
-
             }
         }
     }

@@ -4,6 +4,7 @@ using FleaMarket.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleaMarket.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240211135303_FMInitDb021115")]
+    partial class FMInitDb021115
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,13 +56,7 @@ namespace FleaMarket.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -71,9 +68,6 @@ namespace FleaMarket.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -142,18 +136,33 @@ namespace FleaMarket.Migrations
                         {
                             Id = "0cc0714b-7e95-47ff-9b50-460f04f29426",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad5a4ba5-6656-4e48-a088-8c660467cd63",
+                            ConcurrencyStamp = "c678d071-a1f6-4454-b200-7829a7130745",
                             Email = "anton.jumkil@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "anton.jumkil@gmail.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPismtfmMXuQvB75cpe58/RzdG3LX115o93+lGtr4OO8Rx/RbZQeBv3+9MnqMsAxbw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL2B+FzvipIK+LE/Hg4daG6/BuH7DCNfKddvV8bUSopE/pgSlFEmCb4zpFZYGLxkSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4c263391-9fd1-4f34-9e93-d9b308deec13",
+                            SecurityStamp = "8dd06b6f-68c0-4fdb-ba80-8dee2d7c4cdd",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
+                });
+
+            modelBuilder.Entity("FleaMarket.Models.Entities.UserProductEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("UserProducts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -186,14 +195,14 @@ namespace FleaMarket.Migrations
                         new
                         {
                             Id = "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4",
-                            ConcurrencyStamp = "bddd1560-b84e-4682-b061-28528e8ec7a1",
+                            ConcurrencyStamp = "8ce1905b-4af8-4306-bb97-e10ceee8cadd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "972b6232-0d25-46f9-a3e6-eec6fd127ff0",
-                            ConcurrencyStamp = "730b38e0-2251-478d-9e9e-5858eaa87d51",
+                            ConcurrencyStamp = "99972bcd-da5e-49f1-a167-78af9210c6e6",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -312,13 +321,21 @@ namespace FleaMarket.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("FleaMarket.Models.Entities.ProductEntity", b =>
+            modelBuilder.Entity("FleaMarket.Models.Entities.UserProductEntity", b =>
                 {
+                    b.HasOne("FleaMarket.Models.Entities.ProductEntity", "Product")
+                        .WithMany("UserProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FleaMarket.Models.Entities.UserEntity", "User")
-                        .WithMany("Products")
+                        .WithMany("UserProducts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
@@ -374,9 +391,14 @@ namespace FleaMarket.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("FleaMarket.Models.Entities.ProductEntity", b =>
+                {
+                    b.Navigation("UserProducts");
+                });
+
             modelBuilder.Entity("FleaMarket.Models.Entities.UserEntity", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("UserProducts");
                 });
 #pragma warning restore 612, 618
         }

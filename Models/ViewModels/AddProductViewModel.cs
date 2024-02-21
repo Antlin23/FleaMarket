@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FleaMarket.Models.Entities;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace FleaMarket.Models.ViewModels
 {
@@ -27,9 +29,22 @@ namespace FleaMarket.Models.ViewModels
 
         [Display(Name = "Brand")]
         public string? Brand { get; set; }
-
-
-
         public DateTime TimeAdded { get; set; } = DateTime.Now;
+
+        public string UserId { get; set; } = null!;
+
+        public static implicit operator ProductEntity(AddProductViewModel viewModel)
+        {
+            return new ProductEntity
+            {
+                Title = viewModel.Title,
+                Price = viewModel.Price,
+                SelectMarket = viewModel.SelectMarket,
+                TableNumber = viewModel.TableNumber,
+                Category = viewModel.Category,
+                Brand = viewModel.Brand,
+                UserId = viewModel.UserId
+            };
+        }
     }
 }

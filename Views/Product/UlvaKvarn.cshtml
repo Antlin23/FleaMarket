@@ -1,6 +1,7 @@
 ﻿@using FleaMarket.Models.ViewModels;
 @using FleaMarket.Services;
 @inject ProductService productService
+@inject UserService userService;
 @model SearchProductViewModel
 @{
     ViewData["Title"] = "Ulva Kvarn";
@@ -10,12 +11,7 @@
 <h2>Produkter på Ulva Kvarn idag</h2>
 
 <form method="post">
-    <div class="form-group">
-        <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?"/>
-        <button onclick="document.getElementById('searchString').value = ''">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
+    <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?"/>
     <div class="form-group">
         <select asp-for=@Model.Category name="Category">
             <option value="Alla kategorier" selected>Alla kategorier</option>
@@ -35,6 +31,7 @@
             <option value="Övrigt">Övrigt</option>
         </select>
     </div>
+    <input type="reset" />
     <button class="mt-4 btn-success btn" type="submit">Filtrera</button>
 </form>
 
@@ -59,6 +56,10 @@
 
         <h6>@ulvaProduct.SelectMarket</h6>
         <p>Plats: @ulvaProduct.TableNumber</p>
+
+        var user = await userService.GetUserAsync(x => x.Id == ulvaProduct.UserId);
+
+        <p>Säljare: @user.UserName</p>
 
         if (ulvaProduct.Brand != null)
         {
@@ -99,6 +100,10 @@ else if(Model.NoProducts == null && Model.Products != null){
             <h6>@ulvaProduct.SelectMarket</h6>
             <p>Plats: @ulvaProduct.TableNumber</p>
 
+            var user = await userService.GetUserAsync(x => x.Id == ulvaProduct.UserId);
+
+            <p>Säljare: @user.UserName</p>
+
             if (ulvaProduct.Brand != null)
             {
                 <p>Märke: @ulvaProduct.Brand</p>
@@ -133,6 +138,10 @@ else
 
         <h6>@ulvaProduct.SelectMarket</h6>
         <p>Plats: @ulvaProduct.TableNumber</p>
+
+        var user = await userService.GetUserAsync(x => x.Id == ulvaProduct.UserId);
+
+        <p>Säljare: @user.UserName</p>
 
         if (ulvaProduct.Brand != null)
         {

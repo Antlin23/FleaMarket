@@ -52,7 +52,6 @@
                     <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
                     <option value="Accessoarer">Accessoarer</option>
                 </optgroup>
-                <!--Övrigt-->
                 <option value="Övrigt">Övrigt</option>
             </select>
             </div>
@@ -61,6 +60,8 @@
                 <label asp-for="Brand">Märke (valfritt)</label>
                 <input asp-for="Brand" type="text"/>
             </div>
+
+            <input asp-for="UserId" value="@User.Identity.Name" hidden/>
 
             <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
         </form>
