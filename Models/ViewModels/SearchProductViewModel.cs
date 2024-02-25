@@ -6,6 +6,7 @@ namespace FleaMarket.Models.ViewModels
     {
         public string? SearchString { get; set; }
         public string? Category { get; set; }
+        public string? MarketName { get; set; }
 
         public IEnumerable<ProductEntity>? Products { get; set; }
 

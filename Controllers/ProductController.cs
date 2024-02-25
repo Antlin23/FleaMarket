@@ -21,13 +21,15 @@ namespace FleaMarket.Controllers
             return View();
         }
 
-        public IActionResult UlvaKvarn()
+        public IActionResult Market(string marketName)
         {
+            ViewData["MarketName"] = marketName;
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult UlvaKvarn(SearchProductViewModel viewModel)
+        public IActionResult Market(SearchProductViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -43,16 +45,11 @@ namespace FleaMarket.Controllers
                 else
                 {
                     viewModel.NoProducts = "No products was found";
-
                 }
             }
             return View(viewModel);
         }
 
-        public IActionResult VaksalaTorg()
-        {
-            return View();
-        }
         [Authorize]
         public IActionResult CreateProduct()
         {
@@ -65,7 +62,6 @@ namespace FleaMarket.Controllers
 
             if (ModelState.IsValid)
             {
-
                 if (await _productService.AddProduct(viewModel))
                 {
                     return RedirectToAction("ProductCreated", "product");
@@ -74,7 +70,6 @@ namespace FleaMarket.Controllers
                 {
                     ModelState.AddModelError("", "Någon gick fel när produkten skulle skapas");
                 }
-                
             }
             return View(viewModel);
         }

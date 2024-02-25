@@ -30,21 +30,33 @@ namespace FleaMarket.Services
         //gets category products from database
         public SearchProductViewModel GetProductsByFilter(SearchProductViewModel viewModel)
         {
-            if(viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
+            IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
+
+            if(viewModel.MarketName == "Ulva Kvarn")
             {
-                viewModel.Products = _context.Products
+                marketProducts = GetUlvaKvarn();
+            }
+            else if(viewModel.MarketName == "Vaksala Torg")
+            {
+                marketProducts = GetVaksalaTorg();
+
+            }
+
+            if (viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
+            {
+                viewModel.Products = marketProducts
                     .ToList()
                     .Where(x => x.Category == viewModel.Category && x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
             }
             else if (viewModel.Category == null || viewModel.Category == "Alla kategorier" && viewModel.SearchString != null)
             {
-                viewModel.Products = _context.Products
+                viewModel.Products = marketProducts
                     .ToList()
                     .Where(x => x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
             }
             else if (viewModel.Category != null || viewModel.Category != "Alla kategorier" && viewModel.SearchString == null)
             {
-                viewModel.Products = _context.Products
+                viewModel.Products = marketProducts
                     .ToList()
                     .Where(x => x.Category == viewModel.Category);
             }

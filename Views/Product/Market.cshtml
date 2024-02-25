@@ -1,0 +1,88 @@
+﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Models.ViewModels;
+@using FleaMarket.Services;
+@inject ProductService productService
+@inject UserService userService;
+@model SearchProductViewModel
+@{
+    string marketName = "";
+    if (Model == null)
+    {
+        marketName = ViewData["MarketName"].ToString();
+    }
+    else
+    {
+        marketName = Model.MarketName;
+    }
+    ViewData["Title"] = marketName;
+    IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
+    if (marketName == "Ulva Kvarn")
+    {
+        marketProducts = productService.GetUlvaKvarn();
+    }
+    else if(marketName == "Vaksala Torg")
+    {
+        marketProducts = productService.GetVaksalaTorg();
+    }
+}
+<a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
+<h2>Produkter på @marketName idag</h2>
+
+<form method="post">
+    <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?" />
+    <div class="form-group">
+        <select asp-for=@Model.Category name="Category">
+            <option value="Alla kategorier" selected>Alla kategorier</option>
+            <optgroup label="För hemmet">
+                <option value="Möbler och heminredning">Möbler och heminredning</option>
+                <option value="Bygg och trädgård">Bygg och trädgård</option>
+                <option value="Vitvaror och husgeråd">Vitvaror och husgeråd</option>
+                <option value="Verktyg">Verktyg</option>
+            </optgroup>
+            <optgroup label="Personligt">
+                <option value="Kläder och skor">Kläder och skor</option>
+                <option value="Barnkläder och skor">Barnkläder och skor</option>
+                <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
+                <option value="Accessoarer">Accessoarer</option>
+            </optgroup>
+            <!--Övrigt-->
+            <option value="Övrigt">Övrigt</option>
+        </select>
+    </div>
+    <input asp-for="MarketName" type="text" hidden value="@marketName" />
+    <a asp-controller="Product" asp-action="Market" asp-route-marketName="@marketName">Rensa</a>
+    <button class="mt-4 btn-success btn" type="submit">Filtrera</button>
+</form>
+
+<div class="container">
+    <!--Model.NoProducts == null && Model.Products == null-->
+    @if (Model == null)
+    {
+        @foreach (var ulvaProduct in marketProducts)
+        {
+            <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+
+        }
+    }
+    else if (Model.NoProducts == null && Model.Products != null)
+    {
+        if (Model.Products.Count() == 0)
+        {
+            <p>Inga produkter hittades</p>
+        }
+        else
+        {
+            @foreach (var ulvaProduct in Model.Products)
+            {
+                <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+            }
+        }
+    }
+    else
+    {
+        @foreach (var ulvaProduct in marketProducts)
+        {
+            <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+        }
+    }
+</div>

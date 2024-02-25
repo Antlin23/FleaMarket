@@ -6,15 +6,14 @@
 <header>
     <div class="container">
         <a asp-controller="Home" asp-action="Index">Hem</a>
-        <a asp-controller="Product" asp-action="Index">Marknader</a>
-        <a asp-controller="Product" asp-action="CreateProduct">Skapa en produkt</a>
         @if (!signInManager.IsSignedIn(User))
         {
+            <a asp-controller="Product" asp-action="Index">Loppisar</a>
             <a asp-controller="Authentication" asp-action="RegisterUser">Skapa konto</a>
-            <a asp-controller="Authentication" asp-action="LoginUser">Logga in</a>
         }
         else
         {
+            <a asp-controller="Product" asp-action="CreateProduct">Skapa en produkt</a>
             <a asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
         }
 
