@@ -16,14 +16,7 @@
     }
     ViewData["Title"] = marketName;
     IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
-    if (marketName == "Ulva Kvarn")
-    {
-        marketProducts = productService.GetUlvaKvarn();
-    }
-    else if(marketName == "Vaksala Torg")
-    {
-        marketProducts = productService.GetVaksalaTorg();
-    }
+    marketProducts = productService.GetAllMarketProducts(marketName);
 }
 <a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
 <h2>Produkter på @marketName idag</h2>
@@ -58,9 +51,9 @@
     <!--Model.NoProducts == null && Model.Products == null-->
     @if (Model == null)
     {
-        @foreach (var ulvaProduct in marketProducts)
+        @foreach (var product in marketProducts)
         {
-            <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+            <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
 
         }
     }
@@ -72,17 +65,17 @@
         }
         else
         {
-            @foreach (var ulvaProduct in Model.Products)
+            @foreach (var product in Model.Products)
             {
-                <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+                <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
             }
         }
     }
     else
     {
-        @foreach (var ulvaProduct in marketProducts)
+        @foreach (var product in marketProducts)
         {
-            <partial name="/Views/Partials/_ProductPartial.cshtml" model="ulvaProduct" />
+            <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
         }
     }
 </div>

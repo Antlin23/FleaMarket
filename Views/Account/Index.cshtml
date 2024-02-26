@@ -1,0 +1,46 @@
+﻿@using FleaMarket.Services;
+@inject ProductService productService;
+@{
+    var usersProducts = productService.GetAllUserProducts(User.FindFirst("Id")?.Value);
+
+    ViewData["Title"] = "Mitt konto";
+}
+<section class="container">
+    <h4>Hej @User.Identity.Name</h4>
+
+    <div class="my-4">
+        <p>Vill du börja sälja?</p>
+        <p>Att aktivera ditt säljkonto kostar 30/dag. Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
+        <a href="" class="text-decoration-underline">Aktivera nu</a>
+    </div>
+    <h4>Dina produkter</h4>
+
+    @foreach(var product in usersProducts)
+    {
+        <div class="bg-light p-3 my-4">
+            <h4>@product.Title</h4>
+
+            @if (product.Price != 0)
+            {
+                <h5>@product.Price kr</h5>
+            }
+            else
+            {
+                <h5>Pris: Skänkes</h5>
+            }
+
+            <p>@product.SelectMarket, Bord: @product.TableNumber</p>
+
+            @if (product.Brand != null)
+            {
+                <p>Märke: @product.Brand</p>
+            }
+            <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
+                <button class="btn text-decoration-underline" type="submit">Ta bort</button>
+            </form>
+        </div>
+
+    }
+
+    <a asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
+</section>

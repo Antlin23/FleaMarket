@@ -1,40 +1,47 @@
 ﻿@using FleaMarket.Models;
 @using FleaMarket.Models.ViewModels;
 @using FleaMarket.Services;
-@inject ProductService productService
+@inject MarketService marketService
 
 @{
+    var markets = await marketService.GetAllAsync();
+
     ViewData["Title"] = "Marknader";
 }
 
 <div class="home-container mt-5">
     <div>
         <h2 class="mb-3">Välj en marknad</h2>
-        <a asp-controller="Product" asp-action="Market" asp-route-marketName="Ulva Kvarn">Ulva kvarn</a>
-        <a asp-controller="Product" asp-action="Market" asp-route-marketName="Vaksala Torg">Vaksala Torg</a>
+
+        @foreach(var market in markets)
+        {
+            <a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+        }
     </div>
 </div>
 
 <div class="container mt-5">
     <h2 class="mb-5">Aktiva marknader just nu</h2>
 
-    <div class="bg-light p-3 my-2">
-        <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="Ulva Kvarn">Ulva kvarn</a></h3>
-        <p>Söndagar 10:00-14:00</p>
-        <p><b>Stad:</b> Uppsala</p>
-        <p><b>Adress:</b> Ulva Kvarn Uppsala</p>
-        <a href="https://www.ulvakvarn.com/ulva-bakluckeloppis-besokare/" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-
-    <div class="bg-light p-3 my-2">
-        <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="Vaksala Torg">Vaksala Torg</a></h3>
-        <p>Söndagar 7:00-21:00</p>
-        <p><b>Stad:</b> Uppsala</p>
-        <p><b>Adress:</b> Vaksala Torg Uppsala</p>
-        <a href="https://www.uppsala.se/foretag-och-arbete/tillstand-och-regler--forsaljning-livsmedel-och-servering/torghandel-och-street-food/torghandel-pa-vaksala-torg/" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-
-
+    @foreach (var market in markets)
+    {
+        <div class="bg-light p-3 my-2">
+            <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a></h3>
+            @if (market.TimeOpen != null)
+            {
+                <p>@market.TimeOpen</p>
+            }
+            @if (market.marketDescription != null)
+            {
+                <p>@market.marketDescription</p>
+            }
+            <p><b>Adress:</b>@market.City @market.Address</p>
+            @if (market.MarketLink != null)
+            {
+                <a href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            }
+        </div>
+    }
 </div>
 
 

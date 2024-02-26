@@ -4,6 +4,7 @@ using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -22,9 +23,9 @@ namespace FleaMarket.Services
         }
 
         //gets products from database
-        public async Task<IEnumerable<ProductEntity>> GetAllAsync()
+        public IEnumerable<ProductEntity> GetAllMarketProducts(string marketTitle)
         {
-            return await _context.Products.ToListAsync();
+            return _context.Products.ToList().Where(x => x.SelectMarket == marketTitle);
         }
 
         //gets category products from database
@@ -32,15 +33,7 @@ namespace FleaMarket.Services
         {
             IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
 
-            if(viewModel.MarketName == "Ulva Kvarn")
-            {
-                marketProducts = GetUlvaKvarn();
-            }
-            else if(viewModel.MarketName == "Vaksala Torg")
-            {
-                marketProducts = GetVaksalaTorg();
-
-            }
+            marketProducts = GetAllMarketProducts(viewModel.MarketName);
 
             if (viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
             {
@@ -68,19 +61,6 @@ namespace FleaMarket.Services
             return viewModel;
         }
 
-        //gets Ulva Kvarn products from database
-        public IEnumerable<ProductEntity> GetUlvaKvarn()
-        {
-            return _context.Products.ToList().Where(x => x.SelectMarket == "Ulva Kvarn");
-        }
-
-        //gets Vaksala Torg products from database
-        public IEnumerable<ProductEntity> GetVaksalaTorg()
-        {
-            return _context.Products.ToList().Where(x => x.SelectMarket == "Vaksala Torg");
-        }
-
-
         public async Task<bool> AddProduct(ProductEntity productEntity)
         {
             try
@@ -97,6 +77,23 @@ namespace FleaMarket.Services
             {
                 return false;
             }
+        }
+
+        public IEnumerable<ProductEntity> GetAllUserProducts(string userId)
+        {
+            return _context.Products.ToList().Where(x => x.UserId == userId);
+        }
+
+        public async Task<bool> DeleteProductAsync(Guid productId)
+        {
+            try
+            {
+                var _product = await _context.Products.FindAsync(productId);
+                _context.Products.Remove(_product!);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch { return false; }
         }
     }
 }

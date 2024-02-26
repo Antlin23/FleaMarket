@@ -10,13 +10,11 @@ namespace FleaMarket.Services
     public class UserService
     {
         private readonly DataContext _context;
-        private readonly UserManager<UserEntity> _userManager;
 
 
-        public UserService(DataContext context, UserManager<UserEntity> userManager)
+        public UserService(DataContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         public async Task<UserEntity> GetUserAsync(Expression<Func<UserEntity, bool>> expression)

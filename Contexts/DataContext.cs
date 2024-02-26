@@ -12,6 +12,7 @@ namespace FleaMarket.Contexts
         }
 
         public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<MarketEntity> Markets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

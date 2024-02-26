@@ -17,7 +17,9 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>
     x.SignIn.RequireConfirmedAccount = false;
     x.User.RequireUniqueEmail = true;
     x.Password.RequiredLength = 6;
-}).AddEntityFrameworkStores<DataContext>();
+}).AddEntityFrameworkStores<DataContext>()
+    .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+
 builder.Services.ConfigureApplicationCookie(x =>
 {
     x.LoginPath = "/Authentication/LoginUser";
@@ -27,6 +29,7 @@ builder.Services.ConfigureApplicationCookie(x =>
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<MarketService>();
 
 
 

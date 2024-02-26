@@ -74,9 +74,26 @@ namespace FleaMarket.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public IActionResult ProductCreated()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct(Guid productId)
+        {
+
+            if (await _productService.DeleteProductAsync(productId))
+            {
+                return RedirectToAction("Index", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Någon blev fel när produkten skulle tas bort");
+            }
+
+            return View(productId);
         }
 
     }
