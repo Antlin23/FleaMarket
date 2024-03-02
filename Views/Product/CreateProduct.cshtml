@@ -3,70 +3,74 @@
 @{
     ViewData["Title"] = "Lägg till en produkt";
 }
-
 <h2 class="mb-4">Skapa en produkt</h2>
-
 <div class="d-flex justify-content-center">                                                                                                                       
 
     <section class="container create-form">
-        <form method="post" novalidate>
-
-                <div asp-validation-summary="ModelOnly" class=""></div>
+        <form method="post" enctype="multipart/form-data" novalidate>
+            <div asp-validation-summary="ModelOnly" class=""></div>  
 
             <div class="form-group">
-                <label asp-for="Title">Titel</label>
+                <label class="d-block" asp-for="Title">Titel*</label>
                 <input asp-for="Title" type="text" />
+                <span class="small text-danger d-block" asp-validation-for="Title"></span>
             </div>                              
             <div class="form-group">
-                <label asp-for="Price">Pris (kr)</label>
-                <input asp-for="Price" type="text" min="0" />
+                <label class="d-block" asp-for="Price">Pris (kr)*</label>
+                <input asp-for="Price" type="number"/>
+                <span class="small text-danger d-block" asp-validation-for="Price"></span>
             </div>
 
             <div class="form-group">
-            <label asp-for="SelectMarket">Marknad</label>
+                <label class="d-block" asp-for="SelectMarket">Marknad*</label>
             <select name="SelectMarket">
                 <option disabled selected>välj ett alternativ</option>
                 <option value="Ulva Kvarn">Ulva Kvarn (Uppsala)</option>
                 <option value="Vaksala Torg">Vaksala Torg (Uppsala)</option>
             </select>
+                <span class="small text-danger d-block" asp-validation-for="SelectMarket"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="TableNumber">Bordsnummer</label>
-                <input asp-for="TableNumber" type="number" min="0" />
+                <label class="d-block" asp-for="TableNumber">Bordsnummer*</label>
+                <input asp-for="TableNumber" type="number"/>
+                <span class="small text-danger d-block" asp-validation-for="TableNumber"></span>
+            </div>
+
+            <div class="my-4 upload-picture">
+                <label class="form-label d-block" for="Image">Bild</label>
+                <input asp-for="Image" class="picture-file" />
+                <span class="small text-danger d-block" asp-validation-for="Image"></span>
             </div>
 
             <div class="form-group">
-            <label asp-for="Category">Kategori (valfritt)</label>
-            <select name="Category">
-                <option disabled selected>välj ett alternativ</option>
-                <optgroup label="För hemmet">
-                    <option value="Möbler och heminredning">Möbler och heminredning</option>
-                    <option value="Bygg och trädgård">Bygg och trädgård</option>
-                    <option value="Vitvaror och husgeråd">Vitvaror och husgeråd</option>
-                    <option value="Verktyg">Verktyg</option>
-                </optgroup>
-                <optgroup label="Personligt">
-                    <option value="Kläder och skor">Kläder och skor</option>
-                    <option value="Barnkläder och skor">Barnkläder och skor</option>
-                    <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
-                    <option value="Accessoarer">Accessoarer</option>
-                </optgroup>
-                <option value="Övrigt">Övrigt</option>
-            </select>
+                <label asp-for="Category">Kategori</label>
+                <select name="Category">
+                    <option disabled selected>välj ett alternativ</option>
+                    <optgroup label="För hemmet">
+                        <option value="Möbler och heminredning">Möbler och heminredning</option>
+                        <option value="Bygg och trädgård">Bygg och trädgård</option>
+                        <option value="Vitvaror och husgeråd">Vitvaror och husgeråd</option>
+                        <option value="Verktyg">Verktyg</option>
+                    </optgroup>
+                    <optgroup label="Personligt">
+                        <option value="Kläder och skor">Kläder och skor</option>
+                        <option value="Barnkläder och skor">Barnkläder och skor</option>
+                        <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
+                        <option value="Accessoarer">Accessoarer</option>
+                    </optgroup>
+                    <option value="Övrigt">Övrigt</option>  
+                </select>
             </div>
 
             <div class="form-group">
-                <label asp-for="Brand">Märke (valfritt)</label>
+                <label class="d-block" asp-for="Brand">Märke</label>
                 <input asp-for="Brand" type="text"/>
+                <span class="small text-danger" asp-validation-for="Brand"></span>
             </div>
 
             <input asp-for="UserId" value="@User.Identity.Name" hidden/>
-
             <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
         </form>
     </section>
-
-
-
 </div>

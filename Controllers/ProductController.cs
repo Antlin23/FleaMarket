@@ -59,17 +59,25 @@ namespace FleaMarket.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(AddProductViewModel viewModel)
         {
-
             if (ModelState.IsValid)
             {
-                if (await _productService.AddProduct(viewModel))
+                try
                 {
+                    var entity = await _productService.AddProduct(viewModel);
+
+                    if (viewModel.Image != null)
+                    {
+                        await _productService.UploadImageAsync(entity, viewModel.Image);
+                    }
+
                     return RedirectToAction("ProductCreated", "product");
                 }
-                else
+                catch
                 {
                     ModelState.AddModelError("", "Någon gick fel när produkten skulle skapas");
+                    return View(viewModel);
                 }
+
             }
             return View(viewModel);
         }

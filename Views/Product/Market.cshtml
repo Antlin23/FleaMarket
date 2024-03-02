@@ -19,7 +19,7 @@
     marketProducts = productService.GetAllMarketProducts(marketName);
 }
 <a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
-<h2>Produkter på @marketName idag</h2>
+<h2 class="my-3 mb-4">Produkter på @marketName idag</h2>
 
 <form method="post">
     <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?" />

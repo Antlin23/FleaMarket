@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FleaMarket.Models.ViewModels
 {
-    public class AddProductViewModel
+    public class AddProductViewModel 
     {
         [Required(ErrorMessage = "Du måste ange en titel")]
+        [StringLength(50, ErrorMessage = "Titeln måste vara minst 3 tecken långt", MinimumLength = 3)]
         [Display(Name = "Titel")]
         public string Title { get; set; } = null!;
 
-
-        [Required(ErrorMessage = "Du måste ange ett pris")]
         [Display(Name = "Pris")]
         public int Price { get; set; }
 
@@ -23,11 +22,14 @@ namespace FleaMarket.Models.ViewModels
         [Display(Name = "Bordsnummer")]
         public int TableNumber { get; set; }
 
+        [Display(Name = "Bild")]
+        [DataType(DataType.Upload)]
+        public IFormFile? Image { get; set; }
+
         [Display(Name = "Kategori")]
         public string? Category { get; set; }
 
-
-        [Display(Name = "Brand")]
+        [Display(Name = "Märke")]
         public string? Brand { get; set; }
         public DateTime TimeAdded { get; set; } = DateTime.Now;
 
@@ -35,7 +37,7 @@ namespace FleaMarket.Models.ViewModels
 
         public static implicit operator ProductEntity(AddProductViewModel viewModel)
         {
-            return new ProductEntity
+            ProductEntity entity = new()
             {
                 Title = viewModel.Title,
                 Price = viewModel.Price,
@@ -45,6 +47,13 @@ namespace FleaMarket.Models.ViewModels
                 Brand = viewModel.Brand,
                 UserId = viewModel.UserId
             };
+
+            if (viewModel.Image != null)
+            {
+                entity.ImageUrl = $"{entity.Id}_{viewModel.Image?.FileName}";
+            }
+
+            return entity;
         }
     }
 }

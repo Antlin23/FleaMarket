@@ -53,7 +53,7 @@ namespace FleaMarket.Controllers
             {
                 if (await _authenticationService.LoginAsync(viewModel))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Account");
                 }
                 ModelState.AddModelError("", "Fel inloggningsuppgifter");
             }

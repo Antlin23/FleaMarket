@@ -7,6 +7,7 @@
         public string City { get; set; } = null!;
         public string Address { get; set; } = null!;
         public string? TimeOpen { get; set; }
+        public string? MapLink { get; set; }
         public string? MarketLink { get; set; }
         public string? marketDescription { get; set; }
     }

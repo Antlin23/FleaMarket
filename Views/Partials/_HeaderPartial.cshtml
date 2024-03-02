@@ -2,14 +2,13 @@
 @using Microsoft.AspNetCore.Identity;
 @inject SignInManager<UserEntity> signInManager;
 
-
 <header>
     <div class="container">
         <a asp-controller="Home" asp-action="Index">Hem</a>
         @if (!signInManager.IsSignedIn(User))
         {
             <a asp-controller="Product" asp-action="Index">Loppisar</a>
-            <a asp-controller="Authentication" asp-action="RegisterUser">Skapa konto</a>
+            <a asp-controller="Authentication" asp-action="RegisterUser">För säljare</a>
         }
         else
         {

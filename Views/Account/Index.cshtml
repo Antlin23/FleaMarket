@@ -19,7 +19,10 @@
     {
         <div class="bg-light p-3 my-4">
             <h4>@product.Title</h4>
-
+            @if (product.ImageUrl != null)
+            {
+                <img class="w-75 mb-2" src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas" />
+            }
             @if (product.Price != 0)
             {
                 <h5>@product.Price kr</h5>
@@ -28,9 +31,7 @@
             {
                 <h5>Pris: Skänkes</h5>
             }
-
             <p>@product.SelectMarket, Bord: @product.TableNumber</p>
-
             @if (product.Brand != null)
             {
                 <p>Märke: @product.Brand</p>

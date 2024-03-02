@@ -15,7 +15,7 @@
 
         @foreach(var market in markets)
         {
-            <a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+            <a class="fs-4" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
         }
     </div>
 </div>
@@ -25,7 +25,7 @@
 
     @foreach (var market in markets)
     {
-        <div class="bg-light p-3 my-2">
+        <div class="bg-light p-3 my-2 shadow rounded">
             <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a></h3>
             @if (market.TimeOpen != null)
             {

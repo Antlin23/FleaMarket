@@ -2,6 +2,7 @@
 using FleaMarket.Models;
 using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
@@ -15,12 +16,15 @@ namespace FleaMarket.Services
     {
         private readonly DataContext _context;
         private readonly UserManager<UserEntity> _userManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductService(DataContext context, UserManager<UserEntity> userManager)
+        public ProductService(DataContext context, UserManager<UserEntity> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment;
         }
+
 
         //gets products from database
         public IEnumerable<ProductEntity> GetAllMarketProducts(string marketTitle)
@@ -61,7 +65,7 @@ namespace FleaMarket.Services
             return viewModel;
         }
 
-        public async Task<bool> AddProduct(ProductEntity productEntity)
+        public async Task<ProductEntity> AddProduct(ProductEntity productEntity)
         {
             try
             {
@@ -71,11 +75,11 @@ namespace FleaMarket.Services
 
                 _context.Products.Add(productEntity);
                 await _context.SaveChangesAsync();
-                return true;
+                return productEntity;
             }
             catch
             {
-                return false;
+                return productEntity;
             }
         }
 
@@ -94,6 +98,20 @@ namespace FleaMarket.Services
                 return true;
             }
             catch { return false; }
+        }
+
+        public async Task<bool> UploadImageAsync(ProductEntity entity, IFormFile image)
+        {
+            try
+            {
+                string imagePath = $"{_webHostEnvironment.WebRootPath}/Images/Products/{entity.ImageUrl}";
+                await image.CopyToAsync(new FileStream(imagePath, FileMode.Create));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

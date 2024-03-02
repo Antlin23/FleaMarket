@@ -8,25 +8,32 @@
 }
 
 <div class="container mt-5">
-    <h2 class="mb-5">Aktiva marknader</h2>
+
+    <div>
+        <h3>Vad är detta för hemsida?</h3>
+        <p>Här kan du hitta just de produkter du söker efter på en loppis eller marknad.</p>
+        <p>Är du säljare? Klicka <a class="text-decoration-underline" asp-controller="Authentication" asp-action="RegisterUser">här</a> för att sälja dina produkter.</p>
+    </div>
+
+    <h3 class="mb-5">Aktiva marknader</h3>
 
     <div class="">
         @foreach (var market in markets)
         {
-            <div class="bg-light p-3 my-2">
+            <div class="bg-light p-3 my-2 shadow rounded">
                 <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a></h3>
                 @if (market.TimeOpen != null)
                 {
-                    <p>@market.TimeOpen</p>
+                    <p class="my-1">@market.TimeOpen</p>
                 }
                 @if (market.marketDescription != null)
                 {
-                    <p>@market.marketDescription</p>
+                    <p class="my-1">@market.marketDescription</p>
                 }
-                <p>@market.City @market.Address</p>
+                <a class="text-primary d-block" href="@market.MapLink" target="_blank">@market.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 @if (market.MarketLink != null)
                 {
-                    <a href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a class="text-primary" href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 }
             </div>
         }

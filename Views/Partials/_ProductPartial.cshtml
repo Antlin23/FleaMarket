@@ -1,8 +1,11 @@
 ﻿@using FleaMarket.Models.Entities;
 @model ProductEntity
-<div class="bg-light p-3 my-4">
+<div class="bg-light p-3 my-4 shadow rounded">
     <h4>@Model.Title</h4>
-
+    @if (Model.ImageUrl != null)
+    {
+        <img class="w-75 mb-2" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas" />
+    }
     @if (Model.Price != 0)
     {
         <h5>@Model.Price kr</h5>
@@ -11,9 +14,7 @@
     {
         <h5>Pris: Skänkes</h5>
     }
-
     <p>@Model.SelectMarket, Bord: @Model.TableNumber</p>
-
     @if (Model.Brand != null)
     {
         <p>Märke: @Model.Brand</p>
