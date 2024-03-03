@@ -21,6 +21,11 @@ namespace FleaMarket.Services
         {
             try
             {
+                if(viewModel.UserName == "company")
+                {
+                    viewModel.UserName = viewModel.UserName + Guid.NewGuid().ToString();
+                    viewModel.UserName = viewModel.UserName.Replace("-", "_");
+                }
                 var result = await _userManager.CreateAsync(viewModel, viewModel.Password);
 
                 if(result.Succeeded)

@@ -8,6 +8,7 @@
         <div class="col-md-6">
             <h2 class="mb-4">Logga in</h2>
             <form method="post" asp-action="LoginUser" asp-controller="Authentication" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for=Email>Email:</label>
                     <input asp-for=Email type="email" class="form-control" id="email" placeholder="Ange din email-adress">

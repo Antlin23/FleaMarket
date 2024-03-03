@@ -8,11 +8,7 @@
     }
     @if (Model.Price != 0)
     {
-        <h5>@Model.Price kr</h5>
-    }
-    else
-    {
-        <h5>Pris: Skänkes</h5>
+        <p>@Model.Price kr</p>
     }
     <p>@Model.SelectMarket, Bord: @Model.TableNumber</p>
     @if (Model.Brand != null)

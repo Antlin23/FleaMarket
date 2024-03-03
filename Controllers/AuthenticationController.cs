@@ -30,6 +30,18 @@ namespace FleaMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(await _userManager.Users.AnyAsync(x => x.UserName == viewModel.UserName))
+                {
+                    if(viewModel.UserName == "company" && (viewModel.CompanyName != null && viewModel.CompanyName != ""))
+                    {
+                        if (await _authenticationService.RegisterUserAsync(viewModel))
+                        {
+                            return RedirectToAction("LoginUser", "Authentication");
+                        }
+                    }
+                    ModelState.AddModelError("", "Användarnamnet är redan upptaget");
+                    return View();
+                }
                 if(!await _userManager.Users.AnyAsync(x => x.Email == viewModel.Email))
                 {
                     if(await _authenticationService.RegisterUserAsync(viewModel))
@@ -37,7 +49,13 @@ namespace FleaMarket.Controllers
                         return RedirectToAction("LoginUser", "Authentication");
                     }
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Emailadressen finns redan registrerad");
+                    return View();
+                }
             }
+            ModelState.AddModelError("", "Något blev fel. Var vänlig testa igen.");
             return View();
         }
 

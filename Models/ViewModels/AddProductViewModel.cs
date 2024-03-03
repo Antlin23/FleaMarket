@@ -1,5 +1,6 @@
 ﻿using FleaMarket.Models.Entities;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace FleaMarket.Models.ViewModels
@@ -12,7 +13,10 @@ namespace FleaMarket.Models.ViewModels
         public string Title { get; set; } = null!;
 
         [Display(Name = "Pris")]
-        public int Price { get; set; }
+        public int? Price { get; set; }
+
+        [Display(Name = "Inget pris")]
+        public bool NoPrice { get; set; } = false;
 
         [Required(ErrorMessage = "Du måste ange vilken marknad.")]
         [Display(Name = "Marknad")]
@@ -40,7 +44,6 @@ namespace FleaMarket.Models.ViewModels
             ProductEntity entity = new()
             {
                 Title = viewModel.Title,
-                Price = viewModel.Price,
                 SelectMarket = viewModel.SelectMarket,
                 TableNumber = viewModel.TableNumber,
                 Category = viewModel.Category,
@@ -51,6 +54,19 @@ namespace FleaMarket.Models.ViewModels
             if (viewModel.Image != null)
             {
                 entity.ImageUrl = $"{entity.Id}_{viewModel.Image?.FileName}";
+            }
+            if(viewModel.Price != null)
+            {
+                var tempPrice = viewModel.Price;
+                entity.Price = tempPrice ?? default(int);
+            }
+            else
+            {
+                entity.Price = 0;
+            }
+            if(viewModel.NoPrice == true) 
+            {
+                entity.Price = 0;
             }
 
             return entity;

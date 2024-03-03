@@ -77,8 +77,8 @@ namespace FleaMarket.Controllers
                     ModelState.AddModelError("", "Någon gick fel när produkten skulle skapas");
                     return View(viewModel);
                 }
-
             }
+            ModelState.AddModelError("", "Någon gick fel när produkten skulle skapas");
             return View(viewModel);
         }
 
