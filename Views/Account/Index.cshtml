@@ -1,10 +1,19 @@
-﻿@using FleaMarket.Services;
+﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Services;
 @inject ProductService productService;
+@inject UserService _userService;
 @{
     var usersProducts = productService.GetAllUserProducts(User.FindFirst("Id")?.Value);
 
     ViewData["Title"] = "Mitt konto";
 }
+<nav class="container" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+        <li class="breadcrumb-item active">Mitt konto</li>
+    </ol>
+</nav>
+
 <section class="container">
     @if(User.FindFirst("CompanyName")?.Value == "")
     {
@@ -24,6 +33,8 @@
 
     @foreach(var product in usersProducts)
     {
+        UserEntity user = await _userService.GetUserAsync(x => x.Id == product.UserId);
+
         <div class="bg-light p-3 my-4">
             <h4>@product.Title</h4>
             @if (product.ImageUrl != null)
@@ -34,7 +45,7 @@
             {
                 <h5>@product.Price kr</h5>
             }
-            <p>@product.SelectMarket, Bord: @product.TableNumber</p>
+            <p>@product.SelectMarket, Bord: @user.TableNumber</p>
             @if (product.Brand != null)
             {
                 <p>Märke: @product.Brand</p>

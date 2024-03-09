@@ -69,7 +69,7 @@ namespace FleaMarket.Services
         {
             try
             {
-                var newUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == productEntity.UserId);
+                var newUser = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == productEntity.UserId);
 
                 productEntity.UserId = newUser.Id;
 

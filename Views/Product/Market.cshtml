@@ -18,8 +18,14 @@
     IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
     marketProducts = productService.GetAllMarketProducts(marketName);
 }
-<a asp-controller="Product" asp-action="Index"><u>Välj en annan marknad</u></a>
-<h2 class="my-3 mb-4">Produkter på @marketName idag</h2>
+<nav class="container" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Product" asp-action="Index">Marknader</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@marketName</li>
+    </ol>
+</nav>
+<h3 class="my-3 mb-4">Produkter på @marketName idag</h3>
 
 <form method="post">
     <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?" />

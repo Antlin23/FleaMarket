@@ -1,6 +1,13 @@
 ﻿@{
     ViewData["Title"] = "produkt tillagd";
 }
+<nav class="container" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Product" asp-action="CreateProduct">Skapa produkt</a></li>
+        <li class="breadcrumb-item active">Produkt tillagd</li>
+    </ol>
+</nav>
 
 <h1>Produkten är nu tillagd!</h1>
-<a asp-asp-controller="Product" asp-action="CreateProduct">Lägg till en till produkt</a>
+<a asp-controller="Product" asp-action="CreateProduct">Lägg till en till produkt</a>

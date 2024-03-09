@@ -10,10 +10,12 @@ namespace FleaMarket.Controllers
     {
 
         private readonly ProductService _productService;
+        private readonly UserService _userService;
 
-        public ProductController(ProductService productService)
+        public ProductController(ProductService productService, UserService userService)
         {
             _productService = productService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -63,6 +65,14 @@ namespace FleaMarket.Controllers
             {
                 try
                 {
+                    UserEntity user = await _userService.GetUserAsync(x => x.Id == viewModel.UserId);
+                    var tableNumber = user.TableNumber;
+
+                    if(!(tableNumber > 0))
+                    {
+                        await _userService.AddTableNumberToUser(User.FindFirst("Id")?.Value, viewModel.TableNumber);
+                    }
+
                     var entity = await _productService.AddProduct(viewModel);
 
                     if (viewModel.Image != null)

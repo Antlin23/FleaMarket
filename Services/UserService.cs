@@ -23,5 +23,17 @@ namespace FleaMarket.Services
             var user = await _context.Users.FirstOrDefaultAsync(expression);
             return user!;
         }
+
+        public async Task<bool> AddTableNumberToUser(string userId, int tableNumber)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+                user.TableNumber = tableNumber;
+                return true;
+            }
+            catch { return false; }
+        }
     }
 }

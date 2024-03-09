@@ -1,15 +1,38 @@
-﻿@using FleaMarket.Models.ViewModels;
+﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Models.ViewModels;
+@using FleaMarket.Services;
 @model AddProductViewModel
+@inject UserService _userService
 @{
     ViewData["Title"] = "Lägg till en produkt";
+
+    var userId = User.FindFirst("Id")?.Value;
+
+    UserEntity user = await _userService.GetUserAsync(x => x.Id == userId);
+    var tableNumber = user.TableNumber;
 }
+
+<nav class="container" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+        <li class="breadcrumb-item active">Skapa produkt</li>
+    </ol>
+</nav>
+
 <h2 class="mb-4">Skapa en produkt</h2>
 <div class="d-flex justify-content-center">                                                                                                                       
 
     <section class="container create-form">
-        <form method="post" enctype="multipart/form-data" novalidate>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+        <form method="post" enctype="multipart/form-data" novalidate> 
+            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+            @if (!(tableNumber > 0))
+            {
+                <div class="form-group">
+                    <label class="d-block" asp-for="TableNumber">Vilket bordsnummer har du idag?</label>
+                    <input asp-for="TableNumber" type="number" />
+                    <span class="small text-danger d-block" asp-validation-for="TableNumber"></span>
+                </div>
+            }
             <div class="form-group">
                 <label class="d-block" asp-for="Title">Titel*</label>
                 <input asp-for="Title" type="text" />
@@ -34,12 +57,6 @@
                 <option value="Vaksala Torg">Vaksala Torg (Uppsala)</option>
             </select>
                 <span class="small text-danger d-block" asp-validation-for="SelectMarket"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="d-block" asp-for="TableNumber">Bordsnummer*</label>
-                <input asp-for="TableNumber" type="number"/>
-                <span class="small text-danger d-block" asp-validation-for="TableNumber"></span>
             </div>
 
             <div class="my-4 upload-picture">
@@ -74,7 +91,7 @@
                 <span class="small text-danger" asp-validation-for="Brand"></span>
             </div>*@
 
-            <input asp-for="UserId" value="@User.Identity.Name" hidden/>
+            <input asp-for="UserId" value="@userId" hidden/>
             <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
         </form>
     </section>

@@ -45,7 +45,6 @@ namespace FleaMarket.Models.ViewModels
             {
                 Title = viewModel.Title,
                 SelectMarket = viewModel.SelectMarket,
-                TableNumber = viewModel.TableNumber,
                 Category = viewModel.Category,
                 Brand = viewModel.Brand,
                 UserId = viewModel.UserId

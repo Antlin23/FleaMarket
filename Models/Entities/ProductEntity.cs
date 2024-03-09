@@ -18,9 +18,6 @@ namespace FleaMarket.Models.Entities
         [Column(TypeName = "nvarchar(50)")]
         public string SelectMarket { get; set; } = null!;
 
-        [Column(TypeName = "varchar(30)")]
-        public int TableNumber { get; set; }
-
         [Column(TypeName = "nvarchar(250)")]
         public string? ImageUrl { get; set; }
 
