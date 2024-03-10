@@ -57,3 +57,7 @@ header a:hover {
 form ul {
   list-style-type: none;
 }
+
+.tablenumber-input {
+  max-width: 4rem;
+}

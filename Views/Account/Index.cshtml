@@ -1,9 +1,15 @@
 ﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Models.ViewModels;
 @using FleaMarket.Services;
 @inject ProductService productService;
 @inject UserService _userService;
+@model UpdateTableNumberViewModel
 @{
-    var usersProducts = productService.GetAllUserProducts(User.FindFirst("Id")?.Value);
+    string userId = User.FindFirst("Id")?.Value;
+
+    var usersProducts = productService.GetAllUserProducts(userId);
+
+    var user = await _userService.GetUserAsync(x => x.Id == userId);
 
     ViewData["Title"] = "Mitt konto";
 }
@@ -29,12 +35,21 @@
         <p>Att aktivera ditt säljkonto kostar 30/dag. Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
         <a href="" class="text-decoration-underline">Aktivera nu</a>
     </div>
+
+    <div class="d-flex justify-content-center">
+        <p>Ditt bordsnummer idag: </p>
+        <form class="ms-3" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+            <input asp-for="@Model.NewTableNumber" class="tablenumber-input" type="number" value="@user.TableNumber" />
+            <input asp-for="@Model.UserId" value="@userId" hidden/>
+            <button type="submit">Ändra</button>
+        </form>
+    </div>
+
     <h4>Dina produkter</h4>
 
     @foreach(var product in usersProducts)
     {
-        UserEntity user = await _userService.GetUserAsync(x => x.Id == product.UserId);
-
         <div class="bg-light p-3 my-4">
             <h4>@product.Title</h4>
             @if (product.ImageUrl != null)

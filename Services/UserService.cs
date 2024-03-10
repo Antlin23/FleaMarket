@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using FleaMarket.Models.Entities;
 using FleaMarket.Contexts;
 using Microsoft.EntityFrameworkCore;
+using FleaMarket.Models.ViewModels;
 
 namespace FleaMarket.Services
 {
@@ -31,6 +32,20 @@ namespace FleaMarket.Services
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
 
                 user.TableNumber = tableNumber;
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> UpdateTableNumberAsync(UpdateTableNumberViewModel viewModel)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == viewModel.UserId);
+
+                user.TableNumber = viewModel.NewTableNumber;
+
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch { return false; }
