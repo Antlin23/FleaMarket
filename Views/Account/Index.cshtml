@@ -23,17 +23,17 @@
 <section class="container">
     @if(User.FindFirst("CompanyName")?.Value == "")
     {
-        <h5>Hej @User.Identity.Name</h5>
+        <h5>Hej @User.Identity.Name</h5> 
     }
     else
     {
         <h5>Hej @User.FindFirst("CompanyName")?.Value</h5>
     }
 
-    <div class="my-4">
+    <div class="my-4 p-4 bg-light">
         <p>Vill du börja sälja?</p>
-        <p>Att aktivera ditt säljkonto kostar 30/dag. Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
-        <a href="" class="text-decoration-underline">Aktivera nu</a>
+        <p>Att aktivera ditt säljkonto kostar 30/dag. <br /> Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
+        <a asp-action="CreatePaymentRequest" asp-controller="Payment" class="text-decoration-underline">Aktivera nu</a>
     </div>
 
     <div class="d-flex justify-content-center">

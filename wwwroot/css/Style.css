@@ -61,3 +61,7 @@ form ul {
 .tablenumber-input {
   max-width: 4rem;
 }
+
+.payment-div {
+  background-color: lightgray;
+}

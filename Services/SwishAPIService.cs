@@ -14,9 +14,7 @@ public class SwishAPIService
     {
         // Load certificate files
         var certificate = new X509Certificate2("./Certificates/Swish_Merchant_TestCertificate_1234679304.p12", "swish", X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-        // code from 3.5 var cert = new X509Certificate2("./Certificates/Swish_Merchant_TestCertificate_1234679304.p12");
 
-        //src="~/Images/Products/@product.ImageUrl"
         var handler = new HttpClientHandler();
         handler.ClientCertificates.Add(certificate);
 
@@ -29,28 +27,29 @@ public class SwishAPIService
     {
         // Generate a version 4 (random) UUID
         Guid uuid = Guid.NewGuid();
-
         // Convert to string, remove hyphens, and convert to uppercase
         string swishUuid = uuid.ToString().Replace("-", "").ToUpper();
-
         return swishUuid;
     }
 
-    public async Task<string> MakePaymentRequestAsync()
+    public async Task<bool> MakePaymentRequestAsync(string payerPhoneNumber)
     {
+
         // Generate a unique instruction ID
         var instructionId = GenerateSwishUuid();
 
         // Setup payment data
         var data = new
         {
-            payeePaymentReference = "0123456788",
+            payeePaymentReference = "1234567GLHF",
             callbackUrl = "https://example.com/swishcallback",
-            payeeAlias = "1234679305",
+            //Betalningsmottagare
+            payeeAlias = "1234679304",
             currency = "SEK",
-            amount = "110",
-            message = "Hejsan detta är meddelandet"
-            //payerAlias = "4671234768"
+            amount = "30",
+            message = "Jag vill aktivera mitt säljkonto.",
+            //Numret till den som ska betala
+            payerAlias = payerPhoneNumber
         };
 
         // Serialize data
@@ -62,11 +61,11 @@ public class SwishAPIService
 
         if (response.IsSuccessStatusCode)
         {
-            return "Payment request created. Status Code: " + response.StatusCode;
+            return true;
         }
         else
         {
-            return "Failed to create payment request. Status Code: " + response.StatusCode;
+            return false;
         }
     }
 }

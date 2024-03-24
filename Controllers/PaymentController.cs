@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FleaMarket.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 public class PaymentController : Controller
@@ -10,9 +12,23 @@ public class PaymentController : Controller
         _swishService = swishService;
     }
 
-    public async Task<IActionResult> CreatePaymentRequest()
+    public IActionResult CreatePaymentRequest()
     {
-        var result = await _swishService.MakePaymentRequestAsync();
-        return Content(result);
+        return View();
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreatePaymentRequest(CreatePaymentViewModel viewModel)
+    {
+        if(ModelState.IsValid)
+        {
+            bool result = await _swishService.MakePaymentRequestAsync(viewModel.PayerPhoneNumber);
+
+            if(result)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+        }
+        ModelState.AddModelError("", "Någon blev fel. Om felet kvarstår kontakta oss.");
+        return View(viewModel);
     }
 }
