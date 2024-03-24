@@ -15,7 +15,7 @@ public class SwishAPIService
         // Load certificate files
         var certificate = new X509Certificate2("./Certificates/Swish_Merchant_TestCertificate_1234679304.p12", "swish", X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
         // code from 3.5 var cert = new X509Certificate2("./Certificates/Swish_Merchant_TestCertificate_1234679304.p12");
-        
+
         //src="~/Images/Products/@product.ImageUrl"
         var handler = new HttpClientHandler();
         handler.ClientCertificates.Add(certificate);
@@ -25,10 +25,21 @@ public class SwishAPIService
         _httpClient.BaseAddress = new Uri("https://mss.cpc.getswish.net/");
     }
 
+    public string GenerateSwishUuid()
+    {
+        // Generate a version 4 (random) UUID
+        Guid uuid = Guid.NewGuid();
+
+        // Convert to string, remove hyphens, and convert to uppercase
+        string swishUuid = uuid.ToString().Replace("-", "").ToUpper();
+
+        return swishUuid;
+    }
+
     public async Task<string> MakePaymentRequestAsync()
     {
         // Generate a unique instruction ID
-        var instructionId = Guid.NewGuid().ToString().ToUpper();
+        var instructionId = GenerateSwishUuid();
 
         // Setup payment data
         var data = new
@@ -41,7 +52,6 @@ public class SwishAPIService
             message = "Hejsan detta är meddelandet"
             //payerAlias = "4671234768"
         };
-
 
         // Serialize data
         var jsonData = JsonConvert.SerializeObject(data);
@@ -58,8 +68,5 @@ public class SwishAPIService
         {
             return "Failed to create payment request. Status Code: " + response.StatusCode;
         }
-        
-
     }
-
 }
