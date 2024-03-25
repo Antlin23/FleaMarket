@@ -1,4 +1,5 @@
 ﻿using FleaMarket.Models.ViewModels;
+using FleaMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -6,10 +7,12 @@ using System.Threading.Tasks;
 public class PaymentController : Controller
 {
     private readonly SwishAPIService _swishService;
+    private readonly UserService _userService;
 
-    public PaymentController(SwishAPIService swishService)
+    public PaymentController(SwishAPIService swishService, UserService userService)
     {
         _swishService = swishService;
+        _userService = userService;
     }
 
     public IActionResult CreatePaymentRequest()
@@ -25,6 +28,9 @@ public class PaymentController : Controller
 
             if(result)
             {
+                //här måste user bli isActivatedSeller = true
+                await _userService.MakeUserActiveSellerAsync(User.FindFirst("Id")?.Value);
+                
                 return RedirectToAction("Index", "Account");
             }
         }

@@ -31,7 +31,9 @@ builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MarketService>();
 builder.Services.AddScoped<SwishAPIService>();
-builder.Services.AddScoped<DailyResetService>();
+builder.Services.AddSingleton<SwishAPIService>();
+
+
 
 
 

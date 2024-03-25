@@ -19,7 +19,7 @@ public class DailyResetService : BackgroundService
         {
             var now = DateTime.Now;
             var tomorrow = now.AddDays(1);
-            var nextRunTime = new DateTime(tomorrow.Year, tomorrow.Month, now.Day, 18, 12, 0);
+            var nextRunTime = new DateTime(tomorrow.Year, tomorrow.Month, now.Day, 20, 37, 0);
             var delay = nextRunTime - now;
             if (delay > TimeSpan.Zero)
             {
