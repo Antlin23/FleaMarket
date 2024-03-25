@@ -80,7 +80,9 @@ namespace FleaMarket.Controllers
                         await _productService.UploadImageAsync(entity, viewModel.Image);
                     }
 
-                    return RedirectToAction("ProductCreated", "product");
+                    TempData["SuccessMessage"] = "Produkten lades till";
+
+                    return RedirectToAction("Index", "Account");
                 }
                 catch
                 {
@@ -90,12 +92,6 @@ namespace FleaMarket.Controllers
             }
             ModelState.AddModelError("", "Någon gick fel när produkten skulle skapas");
             return View(viewModel);
-        }
-
-        [Authorize]
-        public IActionResult ProductCreated()
-        {
-            return View();
         }
 
         [HttpPost]

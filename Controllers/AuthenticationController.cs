@@ -46,7 +46,18 @@ namespace FleaMarket.Controllers
                 {
                     if(await _authenticationService.RegisterUserAsync(viewModel))
                     {
-                        return RedirectToAction("LoginUser", "Authentication");
+                        LoginViewModel loginViewModel = new LoginViewModel();
+
+                        loginViewModel.Password = viewModel.Password;
+                        loginViewModel.Email = viewModel.Email;
+
+                        if (await _authenticationService.LoginAsync(loginViewModel))
+                        {
+                            TempData["SuccessMessage"] = "Välkommen, kul att du ville skapa ett konto hos oss. " +
+                                "Här på sidan Mitt Konto kan du aktivera ditt säljkonto, lägga upp och ta bort produkter. " +
+                                "Lycka till med säljningen!";
+                            return RedirectToAction("Index", "Account");
+                        }
                     }
                 }
                 else

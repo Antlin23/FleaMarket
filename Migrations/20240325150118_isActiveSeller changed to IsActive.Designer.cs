@@ -4,6 +4,7 @@ using FleaMarket.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleaMarket.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240325150118_isActiveSeller changed to IsActive")]
+    partial class isActiveSellerchangedtoIsActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,16 +185,16 @@ namespace FleaMarket.Migrations
                         {
                             Id = "0cc0714b-7e95-47ff-9b50-460f04f29426",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "03eb0c6f-299e-4a1f-93d9-59fd760c6d06",
+                            ConcurrencyStamp = "78e5a660-468b-4d18-a32d-26a05523757c",
                             Email = "anton.jumkil@gmail.com",
                             EmailConfirmed = false,
                             IsActiveSeller = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "anton.jumkil@gmail.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH0ncVRyuE9NcjXcpEO2TECg0buieUwojOYOwo/WRmL37Ofe/jqmzERkhmfIoXwanw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENZLr8JLXoN6YBHTIaakeJoDe++Egks2ldbmacM/LN7Jt0x03Rjfuw+1cPaZhxeX0w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b41ddff-12cc-49e6-a955-426037169509",
+                            SecurityStamp = "5d508548-c4a0-4ad2-a94c-0d0b1ce02511",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -227,14 +230,14 @@ namespace FleaMarket.Migrations
                         new
                         {
                             Id = "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4",
-                            ConcurrencyStamp = "ccc6346a-208e-4120-a45a-82c76daadabc",
+                            ConcurrencyStamp = "711e0836-e009-42d0-97f0-6e2712b29af7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "972b6232-0d25-46f9-a3e6-eec6fd127ff0",
-                            ConcurrencyStamp = "7960e094-fa94-4f1d-81b7-bb10c2ed8f07",
+                            ConcurrencyStamp = "5c652248-ece5-46e6-8c8b-4ccf975891b2",
                             Name = "User",
                             NormalizedName = "USER"
                         });

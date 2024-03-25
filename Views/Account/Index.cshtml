@@ -30,47 +30,69 @@
         <h5>Hej @User.FindFirst("CompanyName")?.Value</h5>
     }
 
-    <div class="my-4 p-4 bg-light">
-        <p>Vill du börja sälja?</p>
-        <p>Att aktivera ditt säljkonto kostar 30/dag. <br /> Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
-        <a asp-action="CreatePaymentRequest" asp-controller="Payment" class="text-decoration-underline">Aktivera nu</a>
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <p>Ditt bordsnummer idag: </p>
-        <form class="ms-3" method="post" novalidate>
-            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <input asp-for="@Model.NewTableNumber" class="tablenumber-input" type="number" value="@user.TableNumber" />
-            <input asp-for="@Model.UserId" value="@userId" hidden/>
-            <button type="submit">Ändra</button>
-        </form>
-    </div>
-
-    <h4>Dina produkter</h4>
-
-    @foreach(var product in usersProducts)
+    @if (@TempData["SuccessMessage"] != null)
     {
-        <div class="bg-light p-3 my-4">
-            <h4>@product.Title</h4>
-            @if (product.ImageUrl != null)
-            {
-                <img class="w-75 mb-2" src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas" />
-            }
-            @if (product.Price != 0)
-            {
-                <h5>@product.Price kr</h5>
-            }
-            <p>@product.SelectMarket, Bord: @user.TableNumber</p>
-            @if (product.Brand != null)
-            {
-                <p>Märke: @product.Brand</p>
-            }
-            <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
-                <button class="btn text-decoration-underline" type="submit">Ta bort</button>
+        <p class="bg-success p-2 my-3">@TempData["SuccessMessage"]</p>
+    }
+
+    <!--If the user isActiveSeller is false-->
+    @if (user.IsActiveSeller == false)
+    {
+        <div class="my-4 p-4 bg-light">
+            <p>Vill du börja sälja?</p>
+            <p>Att aktivera ditt säljkonto kostar 30/dag. <br /> Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
+            <a asp-action="CreatePaymentRequest" asp-controller="Payment" class="text-decoration-underline">Aktivera nu</a>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-center mt-4">
+            <p>Ditt bordsnummer idag: </p>
+            <form class="ms-3" method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+                <input asp-for="@Model.NewTableNumber" class="tablenumber-input" type="number" value="@user.TableNumber" />
+                <input asp-for="@Model.UserId" value="@userId" hidden />
+                <button type="submit">Ändra</button>
             </form>
         </div>
 
+        <a class="mt-4 text-decoration-underline" asp-action="CreateProduct" asp-controller="Product">Lägg upp en produkt.</a>
+
+
+        @if(user.Products.Count == 0)
+        {
+        }
+        else
+        {
+            <h5>Dina produkter</h5>
+            @foreach (var product in usersProducts)
+            {
+                <div class="bg-light p-3 my-4">
+                    <h4>@product.Title</h4>
+                    @if (product.ImageUrl != null)
+                    {
+                        <img class="w-75 mb-2" src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas" />
+                    }
+                    @if (product.Price != 0)
+                    {
+                        <h5>@product.Price kr</h5>
+                    }
+                    <p>@product.SelectMarket, Bord: @user.TableNumber</p>
+                    @if (product.Brand != null)
+                    {
+                        <p>Märke: @product.Brand</p>
+                    }
+                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
+                        <button class="btn text-decoration-underline" type="submit">Ta bort</button>
+                    </form>
+                </div>
+            }
+        }
+        <div class="my-4 p-4 bg-light">
+            <p>Ditt säljkonto är idag aktiverat, du kan lägga ut hur många produkter du vill.</p>
+        </div>
     }
+
 
     <a asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
 </section>

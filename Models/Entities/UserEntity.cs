@@ -8,6 +8,7 @@ namespace FleaMarket.Models.Entities
         public string? LastName { get; set; }
         public int? TableNumber { get; set; }
         public string? CompanyName { get; set; }
+        public bool IsActiveSeller { get; set; } = false;
 
         public ICollection<ProductEntity> Products { get; set; } = new HashSet<ProductEntity>();
     }
