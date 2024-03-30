@@ -1,67 +1,96 @@
-﻿body {
-  text-align: center;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/*Header*/
+﻿/*Header*/
 header {
-  font-size: 20px;
-  background-color: lightgray;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid gray;
+  background-color: #dff9fb;
+  padding: 0.8rem 0.2rem;
 }
-header .container {
+header .header-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
-header a {
+header .header-container .header-logo {
+  font-size: 1.2rem;
+}
+header .header-container .header-logo a {
+  color: #130f40;
+  font-weight: 700;
   text-decoration: none;
-  color: black;
 }
-
-header a:hover {
-  color: black;
-}
-
-/*Home*/
-.home-container {
-  text-align: center;
-}
-.home-container a {
-  margin: 2rem;
-  text-decoration: underline;
-}
-
-/*Create form*/
-.create-form {
+header .header-container .header-links {
   display: flex;
-  justify-content: center;
-  text-align: left;
-  max-width: 200px;
+  gap: 2rem;
+}
+header .header-container .header-links a {
+  text-decoration: none;
+  text-align: center;
+  color: #130f40;
+  font-size: 1.1rem;
 }
 
-.form-group {
-  margin-top: 2rem;
+.home-showcase {
+  background-color: #130f40;
+  color: white;
+  padding: 1rem 0;
+}
+.home-showcase h4 {
+  color: #ffbe76;
+  margin-bottom: 1.4rem;
+  font-size: 1.6rem;
 }
 
-form ul {
-  list-style-type: none;
+.home-container {
+  margin-top: 1.8rem;
+  color: #130f40;
 }
 
-.tablenumber-input {
-  max-width: 4rem;
+body {
+  background-color: #dff9fb;
+  margin: 0;
+  padding: 0;
 }
 
-.payment-div {
-  background-color: lightgray;
+h4 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.market {
+  background-color: white;
+  padding: 0.6rem 1.2rem;
+  margin: 2rem 0;
+}
+.market a {
+  color: #130f40;
+  text-decoration: none;
+}
+.market .market-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.market .market-description {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.market .market-timetitle {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.market .market-time {
+  margin-bottom: 0.3rem;
+}
+.market .market-links {
+  display: flex;
+  gap: 1rem;
+}
+.market button {
+  display: block;
+  margin: auto;
+  margin-top: 1.4rem;
+  margin-bottom: 1rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.6rem 3rem;
+  border: none;
+  outline: none;
 }

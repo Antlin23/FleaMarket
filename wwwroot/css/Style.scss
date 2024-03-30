@@ -1,70 +1,67 @@
-﻿body {
-    text-align: center;
+﻿//Imports
+@import "Partials/_header.scss";
+@import "Partials/_home.scss";
+
+body {
+    background-color: #dff9fb;
+    margin: 0;
+    padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/*Header*/
-header {
-    font-size: 20px;
-    background-color: lightgray;
-    padding: 2rem;
+//Properties
+h4 {
+    font-size: 1.6rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid gray;
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-    }
 }
 
-header a {
-    text-decoration: none;
-    color: black;
-}
-
-header a:hover {
-    color: black;
-}
-
-/*Home*/
-
-.home-container {
-    text-align: center;
+//Market
+.market {
+    background-color: white;
+    padding: 0.6rem 1.2rem;
+    margin: 2rem 0;
 
     a {
-        margin: 2rem;
-        text-decoration: underline;
+        color: #130f40;
+        text-decoration: none;
     }
-}
 
-/*Create form*/
-.create-form {
-    display: flex;
-    justify-content: center;
-    text-align: left;
-    max-width: 200px;
-}
+    .market-title {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
 
-.form-group {
-    margin-top: 2rem;
-}
+    .market-description {
+        margin-top: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
 
-form ul{
-    list-style-type: none;
-}
+    .market-timetitle {
+        font-weight: 500;
+        margin-bottom: 0;
+    }
 
-.tablenumber-input{
-    max-width: 4rem;
-}
+    .market-time {
+        margin-bottom: 0.3rem;
+    }
 
-.payment-div {
-    background-color: lightgray;
+    .market-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    button {
+        display: block;
+        margin: auto;
+        margin-top: 1.4rem;
+        margin-bottom: 1rem;
+        background-color: #130f40;
+        color: white;
+        border-radius: 2rem;
+        padding: 0.6rem 3rem;
+        border: none;
+        outline: none;
+
+        &:hover {
+        }
+    }
 }

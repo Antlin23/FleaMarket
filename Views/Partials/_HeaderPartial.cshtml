@@ -3,16 +3,30 @@
 @inject SignInManager<UserEntity> signInManager;
 
 <header>
-    <div class="container">
-        <a asp-controller="Home" asp-action="Index">Hem</a>
-        @if (!signInManager.IsSignedIn(User))
-        {
-            <a asp-controller="Product" asp-action="Index">Marknader</a>
-            <a asp-controller="Authentication" asp-action="RegisterUser">För säljare</a>
-        }
-        else
-        {
-            <a asp-action="Index" asp-controller="Account">Mitt konto</a>
-        }
+    <div class="container header-container">
+        <div class="header-logo">
+            <a asp-controller="Home" asp-action="Index">TradeTrails</a>
+        </div>
+        <div class="header-links">
+            @if (!signInManager.IsSignedIn(User))
+            {
+                <a asp-controller="Product" asp-action="Index">
+                    <i class="fa-regular fa-shop"></i>
+                    Marknader
+                </a>
+                <a asp-controller="Authentication" asp-action="RegisterUser">
+                    <i class="fa-regular fa-user"></i>
+                    För säljare
+                </a>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="Account">
+                    <i class="fa-regular fa-user"></i>
+                    Mitt konto
+                </a>
+            }
+        </div>
+
     </div>
 </header>

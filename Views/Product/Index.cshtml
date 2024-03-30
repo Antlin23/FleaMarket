@@ -16,26 +16,33 @@
     </ol>
 </nav>
 
-<div class="container mt-5">
-    <h2 class="mb-5">Aktiva marknader just nu</h2>
+<div class="container">
+    <h4>Aktiva marknader just nu</h4>
 
     @foreach (var market in markets)
     {
-        <div class="bg-light p-3 my-2 shadow rounded">
-            <h3><a asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a></h3>
-            @if (market.TimeOpen != null)
-            {
-                <p>@market.TimeOpen</p>
-            }
+        <div class="market">
+            <a class="market-title" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+
             @if (market.marketDescription != null)
             {
-                <p>@market.marketDescription</p>
+                <p class="market-description">@market.marketDescription</p>
             }
-            <p><b>Adress: </b>@market.City @market.Address</p>
-            @if (market.MarketLink != null)
+
+            @if (market.TimeOpen != null)
             {
-                <a href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <p class="market-timetitle">Öppettider</p>
+                <p class="market-time">@market.TimeOpen</p>
             }
+
+            <div class="market-links">
+                <a href="@market.MapLink" target="_blank">@market.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                @if (market.MarketLink != null)
+                {
+                    <a href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                }
+            </div>
+            <button>Se produkter</button>
         </div>
     }
 </div>
