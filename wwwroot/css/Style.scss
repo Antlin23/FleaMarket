@@ -14,20 +14,58 @@ h4 {
     margin-bottom: 2rem;
 }
 
-//Market
-.market {
+a{
+    text-decoration: none;
+    color: black;
+    &:hover{
+        color: black;
+    }
+}
+
+//components
+.button {
+    display: block;
+    margin: auto;
+    margin-top: 1.4rem;
+    margin-bottom: 1rem;
+    background-color: #f0932b;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.6rem 3rem;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all ease-in-out 150ms;
+    max-width: fit-content;
+
+    &:hover {
+        color: white;
+        transform: scale(0.99);
+    }
+}
+
+//market-car
+.market-card {
     background-color: white;
     padding: 0.6rem 1.2rem;
     margin: 2rem 0;
 
     a {
-        color: #130f40;
-        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .market-title {
         font-size: 1.4rem;
         font-weight: 500;
+        color: #130f40;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     .market-description {
@@ -35,7 +73,7 @@ h4 {
         margin-bottom: 0.4rem;
     }
 
-    .market-timetitle {
+    .market-undertitle {
         font-weight: 500;
         margin-bottom: 0;
     }
@@ -44,24 +82,13 @@ h4 {
         margin-bottom: 0.3rem;
     }
 
-    .market-links {
-        display: flex;
-        gap: 1rem;
+    .address{
+        margin-bottom: 0;
     }
 
-    button {
-        display: block;
-        margin: auto;
-        margin-top: 1.4rem;
-        margin-bottom: 1rem;
-        background-color: #130f40;
-        color: white;
-        border-radius: 2rem;
-        padding: 0.6rem 3rem;
-        border: none;
-        outline: none;
-
-        &:hover {
+    .button{
+        &:hover{
+            text-decoration: none;
         }
     }
 }

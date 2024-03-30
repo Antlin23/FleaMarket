@@ -14,17 +14,15 @@ header .header-container .header-logo {
 header .header-container .header-logo a {
   color: #130f40;
   font-weight: 700;
-  text-decoration: none;
 }
 header .header-container .header-links {
   display: flex;
   gap: 2rem;
 }
 header .header-container .header-links a {
-  text-decoration: none;
   text-align: center;
   color: #130f40;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .home-showcase {
@@ -54,43 +52,66 @@ h4 {
   margin-bottom: 2rem;
 }
 
-.market {
-  background-color: white;
-  padding: 0.6rem 1.2rem;
-  margin: 2rem 0;
-}
-.market a {
-  color: #130f40;
+a {
   text-decoration: none;
+  color: black;
 }
-.market .market-title {
-  font-size: 1.4rem;
-  font-weight: 500;
+a:hover {
+  color: black;
 }
-.market .market-description {
-  margin-top: 0.8rem;
-  margin-bottom: 0.4rem;
-}
-.market .market-timetitle {
-  font-weight: 500;
-  margin-bottom: 0;
-}
-.market .market-time {
-  margin-bottom: 0.3rem;
-}
-.market .market-links {
-  display: flex;
-  gap: 1rem;
-}
-.market button {
+
+.button {
   display: block;
   margin: auto;
   margin-top: 1.4rem;
   margin-bottom: 1rem;
-  background-color: #130f40;
+  background-color: #f0932b;
   color: white;
   border-radius: 2rem;
   padding: 0.6rem 3rem;
   border: none;
   outline: none;
+  text-align: center;
+  font-weight: 500;
+  transition: all ease-in-out 150ms;
+  max-width: fit-content;
+}
+.button:hover {
+  color: white;
+  transform: scale(0.99);
+}
+
+.market-card {
+  background-color: white;
+  padding: 0.6rem 1.2rem;
+  margin: 2rem 0;
+}
+.market-card a:hover {
+  text-decoration: underline;
+}
+.market-card .market-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #130f40;
+  text-decoration: none;
+}
+.market-card .market-title:hover {
+  text-decoration: none;
+}
+.market-card .market-description {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.market-card .market-undertitle {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.market-card .market-time {
+  margin-bottom: 0.3rem;
+}
+.market-card .address {
+  margin-bottom: 0;
+}
+.market-card .button:hover {
+  text-decoration: none;
 }

@@ -1,0 +1,42 @@
+﻿@using FleaMarket.Models.Entities;
+@model MarketEntity;
+
+<div class="market-card">
+    <a class="market-title" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">@Model.MarketTitle</a>
+
+    @if (Model.marketDescription != null)
+    {
+        <p class="market-description">
+            @Model.marketDescription
+            @if (Model.MarketLink != null)
+            {
+                <a class="market-link" href="@Model.MarketLink" target="_blank">Till webbplatsen <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            }
+        </p>
+    }
+    <div class="d-flex gap-4 mt-3">
+        @if (Model.TimeOpen != null)
+        {
+            <div>
+                <p class="market-undertitle">Öppettider</p>
+                <p class="market-time">@Model.TimeOpen</p>
+            </div>
+        }
+
+        @if (Model.MapLink != null)
+        {
+            <div>
+                <p class="market-undertitle">Address</p>
+                <a class="address" href="@Model.MapLink" target="_blank">@Model.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        }
+        else
+        {
+            <div>
+                <p class="market-undertitle">Address</p>
+                <p class="address">@Model.Address</p>
+            </div>
+        }
+    </div>
+    <a class="button" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">Se produkter</a>
+</div>

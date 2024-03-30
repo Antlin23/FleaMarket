@@ -21,29 +21,7 @@
 
     @foreach (var market in markets)
     {
-        <div class="market">
-            <a class="market-title" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
-
-            @if (market.marketDescription != null)
-            {
-                <p class="market-description">@market.marketDescription</p>
-            }
-
-            @if (market.TimeOpen != null)
-            {
-                <p class="market-timetitle">Öppettider</p>
-                <p class="market-time">@market.TimeOpen</p>
-            }
-
-            <div class="market-links">
-                <a href="@market.MapLink" target="_blank">@market.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                @if (market.MarketLink != null)
-                {
-                    <a href="@market.MarketLink" target="_blank">Mer info <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                }
-            </div>
-            <button>Se produkter</button>
-        </div>
+        <partial name="/Views/Partials/_MarketCard.cshtml" model="market" />
     }
 </div>
 
