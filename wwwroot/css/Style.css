@@ -1,6 +1,6 @@
 ﻿/*Header*/
 header {
-  background-color: #dff9fb;
+  background-color: #130f40;
   padding: 0.8rem 0.2rem;
 }
 header .header-container {
@@ -12,7 +12,7 @@ header .header-container .header-logo {
   font-size: 1.2rem;
 }
 header .header-container .header-logo a {
-  color: #130f40;
+  color: #dff9fb;
   font-weight: 700;
 }
 header .header-container .header-links {
@@ -21,7 +21,7 @@ header .header-container .header-links {
 }
 header .header-container .header-links a {
   text-align: center;
-  color: #130f40;
+  color: #dff9fb;
   font-size: 1.05rem;
 }
 
@@ -78,8 +78,9 @@ form .button {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
-  background-color: white;
+  border-bottom: 1px solid gray;
   margin-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 .product-card img {
   max-width: 100%;
@@ -87,7 +88,7 @@ form .button {
 }
 
 body {
-  background-color: #dff9fb;
+  background-color: white;
   margin: 0;
   padding: 0;
 }
@@ -127,7 +128,7 @@ a:hover {
 }
 
 .market-card {
-  background-color: white;
+  background-color: #dff9fb;
   padding: 0.6rem 1.2rem;
   margin: 2rem 0;
 }

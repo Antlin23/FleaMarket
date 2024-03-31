@@ -1,11 +1,12 @@
 ﻿//Imports
+@import "Partials/_variables.scss";
 @import "Partials/_header.scss";
 @import "Partials/_home.scss";
 @import "Partials/_marketPage.scss";
 @import "Partials/_productPartial.scss";
 
 body {
-    background-color: #dff9fb;
+    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -49,7 +50,7 @@ a{
 
 //market-car
 .market-card {
-    background-color: white;
+    background-color: #dff9fb;
     padding: 0.6rem 1.2rem;
     margin: 2rem 0;
 
@@ -84,12 +85,12 @@ a{
         margin-bottom: 0.3rem;
     }
 
-    .address{
+    .address {
         margin-bottom: 0;
     }
 
-    .button{
-        &:hover{
+    .button {
+        &:hover {
             text-decoration: none;
         }
     }

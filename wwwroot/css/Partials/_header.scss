@@ -1,6 +1,6 @@
 ﻿/*Header*/
 header {
-    background-color: #dff9fb;
+    background-color: $color-purple-10;
     padding: 0.8rem 0.2rem;
 
     .header-container {
@@ -12,7 +12,7 @@ header {
             font-size: 1.2rem;
 
             a {
-                color: #130f40;
+                color: $color-blue-10;
                 font-weight: 700;
             }
         }
@@ -23,7 +23,7 @@ header {
 
             a {
                 text-align: center;
-                color: #130f40;
+                color: $color-blue-10;
                 font-size: 1.05rem;
             }
         }

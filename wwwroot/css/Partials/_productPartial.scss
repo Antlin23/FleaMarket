@@ -2,9 +2,9 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
-    background-color: white;
-
+    border-bottom: 1px solid gray;
     margin-bottom: 1rem;
+    padding-bottom: 2rem;
 
     img {
         max-width: 100%;
