@@ -41,6 +41,51 @@ header .header-container .header-links a {
   color: #130f40;
 }
 
+form .form-group {
+  position: relative;
+}
+form .form-group input, form .form-group select {
+  padding: 0.8rem 2.6rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+}
+form .form-group select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+form .form-group i {
+  position: absolute;
+  color: gray;
+  pointer-events: none;
+}
+form .form-group .input-icon {
+  font-size: 1.2rem;
+  left: 0.8rem;
+  top: 1rem;
+}
+form .form-group .dropdown-icon {
+  font-size: 1.3rem;
+  right: 1.4rem;
+  top: 1rem;
+}
+form .button {
+  margin-top: 0;
+}
+
+.product-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+.product-card img {
+  max-width: 100%;
+  flex: 1 0 0;
+}
+
 body {
   background-color: #dff9fb;
   margin: 0;

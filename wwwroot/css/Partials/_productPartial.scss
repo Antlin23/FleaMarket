@@ -1,0 +1,13 @@
+﻿.product-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    background-color: white;
+
+    margin-bottom: 1rem;
+
+    img {
+        max-width: 100%;
+        flex: 1 0 0;
+    }
+}

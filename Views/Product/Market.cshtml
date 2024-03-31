@@ -25,11 +25,15 @@
         <li class="breadcrumb-item active" aria-current="page">@marketName</li>
     </ol>
 </nav>
-<h3 class="my-3 mb-4">Produkter på @marketName idag</h3>
 
-<form method="post">
-    <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad letar du efter?" />
+<form method="post" class="container">
     <div class="form-group">
+        <i class="input-icon fa-solid fa-magnifying-glass"></i>
+        <input id="searchString" asp-for="SearchString" type="text" placeholder="Vad vill du söka efter?" />
+    </div>
+    <div class="form-group">
+        <i class="input-icon fa-solid fa-list"></i>
+        <i class="dropdown-icon fa-solid fa-caret-down"></i>
         <select asp-for=@Model.Category name="Category">
             <option value="Alla kategorier" selected>Alla kategorier</option>
             <optgroup label="För hemmet">
@@ -49,11 +53,11 @@
         </select>
     </div>
     <input asp-for="MarketName" type="text" hidden value="@marketName" />
-    <a asp-controller="Product" asp-action="Market" asp-route-marketName="@marketName">Rensa</a>
-    <button class="mt-4 btn-success btn" type="submit">Filtrera</button>
+    <a asp-controller="Product" asp-action="Market" asp-route-marketName="@marketName"><i class="me-2 fa-regular fa-trash-can"></i>Rensa filter</a>
+    <button class="button" type="submit">Hitta annonser</button>
 </form>
 
-<div class="container">
+<div class="container mt-5">
     <!--Model.NoProducts == null && Model.Products == null-->
     @if (Model == null)
     {

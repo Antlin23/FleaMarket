@@ -7,12 +7,14 @@
 
     var tableNumber = user.TableNumber;
 }
-<div class="bg-light p-3 my-4 shadow rounded">
-    <h4>@Model.Title</h4>
+<div class="product-card">
     @if (Model.ImageUrl != null)
     {
-        <img class="w-75 mb-2" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas" />
+        <img class="" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas" />
     }
+    <div class="product-card--content">
+    <h4>@Model.Title</h4>
+
     @if (Model.Price != 0)
     {
         <p>@Model.Price kr</p>
@@ -22,4 +24,6 @@
     {
         <p>Märke: @Model.Brand</p>
     }
+    </div>
+
 </div>
