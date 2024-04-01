@@ -1,7 +1,12 @@
 ﻿/*Header*/
 header {
-    background-color: $color-purple-10;
-    padding: 0.8rem 0.2rem;
+    background-color: white;
+    padding: 1rem 0.2rem;
+    border-bottom: 1px solid lightgray;
+
+    a {
+        color: $color-purple-10;
+    }
 
     .header-container {
         display: flex;
@@ -9,10 +14,9 @@ header {
         align-items: center;
 
         .header-logo {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
 
             a {
-                color: $color-blue-10;
                 font-weight: 700;
             }
         }
@@ -23,7 +27,6 @@ header {
 
             a {
                 text-align: center;
-                color: $color-blue-10;
                 font-size: 1.05rem;
             }
         }

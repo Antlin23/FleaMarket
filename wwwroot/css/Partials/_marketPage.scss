@@ -1,40 +1,12 @@
 ﻿form {
-    .form-group {
-        position: relative;
-
-        input, select {
-            padding: 0.8rem 2.6rem;
-            margin-bottom: 1rem;
-            width: 100%;
-            border: 1px solid gray;
-            border-radius: 0.2rem;
-        }
-
-        select {
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        i {
-            position: absolute;
-            color: gray;
-            pointer-events: none;
-        }
-
-        .input-icon {
-            font-size: 1.2rem;
-            left: 0.8rem;
-            top: 1rem;
-        }
-
-        .dropdown-icon {
-            font-size: 1.3rem;
-            right: 1.4rem;
-            top: 1rem;
-        }
+    select{
+        margin-bottom: 0.4rem !important;
     }
 
     .button {
-        margin-top: 0;
+        background-color: $color-blue-20;
+        border-radius: 0.2rem;
+        width: 100%;
+        margin-top: 0.6rem;
     }
 }

@@ -1,13 +1,28 @@
 ﻿
 .home-showcase {
-    background-color: #130f40;
     color: white;
-    padding: 1rem 0;
+    position: relative;
 
-    h4 {
-        color: #ffbe76;
-        margin-bottom: 1.4rem;
-        font-size: 1.6rem;
+    img {
+        max-width: 100%;
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    .home-showcase--content {
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        padding: 1rem;
+
+        h4 {
+            color: #ffbe76;
+            margin-bottom: 1.4rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
     }
 }
 

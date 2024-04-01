@@ -1,44 +1,45 @@
-﻿/*Header*/
-header {
-  background-color: #130f40;
-  padding: 0.8rem 0.2rem;
-}
-header .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header .header-container .header-logo {
-  font-size: 1.2rem;
-}
-header .header-container .header-logo a {
-  color: #dff9fb;
-  font-weight: 700;
-}
-header .header-container .header-links {
-  display: flex;
-  gap: 2rem;
-}
-header .header-container .header-links a {
-  text-align: center;
-  color: #dff9fb;
-  font-size: 1.05rem;
+﻿body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.home-showcase {
-  background-color: #130f40;
-  color: white;
-  padding: 1rem 0;
-}
-.home-showcase h4 {
-  color: #ffbe76;
-  margin-bottom: 1.4rem;
+h4 {
   font-size: 1.6rem;
+  margin-bottom: 2rem;
 }
 
-.home-container {
-  margin-top: 1.8rem;
-  color: #130f40;
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+
+.breadcrumb-container {
+  margin-top: 1rem;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  margin-top: 1.4rem;
+  margin-bottom: 1rem;
+  background-color: #f0932b;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.7rem 3rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-weight: 500;
+  transition: all ease-in-out 150ms;
+  font-size: 1.1rem;
+}
+.button:hover {
+  color: white;
+  transform: scale(0.99);
 }
 
 form .form-group {
@@ -72,59 +73,8 @@ form .form-group .dropdown-icon {
 }
 form .button {
   margin-top: 0;
-}
-
-.product-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem;
-  border-bottom: 1px solid gray;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
-}
-.product-card img {
-  max-width: 100%;
-  flex: 1 0 0;
-}
-
-body {
-  background-color: white;
-  margin: 0;
-  padding: 0;
-}
-
-h4 {
-  font-size: 1.6rem;
-  margin-bottom: 2rem;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-a:hover {
-  color: black;
-}
-
-.button {
-  display: block;
-  margin: auto;
-  margin-top: 1.4rem;
-  margin-bottom: 1rem;
-  background-color: #f0932b;
   color: white;
-  border-radius: 2rem;
-  padding: 0.6rem 3rem;
-  border: none;
-  outline: none;
-  text-align: center;
-  font-weight: 500;
-  transition: all ease-in-out 150ms;
-  max-width: fit-content;
-}
-.button:hover {
-  color: white;
-  transform: scale(0.99);
+  background-color: #130f40;
 }
 
 .market-card {
@@ -160,4 +110,85 @@ a:hover {
 }
 .market-card .button:hover {
   text-decoration: none;
+}
+
+/*Header*/
+header {
+  background-color: white;
+  padding: 1rem 0.2rem;
+  border-bottom: 1px solid lightgray;
+}
+header a {
+  color: #130f40;
+}
+header .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-container .header-logo {
+  font-size: 1.3rem;
+}
+header .header-container .header-logo a {
+  font-weight: 700;
+}
+header .header-container .header-links {
+  display: flex;
+  gap: 2rem;
+}
+header .header-container .header-links a {
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.home-showcase {
+  color: white;
+  position: relative;
+}
+.home-showcase img {
+  max-width: 100%;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.home-showcase .home-showcase--content {
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  padding: 1rem;
+}
+.home-showcase .home-showcase--content h4 {
+  color: #ffbe76;
+  margin-bottom: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.home-container {
+  margin-top: 1.8rem;
+  color: #130f40;
+}
+
+form select {
+  margin-bottom: 0.4rem !important;
+}
+form .button {
+  background-color: #22a6b3;
+  border-radius: 0.2rem;
+  width: 100%;
+  margin-top: 0.6rem;
+}
+
+.product-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+}
+.product-card img {
+  max-width: 100%;
+  flex: 1 0 0;
 }

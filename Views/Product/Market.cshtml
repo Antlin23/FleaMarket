@@ -18,7 +18,7 @@
     IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
     marketProducts = productService.GetAllMarketProducts(marketName);
 }
-<nav class="container" aria-label="breadcrumb">
+<nav class="container breadcrumb-container" aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
         <li class="breadcrumb-item"><a asp-controller="Product" asp-action="Index">Marknader</a></li>
@@ -54,7 +54,7 @@
     </div>
     <input asp-for="MarketName" type="text" hidden value="@marketName" />
     <a asp-controller="Product" asp-action="Market" asp-route-marketName="@marketName"><i class="me-2 fa-regular fa-trash-can"></i>Rensa filter</a>
-    <button class="button" type="submit">Hitta annonser</button>
+    <button class="button" type="submit">Sök</button>
 </form>
 
 <div class="container mt-5">
