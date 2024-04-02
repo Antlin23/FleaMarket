@@ -16,8 +16,13 @@ header {
         .header-logo {
             font-size: 1.3rem;
 
+            span {
+                color: $color-purple-10;
+            }
+
             a {
                 font-weight: 700;
+                color: $color-blue-20;
             }
         }
 

@@ -10,25 +10,25 @@
     </ol>
 </nav>
 
-<div class="container mt-5">
+<div class="container auth-container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="mb-4">Logga in</h2>
-            <form class="mb-4" method="post" asp-action="LoginUser" asp-controller="Authentication" novalidate>
+            <h2>Logga in</h2>
+            <hr />
+            <form method="post" asp-action="LoginUser" asp-controller="Authentication" novalidate>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for=Email>Email:</label>
-                    <input asp-for=Email type="email" class="form-control" id="email" placeholder="Ange din email-adress">
+                    <input asp-for=Email type="email" class="form-control" id="email" placeholder="Ange e-postadress">
                     <span class="small text-danger" asp-validation-for="Email"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Password>Lösenord:</label>
-                    <input asp-for=Password type="password" class="form-control" id="password" rows="3" placeholder="Ange ditt lösenord" />
+                    <input asp-for=Password type="password" class="form-control" id="password" rows="3" placeholder="Lösenord" />
                     <span class="small text-danger" asp-validation-for="Password"></span>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Logga in</button>
+                <button type="submit" class="button">Logga in</button>
             </form>
-            <a class="my-4" asp-controller="Authentication" asp-action="RegisterUser">Har du inget konto än? <span class="text-decoration-underline">Skapa konto.</span></a>
+            <p>Har du inget konto än?</p>
+            <a class="button register-btn" asp-controller="Authentication" asp-action="RegisterUser">Skapa konto</a>
         </div>
     </div>
 </div>

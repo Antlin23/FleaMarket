@@ -10,43 +10,38 @@
     </ol>
 </nav>
 
-<div class="container mt-5">
+<div class="container auth-container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="mb-4">Skapa konto</h2>
+            <h2>Skapa konto</h2>
             <p>Kom enkelt igång och sälj genom att skapa ett konto.</p>
-            <form class="mb-3" method="post" asp-action="RegisterUser" asp-controller="Authentication" novalidate>
+            <hr />
+            <form method="post" asp-action="RegisterUser" asp-controller="Authentication" novalidate>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group" id="form-group-companyName" style="display: none;">
-                    <label asp-for="CompanyName">Företag-/organisationsnamn:*</label>
                     <input asp-for="CompanyName" type="text" class="form-control" id="companyName" rows="3" placeholder="Ange företagsnamn" />
                     <span class="small text-danger" asp-validation-for="CompanyName"></span>
                 </div>
                 <div class="form-group form-group-Username">
-                    <label asp-for="UserName">Användarnamn:*</label>
-                    <input asp-for="UserName" type="text" class="form-control" id="userName" placeholder="Ange ditt användarnamn">
+                    <input asp-for="UserName" type="text" class="form-control" id="userName" placeholder="Ange användarnamn">
                     <span class="small text-danger" asp-validation-for="UserName"></span>
                 </div>
 
-                <div id="isCompanyCheckboxGroup" class="mt-3">
-                    <input id="isCompanyCheckbox" type="checkbox" />
-                    <label for="isCompanyCheckbox">Vi är en organisation eller ett företag</label>
-                    <span class="small text-danger d-block"></span>
-                </div>
-
                 <div class="form-group">
-                    <label asp-for=Email>Email:*</label>
-                    <input asp-for=Email type="email" class="form-control" id="email" placeholder="Ange din email-adress">
+                    <input asp-for=Email type="email" class="form-control" id="email" placeholder="E-postadress">
                     <span class="small text-danger" asp-validation-for="Email"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Password>Lösenord:*</label>
-                    <input asp-for=Password type="password" class="form-control" id="password" rows="3" placeholder="Ange ditt lösenord" />
+                    <input asp-for=Password type="password" class="form-control" id="password" rows="3" placeholder="Lösenord" />
                     <span class="small text-danger" asp-validation-for="Password"></span>
                 </div>
-                <button type="submit" class="mt-3 btn btn-primary">Skapa konto</button>
+                <button type="submit" class="button">Skapa konto</button>
             </form>
-            <a class="my-5" asp-controller="Authentication" asp-action="LoginUser">Har du redan ett konto? <span class="text-decoration-underline">Logga in</span></a>
+
+            <a class="register-company-link" asp-controller="Authentication" asp-action="RegisterCompany">Skapa ett företagskonto</a>
+
+            <p class="mt-3">Har du redan ett konto?</p>
+            <a class="button register-btn" asp-controller="Authentication" asp-action="LoginUser">Logga in</a>
         </div>
     </div>
 </div>

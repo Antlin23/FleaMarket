@@ -32,7 +32,7 @@ a {
     margin-bottom: 1rem;
     background-color: #f0932b;
     color: white;
-    border-radius: 2rem;
+    border-radius: 0.3rem;
     padding: 0.7rem 3rem;
     border: none;
     outline: none;
@@ -94,9 +94,10 @@ form {
 
 //market-card
 .market-card {
-    background-color: #dff9fb;
+    background-color: rgba(246, 229, 141,0.4);
     padding: 0.6rem 1.2rem;
     margin: 2rem 0;
+    border-radius: 0.3rem;
 
     a {
         &:hover {
@@ -134,6 +135,8 @@ form {
     }
 
     .button {
+        background-color: $color-blue-20;
+
         &:hover {
             text-decoration: none;
         }
