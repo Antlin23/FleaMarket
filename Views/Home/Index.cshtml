@@ -8,14 +8,14 @@
 }
 
 <section class="home-showcase">
-    <div class="">
+    <div>
         <img src="/Images/marketlp.jpg" />
         <div class="home-showcase--content">
             <h4>Vad leter du efter idag?</h4>
             <form method="post">
                 <div class="form-group">
                     <i class="input-icon fa-solid fa-magnifying-glass"></i>
-                    <input id="searchString" type="text" placeholder="Vad vill du söka efter?" />
+                    <input id="searchString" type="text" placeholder="Sök" />
                 </div>
             </form>
         </div>
@@ -23,9 +23,12 @@
 </section>
 
 <section class="container home-container">
-    <h4>Aktiva marknader</h4>
+    <h5>Aktiva marknader</h5>
+    <div>
         @foreach (var market in markets)
         {
             <partial name="/Views/Partials/_MarketCard.cshtml" model="market" />
         }
+    </div>
+
 </section>

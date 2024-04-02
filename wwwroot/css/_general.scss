@@ -94,12 +94,13 @@ form {
 
 //market-card
 .market-card {
-    background-color: rgba(246, 229, 141,0.4);
+    background-color: rgba(246, 229, 141, 0.4);
     padding: 0.6rem 1.2rem;
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     border-radius: 0.3rem;
 
     a {
+        margin-bottom: 0;
         &:hover {
             text-decoration: underline;
         }
@@ -107,7 +108,7 @@ form {
 
     .market-title {
         font-size: 1.4rem;
-        font-weight: 500;
+        font-weight: 400;
         color: #130f40;
         text-decoration: none;
 
@@ -117,7 +118,7 @@ form {
     }
 
     .market-description {
-        margin-top: 0.8rem;
+        margin-top: 0.2rem;
         margin-bottom: 0.4rem;
     }
 

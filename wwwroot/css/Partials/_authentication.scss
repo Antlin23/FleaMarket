@@ -1,11 +1,13 @@
 ﻿.auth-container {
+    margin-top: 1rem;
+    text-align: center;
+
     hr {
         margin-top: 1.6rem;
         margin-bottom: 2rem;
     }
 
     form {
-        margin-bottom: 4rem;
 
         input {
             padding: 0.6rem 0;
@@ -13,18 +15,25 @@
         }
     }
 
-    p {
-        margin-bottom: 0.3rem;
-    }
+    .auth-container--footer {
+        position: fixed;
+        bottom: 2rem;
+        width: 100%;
 
-    .register-btn {
-        margin-top: 0;
-        border: 1px solid $color-blue-20;
-        background-color: transparent;
-        color: $color-blue-20;
-    }
+        p {
+            margin-bottom: 0.3rem;
+        }
 
-    .register-company-link {
-        text-decoration: underline;
+        .register-btn {
+            margin-top: 0;
+            border: 1px solid $color-blue-20;
+            background-color: transparent;
+            color: $color-blue-20;
+            max-width: 14rem;
+        }
+
+        .register-company-link {
+            text-decoration: underline;
+        }
     }
 }

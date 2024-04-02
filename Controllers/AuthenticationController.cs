@@ -25,6 +25,11 @@ namespace FleaMarket.Controllers
             return View();
         }
 
+        public IActionResult RegisterCompany()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> RegisterUser(RegisterUserViewModel viewModel)
         {
@@ -55,7 +60,7 @@ namespace FleaMarket.Controllers
                         {
                             TempData["SuccessMessage"] = "Välkommen, kul att du ville skapa ett konto hos oss. " +
                                 "Här på sidan Mitt Konto kan du aktivera ditt säljkonto, lägga upp och ta bort produkter. " +
-                                "Lycka till med säljningen!";
+                                "Lycka till med försäljningen!";
                             return RedirectToAction("Index", "Account");
                         }
                     }

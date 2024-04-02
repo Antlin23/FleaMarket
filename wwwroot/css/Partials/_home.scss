@@ -1,5 +1,4 @@
-﻿
-.home-showcase {
+﻿.home-showcase {
     color: white;
     position: relative;
 
@@ -14,14 +13,20 @@
     .home-showcase--content {
         width: 100%;
         position: absolute;
-        top: 20%;
+        top: 45%;
         padding: 1rem;
 
         h4 {
             color: #ffbe76;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1rem;
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 800;
+        }
+
+        form {
+            input {
+                border: none;
+            }
         }
     }
 }
@@ -29,4 +34,9 @@
 .home-container {
     margin-top: 1.8rem;
     color: #130f40;
+
+    h5{
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
 }

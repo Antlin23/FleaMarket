@@ -80,15 +80,18 @@ form .button {
 .market-card {
   background-color: rgba(246, 229, 141, 0.4);
   padding: 0.6rem 1.2rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
   border-radius: 0.3rem;
+}
+.market-card a {
+  margin-bottom: 0;
 }
 .market-card a:hover {
   text-decoration: underline;
 }
 .market-card .market-title {
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 400;
   color: #130f40;
   text-decoration: none;
 }
@@ -96,7 +99,7 @@ form .button {
   text-decoration: none;
 }
 .market-card .market-description {
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.4rem;
 }
 .market-card .market-undertitle {
@@ -142,7 +145,7 @@ header .header-container .header-logo a {
 }
 header .header-container .header-links {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 header .header-container .header-links a {
   text-align: center;
@@ -163,19 +166,26 @@ header .header-container .header-links a {
 .home-showcase .home-showcase--content {
   width: 100%;
   position: absolute;
-  top: 20%;
+  top: 45%;
   padding: 1rem;
 }
 .home-showcase .home-showcase--content h4 {
   color: #ffbe76;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 800;
+}
+.home-showcase .home-showcase--content form input {
+  border: none;
 }
 
 .home-container {
   margin-top: 1.8rem;
   color: #130f40;
+}
+.home-container h5 {
+  margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 form select {
@@ -201,26 +211,33 @@ form .button {
   flex: 1 0 0;
 }
 
+.auth-container {
+  margin-top: 1rem;
+  text-align: center;
+}
 .auth-container hr {
   margin-top: 1.6rem;
   margin-bottom: 2rem;
-}
-.auth-container form {
-  margin-bottom: 4rem;
 }
 .auth-container form input {
   padding: 0.6rem 0;
   padding-left: 1rem;
 }
-.auth-container p {
+.auth-container .auth-container--footer {
+  position: fixed;
+  bottom: 2rem;
+  width: 100%;
+}
+.auth-container .auth-container--footer p {
   margin-bottom: 0.3rem;
 }
-.auth-container .register-btn {
+.auth-container .auth-container--footer .register-btn {
   margin-top: 0;
   border: 1px solid #22a6b3;
   background-color: transparent;
   color: #22a6b3;
+  max-width: 14rem;
 }
-.auth-container .register-company-link {
+.auth-container .auth-container--footer .register-company-link {
   text-decoration: underline;
 }
