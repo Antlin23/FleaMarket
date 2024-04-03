@@ -11,15 +11,19 @@ namespace FleaMarket.Controllers
 
         private readonly ProductService _productService;
         private readonly UserService _userService;
+        private readonly SendGridService _sendGridService;
 
-        public ProductController(ProductService productService, UserService userService)
+        public ProductController(ProductService productService, UserService userService, SendGridService sendGridService)
         {
             _productService = productService;
             _userService = userService;
+            _sendGridService = sendGridService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            await _sendGridService.SendEmailAsync();
+
             return View();
         }
 

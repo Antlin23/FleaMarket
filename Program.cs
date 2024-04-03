@@ -32,6 +32,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MarketService>();
 builder.Services.AddScoped<SwishAPIService>();
 builder.Services.AddSingleton<SwishAPIService>();
+builder.Services.AddScoped<SendGridService>();
 
 
 
