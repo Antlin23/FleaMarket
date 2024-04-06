@@ -63,7 +63,7 @@ namespace FleaMarket.Controllers
                         var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
                         var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { encodedToken, email = viewModel.Email }, Request.Scheme);
-                        await _sendGridService.SendEmailAsync(confirmationLink);
+                        await _sendGridService.SendEmailAsync(confirmationLink, user);
 
                         return RedirectToAction(nameof(SuccessRegistration));
 
