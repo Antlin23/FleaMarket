@@ -2,8 +2,12 @@
 using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Web;
 
 namespace FleaMarket.Controllers
 {
@@ -12,12 +16,14 @@ namespace FleaMarket.Controllers
         private readonly UserManager<UserEntity> _userManager;
         private readonly AuthenticationService _authenticationService;
         private readonly SignInManager<UserEntity> _signInManager;
+        private readonly SendGridService _sendGridService;
 
-        public AuthenticationController(UserManager<UserEntity> userManager, AuthenticationService authenticationService, SignInManager<UserEntity> signInManager)
+        public AuthenticationController(UserManager<UserEntity> userManager, AuthenticationService authenticationService, SignInManager<UserEntity> signInManager, SendGridService sendGridService)
         {
             _userManager = userManager;
             _authenticationService = authenticationService;
             _signInManager = signInManager;
+            _sendGridService = sendGridService;
         }
 
         public IActionResult RegisterUser()
@@ -31,6 +37,7 @@ namespace FleaMarket.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterUser(RegisterUserViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -51,7 +58,17 @@ namespace FleaMarket.Controllers
                 {
                     if(await _authenticationService.RegisterUserAsync(viewModel))
                     {
-                        LoginViewModel loginViewModel = new LoginViewModel();
+                        var user = await _userManager.FindByEmailAsync(viewModel.Email);
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+                        var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { encodedToken, email = viewModel.Email }, Request.Scheme);
+                        await _sendGridService.SendEmailAsync(confirmationLink);
+
+                        return RedirectToAction(nameof(SuccessRegistration));
+
+                        //login efter registration
+                        /*LoginViewModel loginViewModel = new LoginViewModel();
 
                         loginViewModel.Password = viewModel.Password;
                         loginViewModel.Email = viewModel.Email;
@@ -63,6 +80,7 @@ namespace FleaMarket.Controllers
                                 "Lycka till med försäljningen!";
                             return RedirectToAction("Index", "Account");
                         }
+                        */
                     }
                 }
                 else
@@ -72,6 +90,27 @@ namespace FleaMarket.Controllers
                 }
             }
             ModelState.AddModelError("", "Något blev fel. Var vänlig testa igen.");
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string encodedToken, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return View("Error");
+
+            var decodedToken = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(encodedToken));
+            var result = await _userManager.ConfirmEmailAsync(user, decodedToken); return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+        }
+        [HttpGet]
+        public IActionResult SuccessRegistration()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Error()
+        {
             return View();
         }
 
@@ -99,5 +138,7 @@ namespace FleaMarket.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+
     }
 }

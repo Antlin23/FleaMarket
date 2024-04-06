@@ -14,11 +14,12 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 
 builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>
 {
-    x.SignIn.RequireConfirmedAccount = false;
+    x.SignIn.RequireConfirmedAccount = true;
     x.User.RequireUniqueEmail = true;
     x.Password.RequiredLength = 6;
 }).AddEntityFrameworkStores<DataContext>()
-    .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+    .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
+     .AddDefaultTokenProviders();
 
 builder.Services.ConfigureApplicationCookie(x =>
 {

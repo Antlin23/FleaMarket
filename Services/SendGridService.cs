@@ -13,19 +13,20 @@ namespace FleaMarket.Services
             _config = config;
         }
 
-        public async Task SendEmailAsync()
+        public async Task SendEmailAsync(string confLink)
         {
             var apiKey = _config["SendGridApiKey"];
 
             var client = new SendGridClient(apiKey);
+
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("anton.jumkil@gmail.com", "TradeTrails"),
+                From = new EmailAddress("tradetrails.service@gmail.com", "TradeTrails"),
                 Subject = "Bekräfta din e-postadress",
                 PlainTextContent = "För att slutföra registreringen av ditt konto, var vänlig och bekräfta" +
-                " din e-postadress"
+                " din e-postadress: " + confLink
             };
-            msg.AddTo(new EmailAddress("tratttestemail@gmail.com", "bestseller58"));
+            msg.AddTo(new EmailAddress("anton.jumkil@gmail.com", "TrattTratt"));
             var response = await client.SendEmailAsync(msg);
         }
     }

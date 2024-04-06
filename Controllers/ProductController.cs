@@ -22,7 +22,7 @@ namespace FleaMarket.Controllers
 
         public async Task<IActionResult> Index()
         {
-            await _sendGridService.SendEmailAsync();
+          //  await _sendGridService.SendEmailAsync();
 
             return View();
         }
