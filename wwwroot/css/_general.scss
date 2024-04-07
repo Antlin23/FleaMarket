@@ -94,13 +94,14 @@ form {
 
 //market-card
 .market-card {
-    background-color: rgba(246, 229, 141, 0.4);
+    background-color: $color-orange-background;
     padding: 0.6rem 1.2rem;
     margin-bottom: 2rem;
     border-radius: 0.3rem;
 
     a {
         margin-bottom: 0;
+
         &:hover {
             text-decoration: underline;
         }

@@ -3,21 +3,19 @@
 @{
     ViewData["Title"] = "Aktiva säljkonto";
 }
-<section class="container">
-    <div class="my-4 p-4 bg-light">
-        <p>Att aktivera ditt säljkonto kostar 30/dag.
-            <br />
-        Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
-        <p>Den dagen som du betalar är den dagen ditt säljkonto är aktiverat.</p>
-        <p>Genom att utföra betalningen och aktivera säljkontot godkänner du villkoren och
-            att du har läst<a class="text-decoration-underline" href="#"> fullständiga krav</a>
-        </p>
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <label for="PayerPhoneNumber">Betalarens telefonnummer</label>
-            <input class="d-block" asp-for="PayerPhoneNumber" type="text" placeholder="ex. 4671234768" />
-            <span class="small text-danger d-block" asp-validation-for="PayerPhoneNumber"></span>
-            <button class="btn btn-success" type="submit">Skicka betalning</button>
-        </form>
-    </div>
+<section class="container payment-activate-account">
+    <p>Att aktivera ditt säljkonto kostar 30/dag.
+        <br />
+    Då kan du under den dagen lägga ut hur många produkter som du vill.</p>
+    <p>Den dagen som du betalar är den dagen ditt säljkonto är aktiverat.</p>
+    <p>Genom att utföra betalningen och aktivera säljkontot godkänner du villkoren och
+        att du har läst<a class="text-decoration-underline" href="#"> fullständiga krav</a>
+    </p>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+        <label for="PayerPhoneNumber">Betalarens telefonnummer</label>
+        <input class="d-block" asp-for="PayerPhoneNumber" type="text" placeholder="ex. 4671234768" />
+        <span class="small text-danger d-block" asp-validation-for="PayerPhoneNumber"></span>
+        <button class="btn btn-success" type="submit">Skicka betalning</button>
+    </form>
 </section>

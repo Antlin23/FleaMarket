@@ -78,7 +78,7 @@ form .button {
 }
 
 .market-card {
-  background-color: rgba(246, 229, 141, 0.4);
+  background-color: rgba(246, 229, 141, 0.5);
   padding: 0.6rem 1.2rem;
   margin-bottom: 2rem;
   border-radius: 0.3rem;
@@ -240,4 +240,38 @@ form .button {
 }
 .auth-container .auth-container--footer .register-company-link {
   text-decoration: underline;
+}
+
+.account-active-selleraccount {
+  margin-top: 1rem;
+}
+.account-active-selleraccount h3 {
+  font-weight: 400;
+}
+.account-active-selleraccount .activate-selleraccount--content {
+  background-color: rgba(246, 229, 141, 0.5);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+.account-active-selleraccount .activate-selleraccount--content h5 {
+  font-weight: 500;
+}
+.account-active-selleraccount .activate-selleraccount--content p {
+  margin: 0;
+}
+
+.payment-activate-account {
+  margin-top: 1rem;
+  background-color: rgba(246, 229, 141, 0.5);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+.payment-activate-account h3 {
+  font-weight: 400;
+}
+.payment-activate-account h5 {
+  font-weight: 500;
+}
+.payment-activate-account p {
+  margin: 0;
 }
