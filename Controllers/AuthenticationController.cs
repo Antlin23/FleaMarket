@@ -1,11 +1,13 @@
 ﻿using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using SendGrid.Helpers.Mail;
 using System.Text;
 using System.Web;
 
@@ -63,7 +65,15 @@ namespace FleaMarket.Controllers
                         var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
                         var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { encodedToken, email = viewModel.Email }, Request.Scheme);
-                        await _sendGridService.SendEmailAsync(confirmationLink, user);
+
+                        var message = new SendGridMessage()
+                        {
+                            From = new EmailAddress("tradetrails.service@gmail.com", "TradeTrails"),
+                            Subject = "Bekräfta din e-postadress",
+                            HtmlContent = $"<p>För att slutföra registreringen av ditt konto, vänligen bekräfta din e-postadress <a href=\"{confirmationLink}\"> här.</a></p>"
+                        };
+
+                        await _sendGridService.SendEmailAsync(message);
 
                         return RedirectToAction(nameof(SuccessRegistration));
 
@@ -133,12 +143,91 @@ namespace FleaMarket.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(forgotPasswordViewModel);
+
+            var user = await _userManager.FindByEmailAsync(forgotPasswordViewModel.Email);
+
+            if (user == null)
+            {
+                return RedirectToAction(nameof(ForgotPasswordConfirmation));
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+
+            var callback = Url.Action(nameof(ResetPassword), "Authentication", new { encodedToken, email = user.Email }, Request.Scheme);
+
+            var message = new SendGridMessage()
+            {
+                From = new EmailAddress("tradetrails.service@gmail.com", "TradeTrails"),
+                Subject = "Återställning av lösenord",
+                HtmlContent = $"<p>För att återställa läsenordet, <a href=\"{callback}\">klicka här.</a></p>"
+            };
+
+            await _sendGridService.SendEmailAsync(message);
+
+            return RedirectToAction(nameof(ForgotPasswordConfirmation));
+        }
+
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string encodedToken, string email)
+        {
+            var decodedToken = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(encodedToken));
+            var model = new ResetPasswordViewModel { Token = decodedToken, Email = email };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(resetPasswordViewModel);
+
+            var user = await _userManager.FindByEmailAsync(resetPasswordViewModel.Email);
+            if (user == null)
+            {
+                return RedirectToAction(nameof(ResetPasswordConfirmation));
+            }
+            var resetPassResult = await _userManager.ResetPasswordAsync(user, resetPasswordViewModel.Token, resetPasswordViewModel.Password);
+
+            if (!resetPassResult.Succeeded)
+            {
+                foreach (var error in resetPassResult.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return View();
+            }
+            return RedirectToAction(nameof(ResetPasswordConfirmation));
+        }
+
+        [HttpGet]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> LogoutUser()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
-
     }
 }

@@ -35,6 +35,10 @@ builder.Services.AddScoped<SwishAPIService>();
 builder.Services.AddSingleton<SwishAPIService>();
 builder.Services.AddScoped<SendGridService>();
 
+//Makes token valid for two hours
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
+   opt.TokenLifespan = TimeSpan.FromHours(2));
+
 
 
 
