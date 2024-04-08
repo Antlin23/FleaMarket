@@ -8,18 +8,24 @@
 }
 
 <section class="home-showcase">
-    <div>
-        <img src="/Images/marketlp.jpg" />
-        <div class="home-showcase--content">
-            <!--<h4>Vad leter du efter idag?</h4>
-            <form method="post">
-                <div class="form-group">
-                    <i class="input-icon fa-solid fa-magnifying-glass"></i>
-                    <input id="searchString" type="text" placeholder="Sök" />
-                </div>
-            </form>
-            -->
-        </div>
+    <img src="/Images/marketlp.jpg" />
+    <div class="home-showcase--content">
+        <form>
+            <div class="form-group">
+                <label>Vad letar du efter idag?</label>
+                <input placeholder="Sök" type="text" />
+            </div>
+            <div class="form-group">
+                <i class="input-icon fa-solid fa-list"></i>
+                <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                <select name="Market">
+                    <option value="Välj marknad" disabled selected>Välj marknad</option>
+                    <option value="Ulva Kvarn">Ulva Kvarn bakluckeloppis</option>
+                    <option value="Vaksala Torg">Vaksala Torg</option>
+                </select>
+            </div>
+            <button class="button">Sök</button>
+        </form>
     </div>
 </section>
 
