@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FleaMarket.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FleaMarket.Controllers
 {

@@ -1,7 +1,9 @@
 ﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Models.ViewModels
 @using FleaMarket.Services;
 @using Microsoft.AspNetCore.Identity;
 @inject MarketService marketService
+@model SearchProductViewModel
 @{
     var markets = await marketService.GetAllAsync();
     ViewData["Title"] = "Hem";
@@ -10,33 +12,50 @@
 <section class="home-showcase">
     <img src="/Images/marketlp.jpg" />
     <div class="home-showcase--content">
-        <form>
+        <form id="searchForm" method="post" asp-controller="Product" asp-action="Market">
             <div class="form-group">
                 <label>Vad letar du efter idag?</label>
                 <div class="form-group">
                     <i class="input-icon fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Sök" />
+                    <input asp-for=SearchString type="text" placeholder="Sök" />
                 </div>
             </div>
             <div class="form-group">
                 <i class="input-icon fa-solid fa-list"></i>
                 <i class="dropdown-icon fa-solid fa-caret-down"></i>
-                <select name="Market">
-                    <option value="Välj marknad" disabled selected>Välj marknad</option>
-                    @if(markets.Count() < 1)
+                <select required id="marketSelect" asp-for=MarketName>
+                    <option value="0" disabled selected>Välj marknad</option>
+                    @if (markets.Count() < 1)
                     {
                         <option>Det finns inga aktiva marknader just nu.</option>
-                    }else{
+                    }
+                    else
+                    {
                         @foreach (var market in markets)
                         {
-                            <option value="@market.Id">@market.MarketTitle</option>
+                            <option value="@market.MarketTitle">@market.MarketTitle</option>
                         }
                     }
-
                 </select>
+                <span id="searchErrorMessage" class="small">Du måste välja marknad</span>
             </div>
-            <button class="button">Sök</button>
+            <button class="button" type="submit">Sök</button>
         </form>
+
+        <script>
+            document.getElementById("searchForm").addEventListener("submit", function(event) {
+                var marketSelect = document.getElementById("marketSelect");
+                var errorMessage = document.getElementById("searchErrorMessage");
+
+                if (marketSelect.value == "0") {
+                    errorMessage.style.display = "block";
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    errorMessage.style.display = "none";
+                }
+            });
+        </script>
+
     </div>
 </section>
 

@@ -197,6 +197,10 @@ header .header-container .header-links a {
   font-weight: 500;
 }
 
+#searchErrorMessage {
+  display: none;
+}
+
 form select {
   margin-bottom: 0.4rem !important;
 }
