@@ -13,15 +13,26 @@
         <form>
             <div class="form-group">
                 <label>Vad letar du efter idag?</label>
-                <input placeholder="Sök" type="text" />
+                <div class="form-group">
+                    <i class="input-icon fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Sök" />
+                </div>
             </div>
             <div class="form-group">
                 <i class="input-icon fa-solid fa-list"></i>
                 <i class="dropdown-icon fa-solid fa-caret-down"></i>
                 <select name="Market">
                     <option value="Välj marknad" disabled selected>Välj marknad</option>
-                    <option value="Ulva Kvarn">Ulva Kvarn bakluckeloppis</option>
-                    <option value="Vaksala Torg">Vaksala Torg</option>
+                    @if(markets.Count() < 1)
+                    {
+                        <option>Det finns inga aktiva marknader just nu.</option>
+                    }else{
+                        @foreach (var market in markets)
+                        {
+                            <option value="@market.Id">@market.MarketTitle</option>
+                        }
+                    }
+
                 </select>
             </div>
             <button class="button">Sök</button>

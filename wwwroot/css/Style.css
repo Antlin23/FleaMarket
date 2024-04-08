@@ -184,15 +184,10 @@ header .header-container .header-links a {
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-.home-showcase .home-showcase--content form input {
-  padding: 0.7rem 0;
-  padding-left: 1rem;
-}
 .home-showcase .home-showcase--content form select {
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
   color: black;
 }
+
 .home-container {
   margin-top: 1.8rem;
   color: #130f40;
