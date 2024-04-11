@@ -55,6 +55,7 @@ form .form-group input, form .form-group select {
 form .form-group select {
   -webkit-appearance: none;
   appearance: none;
+  color: black;
 }
 form .form-group i {
   position: absolute;
@@ -172,7 +173,6 @@ header .header-container .header-links a {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem 1rem;
   color: black;
-  border-radius: 0.4rem;
   width: 100%;
 }
 .home-showcase .home-showcase--content form input, .home-showcase .home-showcase--content form select {
@@ -183,9 +183,6 @@ header .header-container .header-links a {
   font-weight: 500;
   font-size: 1.4rem;
   margin-bottom: 1rem;
-}
-.home-showcase .home-showcase--content form select {
-  color: black;
 }
 
 .home-container {
@@ -213,15 +210,35 @@ form .button {
 
 .product-card {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem;
-  border-bottom: 1px solid gray;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 0.8rem;
+  border-bottom: 1px solid lightgray;
+  padding: 0.8rem 0;
 }
-.product-card img {
+.product-card .product-card--img-container {
+  height: 6.5rem;
+  overflow: hidden;
+}
+.product-card .product-card--img-container img {
   max-width: 100%;
-  flex: 1 0 0;
+}
+.product-card .product-card--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+.product-card .product-card--content p {
+  margin-bottom: 0;
+}
+.product-card .product-card--content .product-title {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.product-card .product-card--content .product-price {
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 .auth-container {

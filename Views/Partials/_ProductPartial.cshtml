@@ -10,20 +10,24 @@
 <div class="product-card">
     @if (Model.ImageUrl != null)
     {
-        <img class="" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas" />
+        <div class="product-card--img-container">
+            <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
+        </div>
     }
     <div class="product-card--content">
-    <h4>@Model.Title</h4>
-
-    @if (Model.Price != 0)
-    {
-        <p>@Model.Price kr</p>
-    }
-    <p>@Model.SelectMarket, Bord: @tableNumber</p>
-    @if (Model.Brand != null)
-    {
-        <p>Märke: @Model.Brand</p>
-    }
+        <div>
+            <h4 class="product-title">@Model.Title</h4>
+            <p class="product-tablenumber">Bord: @tableNumber</p>
+            <p>@Model.SelectMarket</p>
+            @if (Model.Brand != null)
+            {
+                <p>Märke: @Model.Brand</p>
+            }
+        </div>
+        @if (Model.Price != 0)
+        {
+            <p class="product-price">@Model.Price kr</p>
+        }
     </div>
 
 </div>

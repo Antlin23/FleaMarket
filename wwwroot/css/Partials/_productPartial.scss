@@ -1,13 +1,42 @@
 ﻿.product-card {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1rem;
-    border-bottom: 1px solid gray;
-    margin-bottom: 1rem;
-    padding-bottom: 2rem;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 0.8rem;
+    border-bottom: 1px solid lightgray;
+    padding: 0.8rem 0;
 
-    img {
-        max-width: 100%;
-        flex: 1 0 0;
+    .product-card--img-container {
+        height: 6.5rem;
+        overflow: hidden;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .product-card--content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 0.8rem;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+        }
+
+        .product-tablenumber {
+            //might come in handy
+        }
+
+        .product-price {
+            margin-bottom: 0;
+            font-weight: 600;
+        }
     }
 }

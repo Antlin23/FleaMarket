@@ -56,12 +56,11 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
                 <input asp-for="@Model.NewTableNumber" class="tablenumber-input" type="number" value="@user.TableNumber" />
                 <input asp-for="@Model.UserId" value="@userId" hidden />
-                <button type="submit">Ändra</button>
+                <button class="button" type="submit">Uppdatera</button>
             </form>
         </div>
 
         <a class="mt-4 text-decoration-underline" asp-action="CreateProduct" asp-controller="Product">Lägg upp en produkt.</a>
-
 
         @if(user.Products.Count == 0)
         {
