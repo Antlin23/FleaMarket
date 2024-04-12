@@ -1,0 +1,36 @@
+﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Services;
+@model ProductEntity
+@inject UserService _userService
+@{
+    UserEntity user = await _userService.GetUserAsync(x => x.Id == Model.UserId);
+
+    var tableNumber = user.TableNumber;
+}
+<div class="product-card">
+    @if (Model.ImageUrl != null)
+    {
+        <div class="product-card--img-container">
+            <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
+        </div>
+    }
+    <div class="product-card--content">
+        <div>
+            <h4 class="product-title">@Model.Title</h4>
+            <p class="product-tablenumber">Bord: @tableNumber</p>
+            <p>@Model.SelectMarket</p>
+            @if (Model.Brand != null)
+            {
+                <p>Märke: @Model.Brand</p>
+            }
+        </div>
+        @if (Model.Price != 0)
+        {
+            <p class="product-price">@Model.Price kr</p>
+        }
+    </div>
+    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="product.Id">
+        <button class="button" type="submit">Ta bort</button>
+    </form>
+
+</div>

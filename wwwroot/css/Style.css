@@ -210,7 +210,7 @@ form .button {
 
 .product-card {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 9rem auto auto;
   gap: 0.8rem;
   border-bottom: 1px solid lightgray;
   padding: 0.8rem 0;
@@ -218,6 +218,9 @@ form .button {
 .product-card .product-card--img-container {
   height: 6.5rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 0.3rem;
 }
 .product-card .product-card--img-container img {
   max-width: 100%;
@@ -227,6 +230,7 @@ form .button {
   flex-direction: column;
   justify-content: space-between;
   font-size: 0.8rem;
+  padding: 0.2rem 0;
 }
 .product-card .product-card--content p {
   margin-bottom: 0;
@@ -239,6 +243,14 @@ form .button {
 .product-card .product-card--content .product-price {
   margin-bottom: 0;
   font-weight: 600;
+}
+.product-card form {
+  align-self: end;
+}
+.product-card form .button, .product-card form button {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  background-color: #f0932b;
 }
 
 .auth-container {

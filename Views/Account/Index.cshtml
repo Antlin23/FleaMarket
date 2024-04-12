@@ -7,7 +7,7 @@
 @{
     string userId = User.FindFirst("Id")?.Value;
 
-    var usersProducts = productService.GetAllUserProducts(userId);
+    var userProducts = productService.GetAllUserProducts(userId);
 
     var user = await _userService.GetUserAsync(x => x.Id == userId);
 
@@ -68,26 +68,10 @@
         else
         {
             <h5>Dina produkter</h5>
-            @foreach (var product in usersProducts)
+            @foreach (var product in userProducts)
             {
-                <div class="bg-light p-3 my-4">
-                    <h4>@product.Title</h4>
-                    @if (product.ImageUrl != null)
-                    {
-                        <img class="w-75 mb-2" src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas" />
-                    }
-                    @if (product.Price != 0)
-                    {
-                        <h5>@product.Price kr</h5>
-                    }
-                    <p>@product.SelectMarket, Bord: @user.TableNumber</p>
-                    @if (product.Brand != null)
-                    {
-                        <p>Märke: @product.Brand</p>
-                    }
-                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
-                        <button class="btn text-decoration-underline" type="submit">Ta bort</button>
-                    </form>
+                <div>
+                    <partial name="/Views/Partials/_ProductAccountPartial.cshtml" model="product" />
                 </div>
             }
         }
