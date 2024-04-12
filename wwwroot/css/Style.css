@@ -284,22 +284,48 @@ form .button {
   text-decoration: underline;
 }
 
-.account-active-selleraccount {
+.account-section .account-active-selleraccount {
   margin-top: 1rem;
 }
-.account-active-selleraccount h3 {
+.account-section .account-active-selleraccount h3 {
   font-weight: 400;
 }
-.account-active-selleraccount .activate-selleraccount--content {
+.account-section .account-active-selleraccount .activate-selleraccount--content {
   background-color: rgba(246, 229, 141, 0.5);
   padding: 1rem 2rem;
   margin-top: 1rem;
 }
-.account-active-selleraccount .activate-selleraccount--content h5 {
+.account-section .account-active-selleraccount .activate-selleraccount--content h5 {
   font-weight: 500;
 }
-.account-active-selleraccount .activate-selleraccount--content p {
+.account-section .account-active-selleraccount .activate-selleraccount--content p {
   margin: 0;
+}
+.account-section .update-tablenumber-form .update-tablenumber-form--form-group {
+  position: relative;
+  margin-bottom: 1rem;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+}
+.account-section .update-tablenumber-form .update-tablenumber-form--form-group input {
+  height: 50px;
+  max-width: 6rem;
+  border: none;
+  text-indent: 1rem;
+}
+.account-section .update-tablenumber-form .update-tablenumber-form--form-group input:focus {
+  border: none;
+  outline: none;
+}
+.account-section .update-tablenumber-form .update-tablenumber-form--form-group .button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: fit-content;
+  margin: 0;
+  padding: 0.1rem 1.2rem;
+  font-size: 1rem;
 }
 
 .payment-activate-account {

@@ -1,17 +1,54 @@
-﻿.account-active-selleraccount {
-    margin-top: 1rem;
-    h3{
-        font-weight: 400;
-    }
-    .activate-selleraccount--content {
-        background-color: $color-orange-background;
-        padding: 1rem 2rem;
+﻿.account-section {
+    .account-active-selleraccount {
         margin-top: 1rem;
-        h5{
-            font-weight: 500;
+
+        h3 {
+            font-weight: 400;
         }
-        p {
-            margin: 0;
+
+        .activate-selleraccount--content {
+            background-color: $color-orange-background;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+
+            h5 {
+                font-weight: 500;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    .update-tablenumber-form {
+        .update-tablenumber-form--form-group {
+            position: relative;
+            margin-bottom: 1rem;
+            border: 1px solid gray;
+            border-radius: 0.2rem;
+
+            input {
+                height: 50px;
+                max-width: 6rem;
+                border: none;
+                text-indent: 1rem;
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            .button {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                height: 40px;
+                width: fit-content;
+                margin: 0;
+                padding: 0.1rem 1.2rem;
+                font-size: 1rem;
+            }
         }
     }
 }

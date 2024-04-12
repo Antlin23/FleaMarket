@@ -20,7 +20,7 @@
     </ol>
 </nav>
 
-<section class="container">
+<section class="container account-section">
     @if(user.CompanyName == null)
     {
         <h2>@user.UserName</h2> 
@@ -50,17 +50,17 @@
     }
     else
     {
-        <div class="d-flex justify-content-center mt-4">
-            <p>Ditt bordsnummer idag: </p>
-            <form class="ms-3" method="post" novalidate>
-                <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-                <input asp-for="@Model.NewTableNumber" class="tablenumber-input" type="number" value="@user.TableNumber" />
-                <input asp-for="@Model.UserId" value="@userId" hidden />
+        <form class="update-tablenumber-form" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+            <label class="d-block" asp-for="@Model.NewTableNumber">Bordsnummer</label>
+            <div class="update-tablenumber-form--form-group">
+                <input asp-for="@Model.NewTableNumber" type="number" value="@user.TableNumber" />
                 <button class="button" type="submit">Uppdatera</button>
-            </form>
-        </div>
+            </div>
+            <input asp-for="@Model.UserId" value="@userId" hidden />
+        </form>
 
-        <a class="mt-4 text-decoration-underline" asp-action="CreateProduct" asp-controller="Product">Lägg upp en produkt.</a>
+        <a class="button" asp-action="CreateProduct" asp-controller="Product">Lägg upp en produkt.</a>
 
         @if(user.Products.Count == 0)
         {
@@ -75,11 +75,11 @@
                 </div>
             }
         }
-        <div>
-            <p>Ditt säljkonto är idag aktiverat, du kan lägga ut hur många produkter du vill.</p>
+        <div class="mt-4">
+            <p>Ditt säljkonto är aktiverat, du kan lägga ut hur många produkter du vill idag.</p>
         </div>
     }
 
 
-    <a class="text-decoration-underline mt-5 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
+    <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
 </section>
