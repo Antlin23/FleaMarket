@@ -29,7 +29,7 @@
             <p class="product-price">@Model.Price kr</p>
         }
     </div>
-    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="product.Id">
+    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@Model.Id">
         <button class="button" type="submit">Ta bort</button>
     </form>
 
