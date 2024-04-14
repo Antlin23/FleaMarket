@@ -17,7 +17,10 @@ namespace FleaMarket.Services
 
         public async Task SendEmailAsync(SendGridMessage message)
         {
-            var apiKey = _config["SendGridApiKey"];
+            //Using User secrets, only works in development environment
+            // var apiKey = _config["SendGridApiKey"];
+
+            var apiKey = "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";
 
             var client = new SendGridClient(apiKey);
 

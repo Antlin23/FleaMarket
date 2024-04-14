@@ -51,6 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 //routing betweeen controllers
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",

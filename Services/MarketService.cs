@@ -1,6 +1,7 @@
 ﻿using FleaMarket.Contexts;
 using FleaMarket.Models;
 using FleaMarket.Models.Entities;
+using FleaMarket.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace FleaMarket.Services
@@ -18,6 +19,21 @@ namespace FleaMarket.Services
         public async Task<IEnumerable<MarketEntity>> GetAllAsync()
         {
             return await _context.Markets.ToListAsync();
+        }
+        //register new market
+        public async Task<bool> RegisterMarketAsync(RegisterMarketViewModel viewModel)
+        {
+            try
+            {
+                await _context.Markets.AddAsync(viewModel);
+                //might not need this one
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

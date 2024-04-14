@@ -72,8 +72,15 @@ namespace FleaMarket.Controllers
                             Subject = "Bekräfta din e-postadress",
                             HtmlContent = $"<p>För att slutföra registreringen av ditt konto, vänligen bekräfta din e-postadress <a href=\"{confirmationLink}\"> här.</a></p>"
                         };
-
-                        await _sendGridService.SendEmailAsync(message);
+                        try
+                        {
+                            await _sendGridService.SendEmailAsync(message);
+                        }
+                        catch
+                        {
+                            throw new InvalidOperationException("Något blev fel vid mailutskicket." +
+                                " Vänligen kontakta oss om felet kvarstår");
+                        }
 
                         return RedirectToAction(nameof(SuccessRegistration));
                     }

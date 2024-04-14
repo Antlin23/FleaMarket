@@ -82,4 +82,10 @@
 
 
     <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
+
+@if (user.UserName == "admin")
+{
+    <a class="my-3" asp-controller="Admin" asp-action="RegisterMarket">Skapa ny marknad (för admin).</a>
+}
+
 </section>
