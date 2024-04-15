@@ -21,6 +21,13 @@ namespace FleaMarket.Models.Entities
             claimsIdentity.AddClaim(new Claim("DisplayEmail", $"{user.Email}"));
             claimsIdentity.AddClaim(new Claim("Id", $"{user.Id}"));
             claimsIdentity.AddClaim(new Claim("CompanyName", $"{user.CompanyName}"));
+
+            var roles = await userManager.GetRolesAsync(user);
+
+            foreach(var role in roles)
+            {
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role));
+            }
             return claimsIdentity;
         }
     }

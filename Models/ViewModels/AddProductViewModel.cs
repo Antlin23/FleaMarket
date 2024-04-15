@@ -20,7 +20,7 @@ namespace FleaMarket.Models.ViewModels
 
         [Required(ErrorMessage = "Du måste ange vilken marknad.")]
         [Display(Name = "Marknad")]
-        public string SelectMarket { get; set; } = null!;
+        public Guid MarketId { get; set; }
 
         [Required(ErrorMessage = "Du måste ange vilket bordsnummer du har")]
         [Display(Name = "Bordsnummer")]
@@ -44,7 +44,7 @@ namespace FleaMarket.Models.ViewModels
             ProductEntity entity = new()
             {
                 Title = viewModel.Title,
-                SelectMarket = viewModel.SelectMarket,
+                MarketId = viewModel.MarketId,
                 Category = viewModel.Category,
                 Brand = viewModel.Brand,
                 UserId = viewModel.UserId

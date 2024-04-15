@@ -6,6 +6,7 @@
 @model SearchProductViewModel
 @{
     string marketName = "";
+
     if (Model == null)
     {
         marketName = ViewData["MarketName"].ToString();
@@ -14,9 +15,14 @@
     {
         marketName = Model.MarketName;
     }
-    ViewData["Title"] = marketName;
+    MarketEntity market = await productService.GetMarketAsync(x => x.MarketTitle == marketName);
+
     IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
-    marketProducts = productService.GetAllMarketProducts(marketName);
+
+    marketProducts = productService.GetAllMarketProducts(market.Id);
+
+    ViewData["Title"] = marketName;
+
 }
 <nav class="container breadcrumb-container" aria-label="breadcrumb">
     <ol class="breadcrumb">

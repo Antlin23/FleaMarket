@@ -33,13 +33,13 @@ namespace FleaMarket.Controllers
         }
 
         [HttpPost]
-        public IActionResult Market(SearchProductViewModel viewModel)
+        public async Task<IActionResult> Market(SearchProductViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 if (viewModel.Category != null && viewModel.Category != "Alla kategorier" || viewModel.SearchString != null)
                 {
-                    viewModel = _productService.GetProductsByFilter(viewModel);
+                    viewModel = await _productService.GetProductsByFilterAsync(viewModel);
                     return View(viewModel);
                 }
                 else if (viewModel.Category == "Alla kategorier")

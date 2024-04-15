@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FleaMarket.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly MarketService _marketService;

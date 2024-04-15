@@ -2,7 +2,10 @@
 @using FleaMarket.Services;
 @model ProductEntity
 @inject UserService _userService
+@inject ProductService _productService
 @{
+    var market = await _productService.GetMarketAsync(x => x.Id == Model.MarketId);
+
     UserEntity user = await _userService.GetUserAsync(x => x.Id == Model.UserId);
 
     var tableNumber = user.TableNumber;
@@ -18,7 +21,7 @@
         <div>
             <h4 class="product-title">@Model.Title</h4>
             <p class="product-tablenumber">Bord: @tableNumber</p>
-            <p>@Model.SelectMarket</p>
+            <p>@market.MarketTitle</p>
             @if (Model.Brand != null)
             {
                 <p>Märke: @Model.Brand</p>

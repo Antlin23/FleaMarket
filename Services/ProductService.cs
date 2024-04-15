@@ -25,19 +25,29 @@ namespace FleaMarket.Services
             _webHostEnvironment = webHostEnvironment;
         }
 
+        //gets market from database
+        public async Task<MarketEntity> GetMarketAsync(Expression<Func<MarketEntity, bool>> expression)
+        {
+            // if I need to include something; Include(x => x.ProductTags).ThenInclude(x => x.Tag).
+            var market = await _context.Markets.FirstOrDefaultAsync(expression);
+            return market!;
+        }
+
 
         //gets products from database
-        public IEnumerable<ProductEntity> GetAllMarketProducts(string marketTitle)
+        public IEnumerable<ProductEntity> GetAllMarketProducts(Guid marketId)
         {
-            return _context.Products.ToList().Where(x => x.SelectMarket == marketTitle);
+            return _context.Products.ToList().Where(x => x.MarketId == marketId);
         }
 
         //gets category products from database
-        public SearchProductViewModel GetProductsByFilter(SearchProductViewModel viewModel)
+        public async Task<SearchProductViewModel> GetProductsByFilterAsync(SearchProductViewModel viewModel)
         {
             IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
 
-            marketProducts = GetAllMarketProducts(viewModel.MarketName);
+            var _market = await GetMarketAsync(x => x.MarketTitle == viewModel.MarketName);
+
+            marketProducts = GetAllMarketProducts(_market.Id);
 
             if (viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
             {

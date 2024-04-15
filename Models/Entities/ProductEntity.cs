@@ -14,9 +14,7 @@ namespace FleaMarket.Models.Entities
 
         [Column(TypeName = "varchar(20)")]
         public int Price { get; set; }
-
-        [Column(TypeName = "nvarchar(50)")]
-        public string SelectMarket { get; set; } = null!;
+        public Guid MarketId { get; set; }
 
         [Column(TypeName = "nvarchar(250)")]
         public string? ImageUrl { get; set; }

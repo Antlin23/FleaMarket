@@ -9,52 +9,46 @@
     ViewData["Title"] = "TradeTrails A";
 }
 <h6>Välkommen till admin-sidan</h6>
-@if(user.UserName != "admin")
-{
-    <p>Det verkar som att du inte kan komma åt denna sidan :(.</p>
-}
-else
-{
-<div class="container auth-container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2>Skapa marknad</h2>
-            <p>Skapa marknad, detta är till för admin. Är du ej admin och kan se denna sida kontakta oss något har blivit fel.</p>
-            <hr />
-            <form method="post" asp-action="RegisterMarket" asp-controller="Admin" novalidate>
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <input asp-for="MarketTitle" type="text" class="form-control" id="marketTitle" placeholder="Ange titel">
-                    <span class="small text-danger" asp-validation-for="MarketTitle"></span>
-                </div>
 
+<div class="container auth-container">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Skapa marknad</h2>
+        <p>Skapa marknad, detta är till för admin. Är du ej admin och kan se denna sida kontakta oss något har blivit fel.</p>
+        <hr />
+        <form method="post" asp-action="RegisterMarket" asp-controller="Admin" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="MarketTitle" type="text" class="form-control" id="marketTitle" placeholder="Ange titel">
+                <span class="small text-danger" asp-validation-for="MarketTitle"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for=City type="text" class="form-control" id="City" placeholder="Stad">
+                <span class="small text-danger" asp-validation-for="City"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for=Address type="text" class="form-control" id="address" placeholder="Adress" />
+                <span class="small text-danger" asp-validation-for="Address"></span>
+            </div>
                 <div class="form-group">
-                    <input asp-for=City type="text" class="form-control" id="City" placeholder="Stad">
-                    <span class="small text-danger" asp-validation-for="City"></span>
+                    <input asp-for=MarketDescription type="text" class="form-control" id="description" placeholder="Beskrivning">
+                    <span class="small text-danger" asp-validation-for="MarketDescription"></span>
                 </div>
                 <div class="form-group">
-                    <input asp-for=Address type="text" class="form-control" id="address" placeholder="Adress" />
-                    <span class="small text-danger" asp-validation-for="Address"></span>
+                    <input asp-for=TimeOpen type="text" class="form-control" id="address" placeholder="Öppetider" />
+                    <span class="small text-danger" asp-validation-for="TimeOpen"></span>
                 </div>
-                    <div class="form-group">
-                        <input asp-for=MarketDescription type="text" class="form-control" id="description" placeholder="Beskrivning">
-                        <span class="small text-danger" asp-validation-for="MarketDescription"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for=TimeOpen type="text" class="form-control" id="address" placeholder="Öppetider" />
-                        <span class="small text-danger" asp-validation-for="TimeOpen"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for=MapLink type="text" class="form-control" id="mapLink" placeholder="Karta länk">
-                        <span class="small text-danger" asp-validation-for="MapLink"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for=MarketLink type="text" class="form-control" id="marketLink" placeholder="Länk till marknad" />
-                        <span class="small text-danger" asp-validation-for="MarketLink"></span>
-                    </div>
-                <button type="submit" class="button">Skapa marknad</button>
-            </form>
-        </div>
+                <div class="form-group">
+                    <input asp-for=MapLink type="text" class="form-control" id="mapLink" placeholder="Karta länk">
+                    <span class="small text-danger" asp-validation-for="MapLink"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for=MarketLink type="text" class="form-control" id="marketLink" placeholder="Länk till marknad" />
+                    <span class="small text-danger" asp-validation-for="MarketLink"></span>
+                </div>
+            <button type="submit" class="button">Skapa marknad</button>
+        </form>
     </div>
 </div>
-}
+</div>

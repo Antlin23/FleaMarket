@@ -42,6 +42,7 @@ namespace FleaMarket.Contexts
                 NormalizedUserName = "ADMIN",
                 Email = "anton.jumkil@gmail.com",
                 NormalizedEmail = "anton.jumkil@gmail.com",
+                EmailConfirmed = true
             };
 
             userEntity.PasswordHash = passwordHasher.HashPassword(userEntity, "Alprodadmin123!");
