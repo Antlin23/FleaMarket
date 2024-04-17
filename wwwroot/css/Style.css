@@ -256,32 +256,45 @@ form .button {
 .auth-container {
   margin-top: 1rem;
   text-align: center;
+  height: 70vh;
+  display: grid;
 }
 .auth-container hr {
-  margin-top: 1.6rem;
+  margin: 1.6rem auto;
   margin-bottom: 2rem;
+  max-width: 60%;
 }
 .auth-container form input {
   padding: 0.6rem 0;
   padding-left: 1rem;
 }
 .auth-container .auth-container--footer {
-  position: fixed;
-  bottom: 2rem;
   width: 100%;
+  align-self: end;
+  padding-top: 2rem;
 }
-.auth-container .auth-container--footer p {
+.auth-container .auth-container--footer hr {
+  max-width: 20%;
+  margin: 0 auto;
+}
+.auth-container .auth-container--footer .auth-container--footer--content {
+  padding: 1rem;
+}
+.auth-container .auth-container--footer .auth-container--footer--content p {
   margin-bottom: 0.3rem;
 }
-.auth-container .auth-container--footer .register-btn {
+.auth-container .auth-container--footer .auth-container--footer--content .register-btn {
   margin-top: 0;
   border: 1px solid #22a6b3;
   background-color: transparent;
   color: #22a6b3;
   max-width: 14rem;
 }
-.auth-container .auth-container--footer .register-company-link {
+.auth-container .auth-container--footer .auth-container--footer--content .register-company-link {
   text-decoration: underline;
+}
+.auth-container .auth-container--footer .auth-container--footer--content hr {
+  margin-top: 1rem;
 }
 
 .account-section .account-active-selleraccount {
