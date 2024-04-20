@@ -264,7 +264,7 @@ form .button {
   margin-bottom: 2rem;
   max-width: 60%;
 }
-.auth-container form input {
+.auth-container form input, .auth-container form select {
   padding: 0.6rem 0;
   padding-left: 1rem;
 }
@@ -295,6 +295,10 @@ form .button {
 }
 .auth-container .auth-container--footer .auth-container--footer--content hr {
   margin-top: 1rem;
+}
+
+.create-product-container {
+  text-align: start;
 }
 
 .account-section .account-active-selleraccount {

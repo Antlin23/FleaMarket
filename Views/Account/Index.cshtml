@@ -60,7 +60,7 @@
             <input asp-for="@Model.UserId" value="@userId" hidden />
         </form>
 
-        <a class="button" asp-action="CreateProduct" asp-controller="Product">Lägg upp en produkt.</a>
+        <a class="button" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
         @if(user.Products.Count == 0)
         {

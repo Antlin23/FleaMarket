@@ -18,15 +18,17 @@
 <nav class="container breadcrumb-container" aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Account" asp-action="Index">Mitt konto</a></li>
         <li class="breadcrumb-item active">Skapa produkt</li>
     </ol>
 </nav>
 
-<h2 class="mb-4">Skapa en produkt</h2>
-<div class="d-flex justify-content-center">                                                                                                                       
 
-    <section class="container create-form">
-        <form method="post" enctype="multipart/form-data" novalidate> 
+<div class="container create-product-container auth-container">
+    <div>
+        <h2>Skapa produkt</h2>
+
+        <form method="post" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
             @if (!(tableNumber > 0))
             {
@@ -37,14 +39,14 @@
                 </div>
             }
             <div class="form-group">
-                <label class="d-block" asp-for="Title">Titel*</label>
-                <input asp-for="Title" type="text" />
+                <label class="d-block" asp-for="Title">Rubrik</label>
+                <input asp-for="Title" type="text" placeholder="Vad vill du sälja?"/>
                 <span class="small text-danger d-block" asp-validation-for="Title"></span>
             </div>
 
             <div class="form-group price-form-group">
-                <label class="d-block" asp-for="Price">Pris (kr)*</label>
-                <input asp-for="Price" type="number" value="0"/>
+                <label class="d-block" asp-for="Price">Pris</label>
+                <input asp-for="Price" type="number" placeholder="Ange ett pris"/>
             </div>
             <div>
                 <input id="noPriceCheckbox" asp-for="NoPrice" type="checkbox" />
@@ -54,13 +56,13 @@
 
             <div class="form-group">
                 <label class="d-block" asp-for="MarketId">Marknad*</label>
-            <select name="MarketId">
-                <option disabled selected>välj ett alternativ</option>
-                    @foreach(var market in markets)
+                <select name="MarketId">
+                    <option disabled selected>Välj från listan</option>
+                    @foreach (var market in markets)
                     {
                         <option value="@market.Id">@market.MarketTitle</option>
                     }
-            </select>
+                </select>
                 <span class="small text-danger d-block" asp-validation-for="MarketId"></span>
             </div>
 
@@ -73,7 +75,7 @@
             <div class="form-group">
                 <label asp-for="Category">Kategori</label>
                 <select name="Category">
-                    <option disabled selected>välj ett alternativ</option>
+                    <option disabled selected>Välj från listan</option>
                     <optgroup label="För hemmet">
                         <option value="Möbler och heminredning">Möbler och heminredning</option>
                         <option value="Bygg och trädgård">Bygg och trädgård</option>
@@ -86,21 +88,16 @@
                         <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
                         <option value="Accessoarer">Accessoarer</option>
                     </optgroup>
-                    <option value="Övrigt">Övrigt</option>  
+                    <option value="Övrigt">Övrigt</option>
                 </select>
             </div>
 
-@*            <div class="form-group">
-                <label class="d-block" asp-for="Brand">Märke</label>
-                <input asp-for="Brand" type="text"/>
-                <span class="small text-danger" asp-validation-for="Brand"></span>
-            </div>*@
-
-            <input asp-for="UserId" value="@userId" hidden/>
+            <input asp-for="UserId" value="@userId" hidden />
             <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
         </form>
-    </section>
+    </div>
 </div>
+
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

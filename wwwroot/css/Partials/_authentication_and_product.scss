@@ -1,4 +1,4 @@
-﻿.auth-container {
+﻿.auth-container{
     margin-top: 1rem;
     text-align: center;
     height: 70vh;
@@ -12,7 +12,7 @@
 
     form {
 
-        input {
+        input, select {
             padding: 0.6rem 0;
             padding-left: 1rem;
         }
@@ -52,4 +52,8 @@
             }
         }
     }
+}
+
+.create-product-container {
+    text-align: start;
 }
