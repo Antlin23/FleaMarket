@@ -42,6 +42,9 @@ a:hover {
   transform: scale(0.99);
 }
 
+form ::placeholder {
+  color: rgb(78, 77, 83);
+}
 form .form-group {
   position: relative;
 }
@@ -198,10 +201,10 @@ header .header-container .header-links a {
   display: none;
 }
 
-form select {
+.market-search-form select {
   margin-bottom: 0.4rem !important;
 }
-form .button {
+.market-search-form .button {
   background-color: #22a6b3;
   border-radius: 0.2rem;
   width: 100%;
@@ -297,10 +300,6 @@ form .button {
   margin-top: 1rem;
 }
 
-.create-product-container {
-  text-align: start;
-}
-
 .account-section .account-active-selleraccount {
   margin-top: 1rem;
 }
@@ -359,4 +358,72 @@ form .button {
 }
 .payment-activate-account p {
   margin: 0;
+}
+
+.create-product-container {
+  text-align: start;
+}
+.create-product-container form input {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  padding: 0.6rem 0;
+  padding-left: 0.05rem;
+  border-radius: 0;
+}
+.create-product-container form input:focus {
+  outline: none;
+}
+.create-product-container form select {
+  border: none;
+  padding: 0.6rem auto;
+  margin-bottom: 0;
+  background-color: rgb(232, 232, 232);
+}
+.create-product-container form select:focus {
+  outline: none;
+}
+.create-product-container form hr {
+  margin: auto;
+  margin-top: 1.2rem;
+}
+.create-product-container hr {
+  margin: 0.6rem 0;
+  margin-bottom: 1.6rem;
+  max-width: 20%;
+}
+.create-product-container .create-product-container-header {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+.create-product-container .create-product-container--price-formgroup {
+  margin: 0rem 0;
+}
+.create-product-container .create-product-container--price-formgroup input {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 1.4rem auto;
+  margin-right: 0.4rem;
+  margin-top: 0rem;
+}
+.create-product-container .create-product-container--price-formgroup label {
+  font-size: 0.8rem;
+}
+.create-product-container .upload-picture {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1rem;
+}
+.create-product-container .upload-picture input {
+  border: none !important;
+  padding-left: 0;
+  padding: 0;
+}
+.create-product-container .upload-picture label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.create-product-container .button {
+  font-weight: 400;
+  margin-top: 1.2rem;
 }

@@ -24,40 +24,37 @@
 </nav>
 
 
-<div class="container create-product-container auth-container">
+<div class="container create-product-container">
     <div>
-        <h2>Skapa produkt</h2>
-
+        <h5 class="create-product-container-header">Vad vill du sälja?</h5>
         <form method="post" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
             @if (!(tableNumber > 0))
             {
                 <div class="form-group">
-                    <label class="d-block" asp-for="TableNumber">Vilket bordsnummer har du idag?</label>
                     <input asp-for="TableNumber" type="number" />
                     <span class="small text-danger d-block" asp-validation-for="TableNumber"></span>
                 </div>
             }
             <div class="form-group">
-                <label class="d-block" asp-for="Title">Rubrik</label>
-                <input asp-for="Title" type="text" placeholder="Vad vill du sälja?"/>
+                <input asp-for="Title" type="text" placeholder="Rubrik*"/>
                 <span class="small text-danger d-block" asp-validation-for="Title"></span>
             </div>
 
             <div class="form-group price-form-group">
-                <label class="d-block" asp-for="Price">Pris</label>
-                <input asp-for="Price" type="number" placeholder="Ange ett pris"/>
+                <input asp-for="Price" type="number" placeholder="Pris*"/>
             </div>
-            <div>
+            <div class="create-product-container--price-formgroup">
                 <input id="noPriceCheckbox" asp-for="NoPrice" type="checkbox" />
-                <label asp-for="NoPrice" for="noPriceCheckbox">Inget bestämt pris</label>
+                <label asp-for="NoPrice" for="noPriceCheckbox">Inget pris bestämt</label>
                 <span class="small text-danger d-block" asp-validation-for="Price"></span>
-            </div>
+            </div> 
 
             <div class="form-group">
-                <label class="d-block" asp-for="MarketId">Marknad*</label>
-                <select name="MarketId">
-                    <option disabled selected>Välj från listan</option>
+                <i class="input-icon fa-solid fa-list"></i>
+                <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                <select asp-for=@Model.MarketId name="MarketId">
+                    <option value="Alla kategorier" disabled selected>Marknad</option>
                     @foreach (var market in markets)
                     {
                         <option value="@market.Id">@market.MarketTitle</option>
@@ -66,16 +63,17 @@
                 <span class="small text-danger d-block" asp-validation-for="MarketId"></span>
             </div>
 
-            <div class="my-4 upload-picture">
+            <div class="upload-picture">
                 <label class="form-label d-block" for="Image">Bild</label>
-                <input asp-for="Image" class="picture-file" />
+                <input asp-for="Image" class="" />
                 <span class="small text-danger d-block" asp-validation-for="Image"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Category">Kategori</label>
-                <select name="Category">
-                    <option disabled selected>Välj från listan</option>
+                <i class="input-icon fa-solid fa-list"></i>
+                <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                <select asp-for=@Model.Category name="Category">
+                    <option disabled selected>Kategori</option>
                     <optgroup label="För hemmet">
                         <option value="Möbler och heminredning">Möbler och heminredning</option>
                         <option value="Bygg och trädgård">Bygg och trädgård</option>
@@ -90,10 +88,12 @@
                     </optgroup>
                     <option value="Övrigt">Övrigt</option>
                 </select>
+                <span class="small text-danger d-block" asp-validation-for="Category"></span>
             </div>
 
             <input asp-for="UserId" value="@userId" hidden />
-            <button class="mt-5 btn btn-success" type="submit">Skapa produkt</button>
+            <hr />
+            <button class="button" type="submit">Publicera</button>
         </form>
     </div>
 </div>
@@ -108,10 +108,8 @@
         $('#noPriceCheckbox').change(function () {
             if ($(this).is(':checked')) {
                 $('.price-form-group').hide();
-                $(this).parent().addClass('mt-4');
             } else {
                 $('.price-form-group').show();
-                $(this).parent().removeClass('mt-4');
             }
         });
     });

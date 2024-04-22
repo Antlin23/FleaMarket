@@ -49,6 +49,10 @@ a {
 
 //form
 form {
+    ::placeholder {
+        color: rgb(78, 77, 83);
+    }
+
     .form-group {
         position: relative;
 
