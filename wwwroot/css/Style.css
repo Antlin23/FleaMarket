@@ -123,6 +123,33 @@ form .button {
   text-decoration: none;
 }
 
+#popupButton {
+  font-size: 1.4rem;
+  border: none;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+#popupButton:hover {
+  cursor: pointer;
+}
+
+#popup {
+  display: none;
+  background-color: rgba(246, 229, 141, 0.5);
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+}
+#popup p {
+  margin-bottom: 0;
+  padding: 0;
+}
+#popup #closeButton {
+  margin: 0rem;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  padding: 0.1rem 0.8rem;
+}
+
 /*Header*/
 header {
   background-color: white;
@@ -213,13 +240,13 @@ header .header-container .header-links a {
 
 .product-card {
   display: grid;
-  grid-template-columns: 9rem auto auto;
+  grid-template-columns: 11rem auto auto;
   gap: 0.8rem;
   border-bottom: 1px solid lightgray;
   padding: 0.8rem 0;
 }
 .product-card .product-card--img-container {
-  height: 6.5rem;
+  height: 7.5rem;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -325,7 +352,7 @@ header .header-container .header-links a {
 }
 .account-section .update-place-form .update-place-form--form-group input {
   height: 50px;
-  max-width: 6rem;
+  width: 100%;
   border: none;
   text-indent: 1rem;
 }
@@ -340,7 +367,7 @@ header .header-container .header-links a {
   height: 40px;
   width: fit-content;
   margin: 0;
-  padding: 0.1rem 1.2rem;
+  padding: 0 0.8rem;
   font-size: 1rem;
 }
 
@@ -365,31 +392,6 @@ header .header-container .header-links a {
 }
 .create-product-container form .create-product-container--place-form-group {
   display: flex;
-}
-.create-product-container form #popupButton {
-  font-size: 1.4rem;
-  border: none;
-  width: 1.6rem;
-  height: 1.6rem;
-}
-.create-product-container form #popupButton:hover {
-  cursor: pointer;
-}
-.create-product-container form #popup {
-  display: none;
-  background-color: rgba(246, 229, 141, 0.5);
-  padding: 0.4rem;
-  margin-bottom: 1rem;
-}
-.create-product-container form #popup p {
-  margin-bottom: 0;
-  padding: 0;
-}
-.create-product-container form #popup #closeButton {
-  margin: 0rem;
-  margin-top: 0.4rem;
-  font-size: 1rem;
-  padding: 0.1rem 0.8rem;
 }
 .create-product-container form input {
   border: none;

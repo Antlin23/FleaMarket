@@ -1,12 +1,12 @@
 ﻿.product-card {
     display: grid;
-    grid-template-columns: 9rem auto auto;
+    grid-template-columns: 11rem auto auto;
     gap: 0.8rem;
     border-bottom: 1px solid lightgray;
     padding: 0.8rem 0;
 
     .product-card--img-container {
-        height: 6.5rem;
+        height: 7.5rem;
         overflow: hidden;
         display: flex;
         align-items: center;

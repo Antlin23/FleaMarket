@@ -6,36 +6,6 @@
             display: flex;
         }
 
-        #popupButton {
-            font-size: 1.4rem;
-            border: none;
-            width: 1.6rem;
-            height: 1.6rem;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        #popup {
-            display: none;
-            background-color: $color-orange-background;
-            padding: 0.4rem;
-            margin-bottom: 1rem;
-
-            p {
-                margin-bottom: 0;
-                padding: 0;
-            }
-
-            #closeButton {
-                margin: 0rem;
-                margin-top: 0.4rem;
-                font-size: 1rem;
-                padding: 0.1rem 0.8rem;
-            }
-        }
-
         input {
             border: none;
             border-bottom: 1px solid lightgray;

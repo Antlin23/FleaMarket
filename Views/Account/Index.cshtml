@@ -50,15 +50,28 @@
     }
     else
     {
-        <form class="update-tablenumber-form" method="post" novalidate>
+        <form class="update-place-form" method="post" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
-            <div class="update-tablenumber-form--form-group">
-                <input asp-for="@Model.NewPlace" type="text" value="@user.Place" />
+            <div class="d-flex justify-content-between align-items-center">
+                <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
+                <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+            </div>
+            <div class="update-place-form--form-group">
+                <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Tredje raden till höger, röd bil.)" />
                 <button class="button" type="submit">Uppdatera</button>
             </div>
             <input asp-for="@Model.UserId" value="@userId" hidden />
         </form>
+
+        <div id="popup">
+            <div id="popupContent">
+                <p>Beskriv så kort och enkelt som möjligt hur man kan hitta dig.</p>
+                <p>Ex. Andra raden till höger, grå bil. <br /> Eller: Nära vägen på rad fem till vänster, vit släpvagn.</p>
+                <button class="button" type="button" id="closeButton">Stäng</button>
+            </div>
+        </div>
+
+
 
         <a class="button" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
@@ -86,5 +99,24 @@
     }
 
     <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
-
 </section>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Your script -->
+<script>
+    $(document).ready(function () {
+        $("#popupButton").click(function () {
+            if ($("#popup").is(":visible")) {
+                $("#popup").hide();
+            } else {
+                $("#popup").show();
+            }
+        });
+
+        $("#closeButton").click(function () {
+            $("#popup").hide();
+        });
+    });
+</script>
