@@ -1,9 +1,9 @@
 ﻿namespace FleaMarket.Models.ViewModels
 {
-    public class UpdateTableNumberViewModel
+    public class UpdatePlaceViewModel
     {
         public string UserId { get; set; } = null!;
-        public int NewTableNumber { get; set; }
+        public string NewPlace { get; set; } = null!;
 
     }
 }

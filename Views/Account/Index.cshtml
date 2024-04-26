@@ -3,7 +3,7 @@
 @using FleaMarket.Services;
 @inject ProductService productService;
 @inject UserService _userService;
-@model UpdateTableNumberViewModel
+@model UpdatePlaceViewModel
 @{
     string userId = User.FindFirst("Id")?.Value;
 
@@ -52,9 +52,9 @@
     {
         <form class="update-tablenumber-form" method="post" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <label class="d-block" asp-for="@Model.NewTableNumber">Bordsnummer</label>
+            <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
             <div class="update-tablenumber-form--form-group">
-                <input asp-for="@Model.NewTableNumber" type="number" value="@user.TableNumber" />
+                <input asp-for="@Model.NewPlace" type="text" value="@user.Place" />
                 <button class="button" type="submit">Uppdatera</button>
             </div>
             <input asp-for="@Model.UserId" value="@userId" hidden />

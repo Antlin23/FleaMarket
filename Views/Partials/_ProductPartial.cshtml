@@ -8,7 +8,7 @@
 
     UserEntity user = await _userService.GetUserAsync(x => x.Id == Model.UserId);
 
-    var tableNumber = user.TableNumber;
+    var place = user.Place;
 }
 <div class="product-card">
     @if (Model.ImageUrl != null)
@@ -20,7 +20,7 @@
     <div class="product-card--content">
         <div>
             <h4 class="product-title">@Model.Title</h4>
-            <p class="product-tablenumber">Bord: @tableNumber</p>
+            <p class="product-place">Plats: @place</p>
             <p>@market.MarketTitle</p>
             @if (Model.Brand != null)
             {

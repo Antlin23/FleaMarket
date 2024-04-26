@@ -21,11 +21,11 @@ namespace FleaMarket.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UpdateTableNumberViewModel viewModel)
+        public async Task<IActionResult> Index(UpdatePlaceViewModel viewModel)
         {
             try
             {
-                await _userService.UpdateTableNumberAsync(viewModel);
+                await _userService.UpdatePlaceAsync(viewModel);
                 return View();
             }
             catch

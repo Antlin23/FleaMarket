@@ -68,11 +68,11 @@ namespace FleaMarket.Controllers
                 try
                 {
                     UserEntity user = await _userService.GetUserAsync(x => x.Id == viewModel.UserId);
-                    var tableNumber = user.TableNumber;
+                    var place = user.Place;
 
-                    if(!(tableNumber > 0))
+                    if(place == null)
                     {
-                        await _userService.AddTableNumberToUser(User.FindFirst("Id")?.Value, viewModel.TableNumber);
+                        await _userService.AddPlaceToUser(User.FindFirst("Id")?.Value, viewModel.Place);
                     }
 
                     var entity = await _productService.AddProduct(viewModel);

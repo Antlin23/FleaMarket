@@ -317,23 +317,23 @@ header .header-container .header-links a {
 .account-section .account-active-selleraccount .activate-selleraccount--content p {
   margin: 0;
 }
-.account-section .update-tablenumber-form .update-tablenumber-form--form-group {
+.account-section .update-place-form .update-place-form--form-group {
   position: relative;
   margin-bottom: 1rem;
   border: 1px solid gray;
   border-radius: 0.2rem;
 }
-.account-section .update-tablenumber-form .update-tablenumber-form--form-group input {
+.account-section .update-place-form .update-place-form--form-group input {
   height: 50px;
   max-width: 6rem;
   border: none;
   text-indent: 1rem;
 }
-.account-section .update-tablenumber-form .update-tablenumber-form--form-group input:focus {
+.account-section .update-place-form .update-place-form--form-group input:focus {
   border: none;
   outline: none;
 }
-.account-section .update-tablenumber-form .update-tablenumber-form--form-group .button {
+.account-section .update-place-form .update-place-form--form-group .button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -362,6 +362,34 @@ header .header-container .header-links a {
 
 .create-product-container {
   text-align: start;
+}
+.create-product-container form .create-product-container--place-form-group {
+  display: flex;
+}
+.create-product-container form #popupButton {
+  font-size: 1.4rem;
+  border: none;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.create-product-container form #popupButton:hover {
+  cursor: pointer;
+}
+.create-product-container form #popup {
+  display: none;
+  background-color: rgba(246, 229, 141, 0.5);
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+}
+.create-product-container form #popup p {
+  margin-bottom: 0;
+  padding: 0;
+}
+.create-product-container form #popup #closeButton {
+  margin: 0rem;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  padding: 0.1rem 0.8rem;
 }
 .create-product-container form input {
   border: none;
@@ -409,7 +437,6 @@ header .header-container .header-links a {
   font-size: 0.8rem;
 }
 .create-product-container .upload-picture {
-  margin-top: 1rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid lightgray;
   padding-bottom: 1rem;

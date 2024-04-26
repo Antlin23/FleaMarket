@@ -2,6 +2,40 @@
     text-align: start;
 
     form {
+        .create-product-container--place-form-group {
+            display: flex;
+        }
+
+        #popupButton {
+            font-size: 1.4rem;
+            border: none;
+            width: 1.6rem;
+            height: 1.6rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        #popup {
+            display: none;
+            background-color: $color-orange-background;
+            padding: 0.4rem;
+            margin-bottom: 1rem;
+
+            p {
+                margin-bottom: 0;
+                padding: 0;
+            }
+
+            #closeButton {
+                margin: 0rem;
+                margin-top: 0.4rem;
+                font-size: 1rem;
+                padding: 0.1rem 0.8rem;
+            }
+        }
+
         input {
             border: none;
             border-bottom: 1px solid lightgray;
@@ -20,7 +54,7 @@
             margin-bottom: 0;
             background-color: rgb(232, 232, 232);
 
-            &:focus{
+            &:focus {
                 outline: none;
             }
         }
@@ -59,7 +93,6 @@
     }
 
     .upload-picture {
-        margin-top: 1rem;
         margin-bottom: 2rem;
         border-bottom: 1px solid lightgray;
         padding-bottom: 1rem;

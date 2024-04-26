@@ -32,25 +32,25 @@ namespace FleaMarket.Services
             return user!;
         }
 
-        public async Task<bool> AddTableNumberToUser(string userId, int tableNumber)
+        public async Task<bool> AddPlaceToUser(string userId, string place)
         {
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
 
-                user.TableNumber = tableNumber;
+                user.Place = place;
                 return true;
             }
             catch { return false; }
         }
 
-        public async Task<bool> UpdateTableNumberAsync(UpdateTableNumberViewModel viewModel)
+        public async Task<bool> UpdatePlaceAsync(UpdatePlaceViewModel viewModel)
         {
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == viewModel.UserId);
 
-                user.TableNumber = viewModel.NewTableNumber;
+                user.Place = viewModel.NewPlace;
 
                 await _context.SaveChangesAsync();
                 return true;
