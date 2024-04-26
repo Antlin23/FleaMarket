@@ -41,23 +41,9 @@
     <div class="form-group">
         <i class="input-icon fa-solid fa-list"></i>
         <i class="dropdown-icon fa-solid fa-caret-down"></i>
-        <select asp-for=@Model.Category name="Category">
-            <option value="Alla kategorier" selected>Alla kategorier</option>
-            <optgroup label="För hemmet">
-                <option value="Möbler och heminredning">Möbler och heminredning</option>
-                <option value="Bygg och trädgård">Bygg och trädgård</option>
-                <option value="Vitvaror och husgeråd">Vitvaror och husgeråd</option>
-                <option value="Verktyg">Verktyg</option>
-            </optgroup>
-            <optgroup label="Personligt">
-                <option value="Kläder och skor">Kläder och skor</option>
-                <option value="Barnkläder och skor">Barnkläder och skor</option>
-                <option value="Barnleksaker och barnartiklar">Barnleksaker och barnartiklar</option>
-                <option value="Accessoarer">Accessoarer</option>
-            </optgroup>
-            <!--Övrigt-->
-            <option value="Övrigt">Övrigt</option>
-        </select>
+
+        <partial name="/Views/Partials/_CategoryOptionsPartial.cshtml" />
+
     </div>
     <input asp-for="MarketName" type="text" hidden value="@marketName" />
     <a asp-controller="Product" asp-action="Market" asp-route-marketName="@marketName"><i class="me-2 fa-regular fa-trash-can"></i>Rensa filter</a>
