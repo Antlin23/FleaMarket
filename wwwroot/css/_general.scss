@@ -30,11 +30,8 @@ a {
     margin: auto;
     margin-top: 1.4rem;
     margin-bottom: 1rem;
-    background-color: $color-orange;
-    color: white;
     border-radius: 0.3rem;
     padding: 0.7rem 3rem;
-    border: none;
     outline: none;
     text-align: center;
     font-weight: 500;
@@ -42,8 +39,47 @@ a {
     font-size: 1.1rem;
 
     &:hover {
-        color: white;
         transform: scale(0.99);
+    }
+}
+
+.orange-button {
+    background-color: white;
+    color: $color-orange;
+    border: 1px solid $color-orange;
+
+    &:hover {
+        color: $color-orange;
+    }
+}
+
+.orange-bg-button {
+    background-color: $color-orange;
+    color: white;
+    border: none;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.purple-button {
+    background-color: white;
+    color: $color-purple-10;
+    border: 1px solid $color-purple-10;
+
+    &:hover {
+        color: $color-purple-10;
+    }
+}
+
+.purple-bg-button {
+    background-color: $color-purple-10;
+    color: white;
+    border: none;
+
+    &:hover {
+        color: white;
     }
 }
 
@@ -91,9 +127,6 @@ form {
 
     .button {
         margin-top: 0;
-        //padding: 0.6rem 1.6rem;
-        color: white;
-        background-color: $color-purple-10;
     }
 }
 
@@ -115,7 +148,7 @@ form {
     .market-title {
         font-size: 1.4rem;
         font-weight: 400;
-        color: #130f40;
+        color: $color-purple-10;
         text-decoration: none;
 
         &:hover {
@@ -139,14 +172,6 @@ form {
 
     .address {
         margin-bottom: 0;
-    }
-
-    .button {
-        background-color: $color-blue-20;
-
-        &:hover {
-            text-decoration: none;
-        }
     }
 }
 

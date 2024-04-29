@@ -45,9 +45,9 @@
     form{
         align-self: end;
         .button, button{
+            font-size: 1rem;
             width: fit-content;
-            padding: 0.5rem 1rem;
-            background-color: $color-orange;
+            padding: 0.3rem 0.6rem;
         }
     }
 }

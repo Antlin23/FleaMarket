@@ -26,11 +26,8 @@ a:hover {
   margin: auto;
   margin-top: 1.4rem;
   margin-bottom: 1rem;
-  background-color: #f0932b;
-  color: white;
   border-radius: 0.3rem;
   padding: 0.7rem 3rem;
-  border: none;
   outline: none;
   text-align: center;
   font-weight: 500;
@@ -38,8 +35,43 @@ a:hover {
   font-size: 1.1rem;
 }
 .button:hover {
-  color: white;
   transform: scale(0.99);
+}
+
+.orange-button {
+  background-color: white;
+  color: #f0932b;
+  border: 1px solid #f0932b;
+}
+.orange-button:hover {
+  color: #f0932b;
+}
+
+.orange-bg-button {
+  background-color: #f0932b;
+  color: white;
+  border: none;
+}
+.orange-bg-button:hover {
+  color: white;
+}
+
+.purple-button {
+  background-color: white;
+  color: #130f40;
+  border: 1px solid #130f40;
+}
+.purple-button:hover {
+  color: #130f40;
+}
+
+.purple-bg-button {
+  background-color: #130f40;
+  color: white;
+  border: none;
+}
+.purple-bg-button:hover {
+  color: white;
 }
 
 form ::placeholder {
@@ -77,8 +109,6 @@ form .form-group .dropdown-icon {
 }
 form .button {
   margin-top: 0;
-  color: white;
-  background-color: #130f40;
 }
 
 .market-card {
@@ -115,12 +145,6 @@ form .button {
 }
 .market-card .address {
   margin-bottom: 0;
-}
-.market-card .button {
-  background-color: #22a6b3;
-}
-.market-card .button:hover {
-  text-decoration: none;
 }
 
 #popupButton {
@@ -214,6 +238,9 @@ header .header-container .header-links a {
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
+.home-showcase .home-showcase--content form .button {
+  padding: 0.6rem 1.8rem;
+}
 
 .home-container {
   margin-top: 1.8rem;
@@ -232,7 +259,6 @@ header .header-container .header-links a {
   margin-bottom: 0.4rem !important;
 }
 .market-search-form .button {
-  background-color: #22a6b3;
   border-radius: 0.2rem;
   width: 100%;
   margin-top: 0.6rem;
@@ -278,9 +304,9 @@ header .header-container .header-links a {
   align-self: end;
 }
 .product-card form .button, .product-card form button {
+  font-size: 1rem;
   width: fit-content;
-  padding: 0.5rem 1rem;
-  background-color: #f0932b;
+  padding: 0.3rem 0.6rem;
 }
 
 .auth-container {
@@ -327,6 +353,13 @@ header .header-container .header-links a {
   margin-top: 1rem;
 }
 
+.account-section h2 {
+  font-weight: normal;
+}
+.account-section .email-span {
+  font-size: 1rem;
+  font-weight: normal;
+}
 .account-section .account-active-selleraccount {
   margin-top: 1rem;
 }

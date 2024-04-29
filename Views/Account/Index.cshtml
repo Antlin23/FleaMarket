@@ -23,8 +23,7 @@
 <section class="container account-section">
     @if(user.CompanyName == null)
     {
-        <h2>@user.UserName</h2> 
-        <p>@user.Email</p> 
+        <h2>@user.UserName <span class="email-span">- @user.Email</span></h2>
     }
     else
     {
@@ -58,7 +57,7 @@
             </div>
             <div class="update-place-form--form-group">
                 <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Tredje raden till höger, röd bil.)" />
-                <button class="button" type="submit">Uppdatera</button>
+                <button class="button purple-button" type="submit">Uppdatera</button>
             </div>
             <input asp-for="@Model.UserId" value="@userId" hidden />
         </form>
@@ -67,13 +66,11 @@
             <div id="popupContent">
                 <p>Beskriv så kort och enkelt som möjligt hur man kan hitta dig.</p>
                 <p>Ex. Andra raden till höger, grå bil. <br /> Eller: Nära vägen på rad fem till vänster, vit släpvagn.</p>
-                <button class="button" type="button" id="closeButton">Stäng</button>
+                <button class="button orange-button" type="button" id="closeButton">Stäng</button>
             </div>
         </div>
 
-
-
-        <a class="button" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
+        <a class="button orange-button" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
         @if(user.Products.Count == 0)
         {
