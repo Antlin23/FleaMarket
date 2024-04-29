@@ -22,9 +22,8 @@ namespace FleaMarket.Models.ViewModels
         [Display(Name = "Marknad")]
         public Guid MarketId { get; set; }
 
-        [Required(ErrorMessage = "Du måste ange vilken plats du står på")]
         [Display(Name = "Plats")]
-        public string Place { get; set; } = null!;
+        public string? Place { get; set; }
 
         [Display(Name = "Bild")]
         [DataType(DataType.Upload)]

@@ -49,8 +49,7 @@
             <div class="form-group mb-3">
                 <i class="input-icon fa-solid fa-list"></i>
                 <i class="dropdown-icon fa-solid fa-caret-down"></i>
-                <select asp-for=@Model.MarketId name="MarketId">
-                    <option value="Alla kategorier" disabled selected>Marknad</option>
+                <select asp-for="@Model.MarketId" name="MarketId">
                     @foreach (var market in markets)
                     {
                         <option value="@market.Id">@market.MarketTitle</option>
@@ -96,12 +95,11 @@
     </div>
 </div>
 
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Your script -->
 <script>
+    //no price button
     $(document).ready(function () {
         $('#noPriceCheckbox').change(function () {
             if ($(this).is(':checked')) {
@@ -111,10 +109,8 @@
             }
         });
     });
-</script>
 
-
-<script>
+    //popup funtion
     $(document).ready(function () {
         $("#popupButton").click(function () {
             if ($("#popup").is(":visible")) {
@@ -128,6 +124,4 @@
             $("#popup").hide();
         });
     });
-
-
 </script>
