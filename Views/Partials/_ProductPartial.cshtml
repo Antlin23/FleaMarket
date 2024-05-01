@@ -33,15 +33,20 @@
         }
 
         <!-- Trigger/Open The Modal -->
-        <button class="button purple-button product-card--see-more-btn" id="myBtn">Se mer</button>
+        <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@Model.Id" onclick='seeMoreProductInfo("seeMoreModal-@Model.Id")'>Se mer</button>
         <!-- The Modal -->
-        <div id="myModal" class="modal">
+        <div id="seeMoreModal-@Model.Id" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>@Model.Title</p>
-                <p>@place</p>
-                <p>@Model.Price</p>
+                @if (Model.ImageUrl != null)
+                {
+                    <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
+                }                
+                <h5 class="mt-2">@Model.Title</h5>
+                <p>Plats: @place</p>
+                <p>@market.MarketTitle</p>
+                <p>@Model.Price kr</p>
             </div>
         </div>
     </div>
