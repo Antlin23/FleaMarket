@@ -31,6 +31,19 @@
         {
             <p class="product-price">@Model.Price kr</p>
         }
+
+        <!-- Trigger/Open The Modal -->
+        <button class="button purple-button product-card--see-more-btn" id="myBtn">Se mer</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>@Model.Title</p>
+                <p>@place</p>
+                <p>@Model.Price</p>
+            </div>
+        </div>
     </div>
 
 </div>
