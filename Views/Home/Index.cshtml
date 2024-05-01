@@ -24,7 +24,6 @@
                 <i class="input-icon fa-solid fa-list"></i>
                 <i class="dropdown-icon fa-solid fa-caret-down"></i>
                 <select required id="marketSelect" asp-for=MarketName>
-                    <option value="0" disabled selected>Välj marknad</option>
                     @if (markets.Count() < 1)
                     {
                         <option>Det finns inga aktiva marknader just nu.</option>
