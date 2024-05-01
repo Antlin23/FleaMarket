@@ -74,9 +74,6 @@ a:hover {
   color: white;
 }
 
-form ::placeholder {
-  color: rgb(78, 77, 83);
-}
 form .form-group {
   position: relative;
 }
@@ -385,7 +382,7 @@ header .header-container .header-links a {
 }
 .account-section .update-place-form .update-place-form--form-group input {
   height: 50px;
-  width: 100%;
+  width: 75%;
   border: none;
   text-indent: 1rem;
 }
@@ -395,13 +392,13 @@ header .header-container .header-links a {
 }
 .account-section .update-place-form .update-place-form--form-group .button {
   position: absolute;
-  top: 5px;
+  top: 7.5px;
   right: 5px;
-  height: 40px;
+  height: 35px;
   width: fit-content;
   margin: 0;
-  padding: 0 0.8rem;
-  font-size: 1rem;
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
 }
 
 .payment-activate-account {
