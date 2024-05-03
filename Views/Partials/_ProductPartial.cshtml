@@ -8,6 +8,10 @@
 
     UserEntity user = await _userService.GetUserAsync(x => x.Id == Model.UserId);
 
+    UserEntity loggedInUser = new UserEntity();
+
+    loggedInUser = await _userService.GetUserAsync(x => x.UserName == User.Identity.Name);
+
     var place = user.Place;
 }
 <div class="product-card">
@@ -20,8 +24,7 @@
     <div class="product-card--content">
         <div>
             <h4 class="product-title">@Model.Title</h4>
-            <p class="product-place">Plats: @place</p>
-            <p>@market.MarketTitle</p>
+            <p class="market-title">@market.MarketTitle</p>
             @if (Model.Brand != null)
             {
                 <p>Märke: @Model.Brand</p>
@@ -33,12 +36,23 @@
         }
 
         <!-- Trigger/Open The Modal -->
-        <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@Model.Id" onclick='seeMoreProductInfo("seeMoreModal-@Model.Id")'>Se mer</button>
+        <div class="d-flex justify-content-between">
+            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@Model.Id" onclick='seeMoreProductInfo("seeMoreModal-@Model.Id")'>Se mer</button>
+            @if (User != null)
+            {
+                if (Model.UserId == loggedInUser.Id)
+                {
+                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@Model.Id">
+                        <button class="button orange-button product-card--delete-button" type="submit">Ta bort</button>
+                    </form>
+                }
+            }
+        </div>
         <!-- The Modal -->
         <div id="seeMoreModal-@Model.Id" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <div class="close"><i class="fa-solid fa-xmark"></i></div>
                 @if (Model.ImageUrl != null)
                 {
                     <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />

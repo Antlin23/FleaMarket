@@ -16,7 +16,7 @@
 .modal-content {
     background-color: #fefefe;
     margin: 25% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 16px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -24,9 +24,9 @@
 /* The Close Button */
 .close {
     color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 20px;
+    padding: 0;
+    text-align: right;
 }
 
 .close:hover,
@@ -36,11 +36,4 @@
     cursor: pointer;
 }
 //-------------------------------------------
-
-.product-card--see-more-btn{
-    padding: 0.1rem 0.6rem;
-    margin: 0.4rem 0;
-    width: fit-content;
-    font-size: 1rem;
-}
 
