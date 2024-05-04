@@ -1,4 +1,5 @@
-﻿using FleaMarket.Models.ViewModels;
+﻿using FleaMarket.Models.Entities;
+using FleaMarket.Models.ViewModels;
 using FleaMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,13 @@ namespace FleaMarket.Controllers
             try
             {
                 await _userService.UpdatePlaceAsync(viewModel);
+
+                if (viewModel.Image != null)
+                {
+                    UserEntity entity = await _userService.GetUserAsync(x => x.UserName == User.Identity.Name);
+
+                    await _userService.UploadImageAsync(entity, viewModel.Image);
+                }
                 return View();
             }
             catch

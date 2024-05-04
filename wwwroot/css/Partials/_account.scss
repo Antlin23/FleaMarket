@@ -1,8 +1,9 @@
 ﻿.account-section {
-    h2{
+    h2 {
         font-weight: normal;
     }
-    .email-span{
+
+    .email-span {
         font-size: 1rem;
         font-weight: normal;
     }
@@ -29,18 +30,24 @@
     }
 
     .update-place-form {
+        background-color: $color-orange-background;
+        margin-bottom: 1rem;
+
+
         .update-place-form--form-group {
             position: relative;
             margin-bottom: 1rem;
-            border: 1px solid gray;
+            border: 1px solid lightgray;
             border-radius: 0.2rem;
+            background-color: white;
 
             input {
                 height: 50px;
                 width: 75%;
                 border: none;
                 text-indent: 1rem;
-                &:focus{
+
+                &:focus {
                     border: none;
                     outline: none;
                 }
@@ -57,5 +64,32 @@
                 font-size: 0.8rem;
             }
         }
+        //Image
+        .update-place-form--image-group {
+            border: none;
+            margin-bottom: 0;
+            background-color: transparent;
+
+            input {
+                text-indent: 0;
+            }
+
+            .button {
+                border: none;
+                text-decoration: underline;
+                font-size: 1rem;
+                font-weight: normal;
+                background-color: transparent;
+            }
+        }
     }
+
+    .account-section--add-product-btn {
+        margin-top: 0;
+    }
+}
+
+.full-bleed {
+    box-shadow: 0 0 0 100vmax $color-orange-background;
+    clip-path: inset(0 -100vmax);
 }

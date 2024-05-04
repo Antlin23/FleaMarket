@@ -7,6 +7,7 @@ namespace FleaMarket.Models.Entities
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Place { get; set; }
+        public string? PlaceImgUrl { get; set; }
         public string? CompanyName { get; set; }
         public bool IsActiveSeller { get; set; } = false;
 

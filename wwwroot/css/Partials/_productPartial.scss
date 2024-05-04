@@ -34,13 +34,20 @@
             font-weight: 500;
         }
 
-        .market-title{
+        .market-title {
             //might come in handy
         }
 
         .product-price {
             margin-bottom: 0;
             font-weight: 600;
+        }
+
+        .product-card-content--place-img {
+            img {
+                margin: 1rem 0;
+                max-width: 50%;
+            }
         }
     }
 

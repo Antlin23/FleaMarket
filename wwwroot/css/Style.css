@@ -335,6 +335,10 @@ header .header-container .header-links a {
   margin-bottom: 0;
   font-weight: 600;
 }
+.product-card .product-card--content .product-card-content--place-img img {
+  margin: 1rem 0;
+  max-width: 50%;
+}
 .product-card .product-card--delete-button, .product-card .product-card--see-more-btn {
   padding: 0.1rem 0.4rem;
   margin: 0;
@@ -411,11 +415,16 @@ header .header-container .header-links a {
 .account-section .account-active-selleraccount .activate-selleraccount--content p {
   margin: 0;
 }
+.account-section .update-place-form {
+  background-color: rgba(246, 229, 141, 0.5);
+  margin-bottom: 1rem;
+}
 .account-section .update-place-form .update-place-form--form-group {
   position: relative;
   margin-bottom: 1rem;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   border-radius: 0.2rem;
+  background-color: white;
 }
 .account-section .update-place-form .update-place-form--form-group input {
   height: 50px;
@@ -436,6 +445,29 @@ header .header-container .header-links a {
   margin: 0;
   padding: 0 0.4rem;
   font-size: 0.8rem;
+}
+.account-section .update-place-form .update-place-form--image-group {
+  border: none;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.account-section .update-place-form .update-place-form--image-group input {
+  text-indent: 0;
+}
+.account-section .update-place-form .update-place-form--image-group .button {
+  border: none;
+  text-decoration: underline;
+  font-size: 1rem;
+  font-weight: normal;
+  background-color: transparent;
+}
+.account-section .account-section--add-product-btn {
+  margin-top: 0;
+}
+
+.full-bleed {
+  box-shadow: 0 0 0 100vmax rgba(246, 229, 141, 0.5);
+  clip-path: inset(0 -100vmax);
 }
 
 .payment-activate-account {

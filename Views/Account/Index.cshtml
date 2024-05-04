@@ -49,28 +49,38 @@
     }
     else
     {
-        <form class="update-place-form" method="post" novalidate>
+        <form class="update-place-form full-bleed" method="post" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <div class="d-flex justify-content-between align-items-center">
-                <label class="d-block" asp-for="@Model.NewPlace">Beskriv hur kunderna kan hitta dig</label>
-                <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+            <div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
+                    <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+                </div>
+                <div class="update-place-form--form-group">
+                    <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
+                    <button class="button purple-button" type="submit">Uppdatera</button>
+                </div>
+                <div id="popup">
+                    <div id="popupContent">
+                        <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
+                        <p>Ex. Andra raden till höger, grå bil.</p>
+                        <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
+                        <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+                    </div>
+                </div>
             </div>
-            <div class="update-place-form--form-group">
-                <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
-                <button class="button purple-button" type="submit">Uppdatera</button>
+
+            <div>
+                <div class="mt-1 update-place-form--form-group update-place-form--image-group">
+                    <input asp-for="Image" value="@user.PlaceImgUrl" />
+                    <button class="button purple-button" type="submit">Uppdatera</button>
+                </div>
             </div>
+
             <input asp-for="@Model.UserId" value="@userId" hidden />
         </form>
 
-        <div id="popup">
-            <div id="popupContent">
-                <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
-                <p>Ex. Andra raden till höger, grå bil. <br /> Eller: Nära vägen på rad fem, vit släpvagn.</p>
-                <button class="button orange-button" type="button" id="closeButton">Stäng</button>
-            </div>
-        </div>
-
-        <a class="button orange-button" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
+        <a class="button orange-button account-section--add-product-btn" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
         @if(user.Products.Count == 0)
         {

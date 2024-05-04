@@ -5,17 +5,18 @@ using FleaMarket.Models.Entities;
 using FleaMarket.Contexts;
 using Microsoft.EntityFrameworkCore;
 using FleaMarket.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FleaMarket.Services
 {
     public class UserService
     {
         private readonly DataContext _context;
-
-
-        public UserService(DataContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public UserService(DataContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
@@ -49,14 +50,34 @@ namespace FleaMarket.Services
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == viewModel.UserId);
-
                 user.Place = viewModel.NewPlace;
+
+                if (viewModel.Image != null)
+                {
+                    user.PlaceImgUrl = $"{user.Id}_{viewModel.Image?.FileName}";
+                }
 
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch { return false; }
         }
+
+
+        public async Task<bool> UploadImageAsync(UserEntity entity, IFormFile image)
+        {
+            try
+            {
+                string imagePath = $"{_webHostEnvironment.WebRootPath}/Images/UserPlaces/{entity.PlaceImgUrl}";
+                await image.CopyToAsync(new FileStream(imagePath, FileMode.Create));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         public async Task ResetActiveSellerPropertyAsync()
         {
