@@ -18,13 +18,11 @@ namespace FleaMarket.Services
     {
         private readonly DataContext _context;
         private readonly UserManager<UserEntity> _userManager;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductService(DataContext context, UserManager<UserEntity> userManager, IWebHostEnvironment webHostEnvironment)
+        public ProductService(DataContext context, UserManager<UserEntity> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         //gets market from database
@@ -110,34 +108,6 @@ namespace FleaMarket.Services
                 return true;
             }
             catch { return false; }
-        }
-
-        public async Task<bool> UploadImageAsync(ProductEntity entity, IFormFile image)
-        {
-            try
-            {
-                string imagePath = $"{_webHostEnvironment.WebRootPath}/Images/Products/{entity.ImageUrl}";
-                // Open the uploaded image using ImageSharp
-                using (var stream = new MemoryStream())
-                {
-                    await image.CopyToAsync(stream);
-                    stream.Seek(0, SeekOrigin.Begin);
-
-                    using (var imageSharp = Image.Load(stream))
-                    {
-                        // Resize the image to a smaller size (optional)
-                        imageSharp.Mutate(x => x.Resize(800, 600));
-
-                        // Save the compressed image
-                        imageSharp.Save(imagePath);
-                    }
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
     }

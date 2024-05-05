@@ -14,11 +14,9 @@ namespace FleaMarket.Services
     public class UserService
     {
         private readonly DataContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public UserService(DataContext context, IWebHostEnvironment webHostEnvironment)
+        public UserService(DataContext context)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
@@ -64,36 +62,6 @@ namespace FleaMarket.Services
             }
             catch { return false; }
         }
-
-
-        public async Task<bool> UploadImageAsync(UserEntity entity, IFormFile image)
-        {
-            try
-            {
-                string imagePath = $"{_webHostEnvironment.WebRootPath}/Images/UserPlaces/{entity.PlaceImgUrl}";
-                // Open the uploaded image using ImageSharp
-                using (var stream = new MemoryStream())
-                {
-                    await image.CopyToAsync(stream);
-                    stream.Seek(0, SeekOrigin.Begin);
-
-                    using (var imageSharp = Image.Load(stream))
-                    {
-                        // Resize the image to a smaller size
-                        imageSharp.Mutate(x => x.Resize(800, 600));
-
-                        // Save the compressed image
-                        imageSharp.Save(imagePath);
-                    }
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
 
         public async Task ResetActiveSellerPropertyAsync()
         {

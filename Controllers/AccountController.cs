@@ -10,10 +10,11 @@ namespace FleaMarket.Controllers
     public class AccountController : Controller
     {
         private readonly UserService _userService;
-
-        public AccountController(UserService userService)
+        private readonly ImageService _imageService;
+        public AccountController(UserService userService, ImageService imageService)
         {
             _userService = userService;
+            _imageService = imageService;
         }
 
         public IActionResult Index()
@@ -32,7 +33,7 @@ namespace FleaMarket.Controllers
                 {
                     UserEntity entity = await _userService.GetUserAsync(x => x.UserName == User.Identity.Name);
 
-                    await _userService.UploadImageAsync(entity, viewModel.Image);
+                    await _imageService.UploadUserPlaceImageAsync(entity, viewModel.Image);
                 }
                 return View();
             }

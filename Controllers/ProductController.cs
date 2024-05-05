@@ -8,16 +8,16 @@ namespace FleaMarket.Controllers
 {
     public class ProductController : Controller
     {
-
         private readonly ProductService _productService;
         private readonly UserService _userService;
         private readonly SendGridService _sendGridService;
-
-        public ProductController(ProductService productService, UserService userService, SendGridService sendGridService)
+        private readonly ImageService _imageService;
+        public ProductController(ProductService productService, UserService userService, SendGridService sendGridService, ImageService imageService)
         {
             _productService = productService;
             _userService = userService;
             _sendGridService = sendGridService;
+            _imageService = imageService;
         }
 
         public IActionResult Index()
@@ -79,7 +79,7 @@ namespace FleaMarket.Controllers
 
                     if (viewModel.Image != null)
                     {
-                        await _productService.UploadImageAsync(entity, viewModel.Image);
+                        await _imageService.UploadProductImageAsync(entity, viewModel.Image);
                     }
 
                     TempData["SuccessMessage"] = "Produkten lades till";

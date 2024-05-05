@@ -31,6 +31,7 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MarketService>();
+builder.Services.AddScoped<ImageService>();
 builder.Services.AddScoped<SwishAPIService>();
 builder.Services.AddSingleton<SwishAPIService>();
 builder.Services.AddScoped<SendGridService>();
