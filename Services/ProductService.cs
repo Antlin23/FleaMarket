@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -115,7 +117,21 @@ namespace FleaMarket.Services
             try
             {
                 string imagePath = $"{_webHostEnvironment.WebRootPath}/Images/Products/{entity.ImageUrl}";
-                await image.CopyToAsync(new FileStream(imagePath, FileMode.Create));
+                // Open the uploaded image using ImageSharp
+                using (var stream = new MemoryStream())
+                {
+                    await image.CopyToAsync(stream);
+                    stream.Seek(0, SeekOrigin.Begin);
+
+                    using (var imageSharp = Image.Load(stream))
+                    {
+                        // Resize the image to a smaller size (optional)
+                        imageSharp.Mutate(x => x.Resize(800, 600));
+
+                        // Save the compressed image
+                        imageSharp.Save(imagePath);
+                    }
+                }
                 return true;
             }
             catch
@@ -123,5 +139,6 @@ namespace FleaMarket.Services
                 return false;
             }
         }
+
     }
 }
