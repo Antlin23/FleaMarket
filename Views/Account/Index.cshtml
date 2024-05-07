@@ -34,6 +34,10 @@
     {
         <p class="bg-success">@TempData["SuccessMessage"]</p>
     }
+    @if (@TempData["ProductDeletedMessage"] != null)
+    {
+        <p class="bg-success">@TempData["ProductDeletedMessage"]</p>
+    }
 
     <!--If the user isActiveSeller is false-->
     @if (user.IsActiveSeller == false)

@@ -20,13 +20,13 @@ namespace FleaMarket.Services
             //Using User secrets, only works in development environment
             // var apiKey = _config["SendGridApiKey"];
 
-            var apiKey = "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";
+            var apiKey = Environment.GetEnvironmentVariable("SendGridApiKey");
 
             var client = new SendGridClient(apiKey);
 
             //Use this in production
             //msg.AddTo(new EmailAddress(userToConfirm.Email, userToConfirm.UserName));
-            message.AddTo(new EmailAddress("anton.jumkil@gmail.com", "TrattTratt"));
+            message.AddTo(new EmailAddress("anton.jumkil@gmail.com", "Användarnamn"));
             var response = await client.SendEmailAsync(message);
         }
     }

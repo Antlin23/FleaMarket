@@ -102,6 +102,8 @@ namespace FleaMarket.Controllers
 
             if (await _productService.DeleteProductAsync(productId))
             {
+                TempData["ProductDeletedMessage"] = "Produkten togs bort";
+
                 return RedirectToAction("Index", "Account");
             }
             else
