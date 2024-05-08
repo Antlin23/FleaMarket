@@ -17,6 +17,10 @@ a:hover {
   color: black;
 }
 
+.small-text {
+  color: #575757;
+}
+
 .breadcrumb-container {
   margin-top: 1rem;
 }
@@ -172,7 +176,7 @@ form .button {
 }
 
 /* The Modal (background) */
-.modal {
+.product-card--content--modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -187,11 +191,72 @@ form .button {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 25% auto; /* 15% from the top and centered */
-  padding: 16px;
-  border: 1px solid #888;
+  margin: 10% auto; /* 10% from the top and centered */
   width: 80%; /* Could be more or less, depending on screen size */
+}
+.modal-content .modal-content--img-group {
+  position: relative;
+}
+.modal-content .modal-content--img-group .close {
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+  background-color: rgba(232, 232, 232, 0.5529411765);
+  color: #5c5c5c;
+  width: fit-content;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+.modal-content .modal-content--img-group .product-card--content--modal--product-img {
+  max-width: 100%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.modal-content .modal-content--content {
+  padding: 16px;
+  padding-top: 12px;
+  position: relative;
+  bottom: 18px;
+  background-color: white;
+  border-radius: 20px;
+}
+.modal-content .modal-content--content .modal-content--market-category-group {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-content .modal-content--content .modal-content--product-title {
+  margin-top: 6px;
+}
+.modal-content .modal-content--content .modal-content--place-price-group {
+  display: flex;
+  justify-content: space-between;
+  min-height: 3.4rem;
+  margin-top: 1rem;
+}
+.modal-content .modal-content--content .modal-content--place-price-group .modal-content--place-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modal-content .modal-content--content .modal-content--place-price-group .modal-content--place-group .modal-content--place {
+  font-weight: 500;
+  max-width: 90%;
+}
+.modal-content .modal-content--content .modal-content--place-price-group .modal-content--price-group {
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modal-content .modal-content--content .modal-content--place-price-group .modal-content--price-group .modal-content--price {
+  font-size: 20px;
+  font-weight: 500;
+}
+.modal-content .modal-content--content .modal-content--place-img {
+  margin-top: 1.3rem;
+  max-width: 100%;
+  border-radius: 4px;
 }
 
 /* The Close Button */

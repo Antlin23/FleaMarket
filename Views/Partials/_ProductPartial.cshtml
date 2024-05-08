@@ -49,24 +49,43 @@
             }
         </div>
         <!-- The Modal -->
-        <div id="seeMoreModal-@Model.Id" class="modal">
-            <!-- Modal content -->
+        <div id="seeMoreModal-@Model.Id" class="product-card--content--modal">
             <div class="modal-content">
-                <div class="close"><i class="fa-solid fa-xmark"></i></div>
                 @if (Model.ImageUrl != null)
                 {
-                    <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
-                }                
-                <h5 class="mt-2">@Model.Title</h5>
-                <p>Plats: @place</p>
-                @if(user.PlaceImgUrl != null)
-                {
-                    <div class="product-card-content--place-img"> 
-                        <img src="~/Images/UserPlaces/@user.PlaceImgUrl" alt="Bild kan ej visas." />
+                    <div class="modal-content--img-group">
+                        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                        <img class="product-card--content--modal--product-img" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
                     </div>
                 }
-                <p>@market.MarketTitle</p>
-                <p>@Model.Price kr</p>
+                <div class="modal-content--content">
+                    <div class="modal-content--market-category-group">
+                        <p class="small-text">@market.MarketTitle</p>
+                        <p class="small-text">@Model.Category</p>
+                    </div>
+                    <h5 class="modal-content--product-title">@Model.Title</h5>
+                    <div class="modal-content--place-price-group">
+                        <div class="modal-content--place-group">
+                            <p class="small-text">Plats</p>
+                            <p class="modal-content--place">@place</p>
+                        </div>
+                        <div class="modal-content--price-group">
+                            <p class="small-text">Pris</p>
+                            @if(Model.Price != 0)
+                            {
+                                <p class="modal-content--price">@Model.Price kr</p>
+                            }
+                            else
+                            {
+                                <p class="">Pris ej angett</p>
+                            }
+                        </div>
+                    </div>
+                    @if (user.PlaceImgUrl != null)
+                    {
+                        <img class="modal-content--place-img" src="~/Images/UserPlaces/@user.PlaceImgUrl" alt="Bild kan ej visas." />
+                    }
+                </div>
             </div>
         </div>
     </div>

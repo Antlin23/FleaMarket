@@ -10,9 +10,7 @@ var spans = document.getElementsByClassName("close");
 
 for (var i = 0; i < spans.length; i++) {
     spans[i].onclick = function () {
-        console.log("hej");
-        let modals = document.getElementsByClassName("modal");
-        console.log("hej 2");
+        let modals = document.getElementsByClassName("product-card--content--modal");
         for (const modal of modals) {
             modal.style.display = "none";
         }
@@ -21,7 +19,7 @@ for (var i = 0; i < spans.length; i++) {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    let modals = document.getElementsByClassName("modal");
+    let modals = document.getElementsByClassName("product-card--content--modal");
 
     for (const modal of modals) {
         if (event.target == modal) {
