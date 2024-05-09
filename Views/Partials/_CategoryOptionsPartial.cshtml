@@ -1,4 +1,7 @@
-﻿<select name="Category">
+﻿@using FleaMarket.Models.ViewModels
+@model SearchProductViewModel
+
+<select name="Category" asp-for="Category">
     <option value="Alla kategorier" selected>Alla kategorier</option>
     <optgroup label="Fordon">
         <option value="Bildelar & tillbehör">Bildelar & tillbehör</option>

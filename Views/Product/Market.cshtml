@@ -42,7 +42,7 @@
         <i class="input-icon fa-solid fa-list"></i>
         <i class="dropdown-icon fa-solid fa-caret-down"></i>
 
-        <partial name="/Views/Partials/_CategoryOptionsPartial.cshtml" />
+        <partial name="/Views/Partials/_CategoryOptionsPartial.cshtml" model="@Model"/>
 
     </div>
     <input asp-for="MarketName" type="text" hidden value="@marketName" />
