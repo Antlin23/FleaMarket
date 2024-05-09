@@ -95,8 +95,10 @@
             @foreach (var product in userProducts)
             {
                 <div>
-                    @ViewData["productId"] = product.Id.ToString();
-                    <partial name="/Views/Partials/_ProductPartial.cshtml" />
+                    @{
+                        ViewData["productId"] = product.Id.ToString();
+                        <partial name="/Views/Partials/_ProductPartial.cshtml" />
+                    }
                 </div>
             }
         }

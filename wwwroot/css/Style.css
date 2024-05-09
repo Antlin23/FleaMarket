@@ -275,7 +275,7 @@ form .button {
 /*Header*/
 header {
   background-color: white;
-  padding: 1rem 0.2rem;
+  padding: 0.8rem 0.2rem;
   border-bottom: 1px solid lightgray;
 }
 header a {
