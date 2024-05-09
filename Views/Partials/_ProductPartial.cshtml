@@ -51,9 +51,15 @@
             {
                 if (product.UserId == loggedInUser.Id)
                 {
-                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
-                        <button class="button orange-button product-card--delete-button" type="submit">Ta bort</button>
-                    </form>
+                    <div id="deleteProductConGroup-@product.Id" class="d-none">
+                        <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
+                            <button onclick='closeDeleteProductConfirmation("@product.Id.ToString()")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                            <button class="button orange-button product-card--delete-button" type="submit">Ta bort</button>
+                        </form>
+                    </div>
+                    <div id="deleteProductGroup-@product.Id">
+                        <button onclick='showDeleteProductConfirmation("@product.Id.ToString()")' class="button orange-button product-card--delete-button">Ta bort</button>
+                    </div>
                 }
             }
         </div>

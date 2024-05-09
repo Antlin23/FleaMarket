@@ -26,8 +26,24 @@ window.onclick = function (event) {
             modal.style.display = "none";
         }
     }
-
 }
+
+
+//delete product button 
+const showDeleteProductConfirmation = (productId) => {
+    var deleteProductConGroup = document.getElementById('deleteProductConGroup-' + productId);
+    var deleteBtnGroup = document.getElementById('deleteProductGroup-' + productId);
+    deleteBtnGroup.classList.add("d-none");
+    deleteProductConGroup.classList.remove("d-none");
+}
+const closeDeleteProductConfirmation = (productId) => {
+    var deleteProductConGroup = document.getElementById('deleteProductConGroup-' + productId);
+    var deleteBtnGroup = document.getElementById('deleteProductGroup-' + productId);
+    deleteProductConGroup.classList.add("d-none");
+    deleteBtnGroup.classList.remove("d-none");
+}
+
+
 
 //validating functions ----NOT IN USE---------------------------------------------------------
 const validateText = (event) => {
