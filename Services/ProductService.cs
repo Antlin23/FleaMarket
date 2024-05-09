@@ -40,6 +40,14 @@ namespace FleaMarket.Services
             return _context.Products.ToList().Where(x => x.MarketId == marketId);
         }
 
+        //gets product with ID from database
+        public async Task<ProductEntity> GetProductAsync(Expression<Func<ProductEntity, bool>> expression)
+        {
+            // if I need to include something; Include(x => x.ProductTags).ThenInclude(x => x.Tag).
+            var product = await _context.Products.FirstOrDefaultAsync(expression);
+            return product!;
+        }
+
         //gets category products from database
         public async Task<SearchProductViewModel> GetProductsByFilterAsync(SearchProductViewModel viewModel)
         {

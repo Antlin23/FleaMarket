@@ -56,8 +56,8 @@
     {
         @foreach (var product in marketProducts)
         {
-            <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
-
+            ViewData["productId"] = product.Id.ToString();
+            <partial name="/Views/Partials/_ProductPartial.cshtml" />
         }
     }
     else if (Model.NoProducts == null && Model.Products != null)
@@ -70,7 +70,8 @@
         {
             @foreach (var product in Model.Products)
             {
-                <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
+                ViewData["productId"] = product.Id.ToString();
+                <partial name="/Views/Partials/_ProductPartial.cshtml" />
             }
         }
     }
@@ -78,7 +79,8 @@
     {
         @foreach (var product in marketProducts)
         {
-            <partial name="/Views/Partials/_ProductPartial.cshtml" model="product" />
+            ViewData["productId"] = product.Id.ToString();
+            <partial name="/Views/Partials/_ProductPartial.cshtml" />
         }
     }
 </div>

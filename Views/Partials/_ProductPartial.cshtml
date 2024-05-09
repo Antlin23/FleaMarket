@@ -1,12 +1,21 @@
 ﻿@using FleaMarket.Models.Entities;
+@using FleaMarket.Models.ViewModels
 @using FleaMarket.Services;
-@model ProductEntity
+@model SearchProductViewModel
 @inject UserService _userService
 @inject ProductService _productService
 @{
-    var market = await _productService.GetMarketAsync(x => x.Id == Model.MarketId);
+    var productIdString = ViewData["productId"]?.ToString();
 
-    UserEntity user = await _userService.GetUserAsync(x => x.Id == Model.UserId);
+    Guid productId = Guid.Parse(productIdString);
+
+
+    var product = await _productService.GetProductAsync(x => x.Id == productId);
+
+
+    var market = await _productService.GetMarketAsync(x => x.Id == product.MarketId);
+
+    UserEntity user = await _userService.GetUserAsync(x => x.Id == product.UserId);
 
     UserEntity loggedInUser = new UserEntity();
 
@@ -15,55 +24,59 @@
     var place = user.Place;
 }
 <div class="product-card">
-    @if (Model.ImageUrl != null)
+    @if (product.ImageUrl != null)
     {
         <div class="product-card--img-container">
-            <img src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
+            <img src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas." />
         </div>
     }
     <div class="product-card--content">
         <div>
-            <h4 class="product-title">@Model.Title</h4>
+            <h4 class="product-title">@product.Title</h4>
             <p class="market-title">@market.MarketTitle</p>
-            @if (Model.Brand != null)
+            @if (product.Brand != null)
             {
-                <p>Märke: @Model.Brand</p>
+                <p>Märke: @product.Brand</p>
             }
         </div>
-        @if (Model.Price != 0)
+        @if (product.Price != 0)
         {
-            <p class="product-price">@Model.Price kr</p>
+            <p class="product-price">@product.Price kr</p>
         }
 
         <!-- Trigger/Open The Modal -->
         <div class="d-flex justify-content-between">
-            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@Model.Id" onclick='seeMoreProductInfo("seeMoreModal-@Model.Id")'>Se mer</button>
+            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='seeMoreProductInfo("seeMoreModal-@product.Id")'>Se mer</button>
             @if (User != null && loggedInUser != null)
             {
-                if (Model.UserId == loggedInUser.Id)
+                if (product.UserId == loggedInUser.Id)
                 {
-                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@Model.Id">
+                    <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
                         <button class="button orange-button product-card--delete-button" type="submit">Ta bort</button>
                     </form>
                 }
             }
         </div>
         <!-- The Modal -->
-        <div id="seeMoreModal-@Model.Id" class="product-card--content--modal">
+        <div id="seeMoreModal-@product.Id" class="product-card--content--modal">
             <div class="modal-content">
-                @if (Model.ImageUrl != null)
+                @if (product.ImageUrl != null)
                 {
                     <div class="modal-content--img-group">
                         <div class="close"><i class="fa-solid fa-xmark"></i></div>
-                        <img class="product-card--content--modal--product-img" src="~/Images/Products/@Model.ImageUrl" alt="Bild kan ej visas." />
+                        <img class="product-card--content--modal--product-img" src="~/Images/Products/@product.ImageUrl" alt="Bild kan ej visas." />
                     </div>
                 }
                 <div class="modal-content--content">
                     <div class="modal-content--market-category-group">
-                        <p class="small-text">@market.MarketTitle</p>
-                        <p class="small-text">@Model.Category</p>
+                        <a class="small-text" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+                        <form method="post" asp-controller="Product" asp-action="Market">
+                            <input asp-for="@Model.Category" value="@product.Category" hidden/>
+                            <input asp-for="@Model.MarketName" value="@market.MarketTitle" hidden/>
+                            <button type="submit" class="small-text modal-content--category-btn">@product.Category</button>
+                        </form>
                     </div>
-                    <h5 class="modal-content--product-title">@Model.Title</h5>
+                    <h5 class="modal-content--product-title">@product.Title</h5>
                     <div class="modal-content--place-price-group">
                         <div class="modal-content--place-group">
                             <p class="small-text">Plats</p>
@@ -71,9 +84,9 @@
                         </div>
                         <div class="modal-content--price-group">
                             <p class="small-text">Pris</p>
-                            @if(Model.Price != 0)
+                            @if (product.Price != 0)
                             {
-                                <p class="modal-content--price">@Model.Price kr</p>
+                                <p class="modal-content--price">@product.Price kr</p>
                             }
                             else
                             {

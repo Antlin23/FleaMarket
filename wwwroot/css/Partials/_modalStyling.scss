@@ -29,6 +29,14 @@
             width: fit-content;
             border-radius: 50%;
             font-size: 1rem;
+            transition: 150ms ease-in-out all;
+
+
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                background-color: #e8e8e8b6;
+            }
         }
 
         .product-card--content--modal--product-img {
@@ -40,7 +48,7 @@
 
 
     .modal-content--content {
-        padding: 16px;
+        padding: 14px;
         padding-top: 12px;
         position: relative;
         bottom: 18px;
@@ -50,6 +58,16 @@
         .modal-content--market-category-group {
             display: flex;
             justify-content: space-between;
+
+            .modal-content--category-btn {
+                background-color: transparent;
+                border: none;
+                transition: 150ms ease-in-out all;
+
+                &:hover {
+                    color: black;
+                }
+            }
         }
 
         .modal-content--product-title {
@@ -93,20 +111,3 @@
         }
     }
 }
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    font-size: 20px;
-    padding: 0;
-    text-align: right;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-//-------------------------------------------
-
