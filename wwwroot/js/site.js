@@ -1,4 +1,12 @@
-//MODAL POPUP ---------------------------------------------------------------------------
+//MODAL POPUPS --
+//Delete all products modal
+const openDeletProductsModal = () => {
+    // Get the modal
+    var modal = document.getElementById("deleteAllProductsModal");
+    modal.style.display = "block";
+}
+
+//See more product info modal
 const seeMoreProductInfo = (modalId) => {
 // Get the modal
 var modal = document.getElementById(modalId);
@@ -10,7 +18,7 @@ var spans = document.getElementsByClassName("close");
 
 for (var i = 0; i < spans.length; i++) {
     spans[i].onclick = function () {
-        let modals = document.getElementsByClassName("product-card--content--modal");
+        let modals = document.getElementsByClassName("__modal");
         for (const modal of modals) {
             modal.style.display = "none";
         }
@@ -19,7 +27,7 @@ for (var i = 0; i < spans.length; i++) {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    let modals = document.getElementsByClassName("product-card--content--modal");
+    let modals = document.getElementsByClassName("__modal");
 
     for (const modal of modals) {
         if (event.target == modal) {
@@ -29,7 +37,7 @@ window.onclick = function (event) {
 }
 
 
-//delete product button 
+//delete product button --
 const showDeleteProductConfirmation = (productId) => {
     var deleteProductConGroup = document.getElementById('deleteProductConGroup-' + productId);
     var deleteBtnGroup = document.getElementById('deleteProductGroup-' + productId);

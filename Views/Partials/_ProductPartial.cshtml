@@ -54,7 +54,7 @@
                     <div id="deleteProductConGroup-@product.Id" class="d-none">
                         <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
                             <button onclick='closeDeleteProductConfirmation("@product.Id.ToString()")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
-                            <button class="button orange-button product-card--delete-button" type="submit">Ta bort</button>
+                            <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                         </form>
                     </div>
                     <div id="deleteProductGroup-@product.Id">
@@ -64,7 +64,7 @@
             }
         </div>
         <!-- The Modal -->
-        <div id="seeMoreModal-@product.Id" class="product-card--content--modal">
+        <div id="seeMoreModal-@product.Id" class="product-card--content--modal __modal">
             <div class="modal-content">
                 @if (product.ImageUrl != null)
                 {
