@@ -49,7 +49,7 @@
             <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='seeMoreProductInfo("seeMoreModal-@product.Id")'>Se mer</button>
             @if (User != null && loggedInUser != null)
             {
-                if (product.UserId == loggedInUser.Id)
+                if (product.UserId == loggedInUser.Id || User.IsInRole("Admin"))
                 {
                     <div id="deleteProductConGroup-@product.Id" class="d-none">
                         <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">

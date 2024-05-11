@@ -99,15 +99,34 @@
                     <div class="close"><i class="fa-solid fa-xmark"></i></div>
                     <p>Detta är en modal där du tar bort alla dina produkter.</p>
 
-                    <div id="deleteProductsConGroup" class="d-none">
-                        <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
-                            <button onclick='closeDeleteProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
-                            <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
-                        </form>
+                    <div>
+                        <div id="deleteProductsConGroup" class="d-none">
+                            <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
+                                <button onclick='closeDeleteProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                                <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
+                            </form>
+                        </div>
+                        <div id="deleteProductsGroup">
+                            <button onclick='showDeleteProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort produkter</button>
+                        </div>
                     </div>
-                    <div id="deleteProductsGroup">
-                        <button onclick='showDeleteProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort produkter</button>
-                    </div>
+                    <!--Admin del all products-->
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div>
+                            <p>Admin</p>
+                            <div id="deleteAllProductsConGroup" class="d-none">
+                                <form method="post" asp-controller="Admin" asp-action="DeleteAllProducts">
+                                    <button onclick='closeDeleteAllProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                                    <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
+                                </form>
+                            </div>
+                            <div id="deleteAllProductsGroup">
+                                <button onclick='showDeleteAllProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort alla produkter</button>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
             <h5>Dina produkter</h5>

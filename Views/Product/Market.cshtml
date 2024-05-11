@@ -19,7 +19,7 @@
 
     IEnumerable<ProductEntity> marketProducts = new List<ProductEntity>();
 
-    marketProducts = productService.GetAllMarketProducts(market.Id);
+    marketProducts = await productService.GetAllMarketProductsAsync(market.Id);
 
     ViewData["Title"] = marketName;
 

@@ -36,9 +36,9 @@ namespace FleaMarket.Services
 
 
         //gets products from database
-        public IEnumerable<ProductEntity> GetAllMarketProducts(Guid marketId)
+        public async Task<IEnumerable<ProductEntity>> GetAllMarketProductsAsync(Guid marketId)
         {
-            return _context.Products.ToList().Where(x => x.MarketId == marketId);
+            return await _context.Products.Where(x => x.MarketId == marketId).ToListAsync();
         }
 
         //gets product with ID from database
@@ -56,25 +56,25 @@ namespace FleaMarket.Services
 
             var _market = await GetMarketAsync(x => x.MarketTitle == viewModel.MarketName);
 
-            marketProducts = GetAllMarketProducts(_market.Id);
+            marketProducts = await GetAllMarketProductsAsync(_market.Id);
 
             if (viewModel.Category != null && viewModel.Category != "Alla kategorier" && viewModel.SearchString != null)
             {
                 viewModel.Products = marketProducts
-                    .ToList()
-                    .Where(x => x.Category == viewModel.Category && x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
+                    .Where(x => x.Category == viewModel.Category && x.Title.ToLower().Contains(viewModel.SearchString.ToLower()))
+                    .ToList();
             }
             else if (viewModel.Category == null || viewModel.Category == "Alla kategorier" && viewModel.SearchString != null)
             {
                 viewModel.Products = marketProducts
-                    .ToList()
-                    .Where(x => x.Title.ToLower().Contains(viewModel.SearchString.ToLower()));
+                    .Where(x => x.Title.ToLower().Contains(viewModel.SearchString.ToLower()))
+                    .ToList();
             }
             else if (viewModel.Category != null || viewModel.Category != "Alla kategorier" && viewModel.SearchString == null)
             {
                 viewModel.Products = marketProducts
-                    .ToList()
-                    .Where(x => x.Category == viewModel.Category);
+                    .Where(x => x.Category == viewModel.Category)
+                    .ToList();
             }
 
             if (viewModel.Products == null) {
@@ -104,7 +104,7 @@ namespace FleaMarket.Services
 
         public IEnumerable<ProductEntity> GetAllUserProducts(string userId)
         {
-            return _context.Products.ToList().Where(x => x.UserId == userId);
+            return _context.Products.Where(x => x.UserId == userId).ToList();
         }
 
         public async Task<bool> DeleteProductAsync(Guid productId)
@@ -119,12 +119,27 @@ namespace FleaMarket.Services
             catch { return false; }
         }
 
-        [HttpPost]
         public async Task<bool> DeleteAllUserProductsAsync(string userId)
         {
             try
             {
                 var _products = await _context.Products.Where(x => x.UserId == userId).ToListAsync();
+
+                foreach (var product in _products)
+                {
+                    _context.Products.Remove(product);
+                }
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> DeleteAllProductsAsync()
+        {
+            try
+            {
+                var _products = await _context.Products.ToListAsync();
 
                 foreach (var product in _products)
                 {

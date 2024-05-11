@@ -51,7 +51,7 @@ const closeDeleteProductConfirmation = (productId) => {
     deleteBtnGroup.classList.remove("d-none");
 }
 
-//delete all products button --
+//delete all user products button --
 const showDeleteProductsConfirmation = () => {
     var deleteProductsConGroup = document.getElementById('deleteProductsConGroup');
     var deleteBtnGroup = document.getElementById('deleteProductsGroup');
@@ -63,6 +63,20 @@ const closeDeleteProductsConfirmation = () => {
     var deleteBtnGroup = document.getElementById('deleteProductsGroup');
     deleteProductsConGroup.classList.add("d-none");
     deleteBtnGroup.classList.remove("d-none");
+}
+
+//admin delete ALL products button --
+const showDeleteAllProductsConfirmation = () => {
+    var deleteAllProductsConGroup = document.getElementById('deleteAllProductsConGroup');
+    var deleteAllProductsGroup = document.getElementById('deleteAllProductsGroup');
+    deleteAllProductsGroup.classList.add("d-none");
+    deleteAllProductsConGroup.classList.remove("d-none");
+}
+const closeDeleteAllProductsConfirmation = () => {
+    var deleteAllProductsConGroup = document.getElementById('deleteAllProductsConGroup');
+    var deleteAllProductsGroup = document.getElementById('deleteAllProductsGroup');
+    deleteAllProductsConGroup.classList.add("d-none");
+    deleteAllProductsGroup.classList.remove("d-none");
 }
 
 
