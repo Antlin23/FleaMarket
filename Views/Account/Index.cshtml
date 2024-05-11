@@ -85,26 +85,31 @@
         </form>
 
         <a class="button orange-button account-section--add-product-btn" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
-        <button class="button purple-button product-card--see-more-btn" id="openDeleteAllProductsBtn" onclick='openDeletProductsModal()'>Jag är klar för idag</button>
-
-
-
-        <!-- The Modal -->
-        <div id="deleteAllProductsModal" class="product-card--content--modal __modal">
-            <div class="modal-content bg-danger p-5">
-                <div class="close"><i class="fa-solid fa-xmark"></i></div>
-                Detta är en modal där du tar bort alla dina produkter
-            </div>
-        </div>
-
-
-
 
         @if(user.Products.Count == 0)
         {
         }
         else
         {
+            <button class="button purple-button product-card--see-more-btn" id="openDeleteAllProductsBtn" onclick='openDeletProductsModal()'>Jag är klar för idag</button>
+
+            <!-- The delete all products Modal -->
+            <div id="deleteAllProductsModal" class="product-card--content--modal __modal">
+                <div class="modal-content bg-danger p-5">
+                    <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                    <p>Detta är en modal där du tar bort alla dina produkter.</p>
+
+                    <div id="deleteProductsConGroup" class="d-none">
+                        <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
+                            <button onclick='closeDeleteProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                            <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
+                        </form>
+                    </div>
+                    <div id="deleteProductsGroup">
+                        <button onclick='showDeleteProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort produkter</button>
+                    </div>
+                </div>
+            </div>
             <h5>Dina produkter</h5>
             @foreach (var product in userProducts)
             {

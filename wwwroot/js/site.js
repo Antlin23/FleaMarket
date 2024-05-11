@@ -51,6 +51,20 @@ const closeDeleteProductConfirmation = (productId) => {
     deleteBtnGroup.classList.remove("d-none");
 }
 
+//delete all products button --
+const showDeleteProductsConfirmation = () => {
+    var deleteProductsConGroup = document.getElementById('deleteProductsConGroup');
+    var deleteBtnGroup = document.getElementById('deleteProductsGroup');
+    deleteBtnGroup.classList.add("d-none");
+    deleteProductsConGroup.classList.remove("d-none");
+}
+const closeDeleteProductsConfirmation = () => {
+    var deleteProductsConGroup = document.getElementById('deleteProductsConGroup');
+    var deleteBtnGroup = document.getElementById('deleteProductsGroup');
+    deleteProductsConGroup.classList.add("d-none");
+    deleteBtnGroup.classList.remove("d-none");
+}
+
 
 
 //validating functions ----NOT IN USE---------------------------------------------------------

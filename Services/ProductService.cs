@@ -4,6 +4,7 @@ using FleaMarket.Models.Entities;
 using FleaMarket.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using SixLabors.ImageSharp;
@@ -112,6 +113,23 @@ namespace FleaMarket.Services
             {
                 var _product = await _context.Products.FindAsync(productId);
                 _context.Products.Remove(_product!);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch { return false; }
+        }
+
+        [HttpPost]
+        public async Task<bool> DeleteAllUserProductsAsync(string userId)
+        {
+            try
+            {
+                var _products = await _context.Products.Where(x => x.UserId == userId).ToListAsync();
+
+                foreach (var product in _products)
+                {
+                    _context.Products.Remove(product);
+                }
                 await _context.SaveChangesAsync();
                 return true;
             }

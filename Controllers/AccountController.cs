@@ -10,10 +10,13 @@ namespace FleaMarket.Controllers
     public class AccountController : Controller
     {
         private readonly UserService _userService;
+        private readonly ProductService _productService;
         private readonly ImageService _imageService;
-        public AccountController(UserService userService, ImageService imageService)
+
+        public AccountController(UserService userService, ProductService productService, ImageService imageService)
         {
             _userService = userService;
+            _productService = productService;
             _imageService = imageService;
         }
 
@@ -43,6 +46,24 @@ namespace FleaMarket.Controllers
                 return View();
             }
             
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAllUserProducts()
+        {
+            try
+            {
+                UserEntity entity = await _userService.GetUserAsync(x => x.UserName == User.Identity.Name);
+
+                await _productService.DeleteAllUserProductsAsync(entity.Id);
+
+                TempData["SuccessMessage"] = "Alla produkter togs bort";
+
+                return RedirectToAction("Index", "Account");
+            }
+            catch {
+                return View();
+            }
         }
     }
 }
