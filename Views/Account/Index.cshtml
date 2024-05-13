@@ -102,12 +102,13 @@
                     <div>
                         <div id="deleteProductsConGroup" class="d-none">
                             <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
-                                <button onclick='closeDeleteProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                                <button onclick='hideConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                 <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                             </form>
                         </div>
                         <div id="deleteProductsGroup">
-                            <button onclick='showDeleteProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort produkter</button>
+                            <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button">
+                                produkter</button>
                         </div>
                     </div>
                     <!--Admin del all products-->
@@ -117,12 +118,12 @@
                             <p>Admin</p>
                             <div id="deleteAllProductsConGroup" class="d-none">
                                 <form method="post" asp-controller="Admin" asp-action="DeleteAllProducts">
-                                    <button onclick='closeDeleteAllProductsConfirmation()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                                    <button onclick='hideConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                     <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                                 </form>
                             </div>
                             <div id="deleteAllProductsGroup">
-                                <button onclick='showDeleteAllProductsConfirmation()' class="button orange-button product-card--delete-button">Ta bort alla produkter</button>
+                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button">Ta bort alla produkter</button>
                             </div>
                         </div>
                     }

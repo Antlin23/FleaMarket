@@ -36,52 +36,36 @@ window.onclick = function (event) {
     }
 }
 
-
-//delete product button --
-const showDeleteProductConfirmation = (productId) => {
-    var deleteProductConGroup = document.getElementById('deleteProductConGroup-' + productId);
-    var deleteBtnGroup = document.getElementById('deleteProductGroup-' + productId);
-    deleteBtnGroup.classList.add("d-none");
-    deleteProductConGroup.classList.remove("d-none");
-}
-const closeDeleteProductConfirmation = (productId) => {
-    var deleteProductConGroup = document.getElementById('deleteProductConGroup-' + productId);
-    var deleteBtnGroup = document.getElementById('deleteProductGroup-' + productId);
-    deleteProductConGroup.classList.add("d-none");
-    deleteBtnGroup.classList.remove("d-none");
-}
-
-//delete all user products button --
-const showDeleteProductsConfirmation = () => {
-    var deleteProductsConGroup = document.getElementById('deleteProductsConGroup');
-    var deleteBtnGroup = document.getElementById('deleteProductsGroup');
-    deleteBtnGroup.classList.add("d-none");
-    deleteProductsConGroup.classList.remove("d-none");
-}
-const closeDeleteProductsConfirmation = () => {
-    var deleteProductsConGroup = document.getElementById('deleteProductsConGroup');
-    var deleteBtnGroup = document.getElementById('deleteProductsGroup');
-    deleteProductsConGroup.classList.add("d-none");
-    deleteBtnGroup.classList.remove("d-none");
+//SHOW AND HIDE BTN GROUPS --
+const showConfirmationGroup = (btnGroup, btnConfirmationGroup, productId) => {
+    if (productId == null) {
+        var btnGroup = document.getElementById(btnGroup);
+        var btnConfirmationGroup = document.getElementById(btnConfirmationGroup);
+    }
+    else {
+        var btnGroup = document.getElementById(btnGroup + productId);
+        var btnConfirmationGroup = document.getElementById(btnConfirmationGroup + productId);
+    }
+    btnGroup.classList.add("d-none");
+    btnConfirmationGroup.classList.remove("d-none");
 }
 
-//admin delete ALL products button --
-const showDeleteAllProductsConfirmation = () => {
-    var deleteAllProductsConGroup = document.getElementById('deleteAllProductsConGroup');
-    var deleteAllProductsGroup = document.getElementById('deleteAllProductsGroup');
-    deleteAllProductsGroup.classList.add("d-none");
-    deleteAllProductsConGroup.classList.remove("d-none");
-}
-const closeDeleteAllProductsConfirmation = () => {
-    var deleteAllProductsConGroup = document.getElementById('deleteAllProductsConGroup');
-    var deleteAllProductsGroup = document.getElementById('deleteAllProductsGroup');
-    deleteAllProductsConGroup.classList.add("d-none");
-    deleteAllProductsGroup.classList.remove("d-none");
+const hideConfirmationGroup = (btnGroup, btnConfirmationGroup, productId) => {
+    if (productId == null) {
+        var btnGroup = document.getElementById(btnGroup);
+        var btnConfirmationGroup = document.getElementById(btnConfirmationGroup);
+    }
+    else {
+        var btnGroup = document.getElementById(btnGroup + productId);
+        var btnConfirmationGroup = document.getElementById(btnConfirmationGroup + productId);
+    }
+    btnGroup.classList.remove("d-none");
+    btnConfirmationGroup.classList.add("d-none");
 }
 
 
 
-//validating functions ----NOT IN USE---------------------------------------------------------
+//validating functions ----NOT IN USE (i think)---------------------------------------------------------
 const validateText = (event) => {
 
     document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "Minst 4 tecken"
