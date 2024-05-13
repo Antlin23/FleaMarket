@@ -51,14 +51,14 @@
             {
                 if (product.UserId == loggedInUser.Id || User.IsInRole("Admin"))
                 {
-                    <div id="deleteProductConGroup-@product.Id" class="d-none">
+                    <div id="deleteProductConGroup-@product.Id" class="d-none btnConfirmationGroup">
                         <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@product.Id">
-                            <button onclick='hideConfirmationGroup("deleteProductGroup-", "deleteProductConGroup-", "@product.Id.ToString()")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                            <button onclick='hideConfirmationGroup()' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                             <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                         </form>
                     </div>
-                    <div id="deleteProductGroup-@product.Id">
-                        <button onclick='showConfirmationGroup("deleteProductGroup-", "deleteProductConGroup-", "@product.Id.ToString()")' class="button orange-button product-card--delete-button">Ta bort</button>
+                    <div id="deleteProductGroup-@product.Id" class="singleBtnGroup">
+                        <button onclick='showConfirmationGroup("deleteProductGroup-", "deleteProductConGroup-", "@product.Id.ToString()")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort</button>
                     </div>
                 }
             }

@@ -100,14 +100,14 @@
                     <p>Detta är en modal där du tar bort alla dina produkter.</p>
 
                     <div>
-                        <div id="deleteProductsConGroup" class="d-none">
+                        <div id="deleteProductsConGroup" class="d-none btnConfirmationGroup">
                             <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
                                 <button onclick='hideConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                 <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                             </form>
                         </div>
-                        <div id="deleteProductsGroup">
-                            <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button">
+                        <div id="deleteProductsGroup" class="singleBtnGroup">
+                            <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">
                                 produkter</button>
                         </div>
                     </div>
@@ -116,14 +116,14 @@
                     {
                         <div>
                             <p>Admin</p>
-                            <div id="deleteAllProductsConGroup" class="d-none">
+                            <div id="deleteAllProductsConGroup" class="d-none btnConfirmationGroup">
                                 <form method="post" asp-controller="Admin" asp-action="DeleteAllProducts">
                                     <button onclick='hideConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                     <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                                 </form>
                             </div>
-                            <div id="deleteAllProductsGroup">
-                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button">Ta bort alla produkter</button>
+                            <div id="deleteAllProductsGroup" class="singleBtnGroup">
+                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort alla produkter</button>
                             </div>
                         </div>
                     }
