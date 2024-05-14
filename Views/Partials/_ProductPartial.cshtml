@@ -75,11 +75,12 @@
                 }
                 <div class="modal-content--content">
                     <div class="modal-content--market-category-group">
-                        <a class="small-text" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+                        <a class="small-text modal-content--market-title" asp-controller="Product" asp-action="Market" asp-route-marketName="@market.MarketTitle">@market.MarketTitle</a>
+                        <p class="modal-content--breadcrumb-divider">/</p>
                         <form method="post" asp-controller="Product" asp-action="Market">
                             <input asp-for="@Model.Category" value="@product.Category" hidden/>
                             <input asp-for="@Model.MarketName" value="@market.MarketTitle" hidden/>
-                            <button type="submit" class="small-text modal-content--category-btn">@product.Category</button>
+                            <input type="submit" class="small-text modal-content--category-name" value="@product.Category" />
                         </form>
                     </div>
                     <h5 class="modal-content--product-title">@product.Title</h5>

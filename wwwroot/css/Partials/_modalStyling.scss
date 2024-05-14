@@ -57,15 +57,29 @@
 
         .modal-content--market-category-group {
             display: flex;
-            justify-content: space-between;
 
-            .modal-content--category-btn {
+            .modal-content--market-title {
+                transition: 150ms ease-in-out all;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .modal-content--breadcrumb-divider {
+                margin: auto 4px;
+            }
+
+            .modal-content--category-name {
+                padding: 0;
                 background-color: transparent;
                 border: none;
+                font-weight: normal;
                 transition: 150ms ease-in-out all;
 
                 &:hover {
                     color: black;
+                    text-decoration: underline;
                 }
             }
         }

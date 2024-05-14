@@ -24,6 +24,9 @@ a:hover {
 .breadcrumb-container {
   margin-top: 1rem;
 }
+.breadcrumb-container .breadcrumb a:hover {
+  text-decoration: underline;
+}
 
 .button {
   display: block;
@@ -228,15 +231,26 @@ form .button {
 }
 .modal-content .modal-content--content .modal-content--market-category-group {
   display: flex;
-  justify-content: space-between;
 }
-.modal-content .modal-content--content .modal-content--market-category-group .modal-content--category-btn {
-  background-color: transparent;
-  border: none;
+.modal-content .modal-content--content .modal-content--market-category-group .modal-content--market-title {
   transition: 150ms ease-in-out all;
 }
-.modal-content .modal-content--content .modal-content--market-category-group .modal-content--category-btn:hover {
+.modal-content .modal-content--content .modal-content--market-category-group .modal-content--market-title:hover {
+  text-decoration: underline;
+}
+.modal-content .modal-content--content .modal-content--market-category-group .modal-content--breadcrumb-divider {
+  margin: auto 4px;
+}
+.modal-content .modal-content--content .modal-content--market-category-group .modal-content--category-name {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font-weight: normal;
+  transition: 150ms ease-in-out all;
+}
+.modal-content .modal-content--content .modal-content--market-category-group .modal-content--category-name:hover {
   color: black;
+  text-decoration: underline;
 }
 .modal-content .modal-content--content .modal-content--product-title {
   margin-top: 6px;
@@ -586,6 +600,7 @@ header .header-container .header-links a {
 .create-product-container .create-product-container-header {
   margin-bottom: 0.4rem;
   font-size: 1rem;
+  font-weight: normal;
 }
 .create-product-container .create-product-container--price-formgroup {
   margin: 0rem 0;

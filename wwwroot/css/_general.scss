@@ -27,6 +27,13 @@ a {
 
 .breadcrumb-container {
     margin-top: 1rem;
+    .breadcrumb{
+        a{
+            &:hover{
+                text-decoration:underline;
+            }
+        }
+    }
 }
 
 .button {
