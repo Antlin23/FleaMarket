@@ -97,7 +97,11 @@
             <div id="deleteAllProductsModal" class="product-card--content--modal __modal">
                 <div class="modal-content bg-danger p-5">
                     <div class="close"><i class="fa-solid fa-xmark"></i></div>
-                    <p>Detta är en modal där du tar bort alla dina produkter.</p>
+                    <h4>Stort tack för att du väljer att använda våran tjänst. <br /> <br /> Vi hoppas att du hade en bra sälj-dag.</h4>
+                    <p>När du är klar för dagen ska du ta bort dina produkter så att besökare inte försöker hitta din plats i onödan.</p>
+                    <p>Klicka på knappen nedan för att ta bort alla dina produkter.</p>
+                    <p>Tack för idag!</p>
+                    <p class="small-text">Hälsningar TradeTrails Teamet</p>
 
                     <div>
                         <div id="deleteProductsConGroup" class="d-none btnConfirmationGroup">
@@ -108,7 +112,7 @@
                         </div>
                         <div id="deleteProductsGroup" class="singleBtnGroup">
                             <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">
-                                produkter</button>
+                                Ta bort produkter</button>
                         </div>
                     </div>
                     <!--Admin del all products-->
@@ -151,6 +155,7 @@
         <a class="my-3 text-decoration-underline" asp-controller="Admin" asp-action="RegisterMarket">Skapa ny marknad</a>
     }
 
+    <a class="logout-link text-decoration-underline" asp-controller="Authentication" asp-action="ForgotPassword">Återställ lösenord</a>
     <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
 </section>
 

@@ -6,7 +6,7 @@
 
 <div class="container auth-container">
     <div>
-        <h2>Skapa ett företagskonto</h2>
+        <h2>Skapa företagskonto</h2>
         <p>Kom enkelt igång och sälj genom att skapa ett konto.</p>
         <hr />
         <form method="post" asp-action="RegisterUser" asp-controller="Authentication" novalidate>
@@ -20,9 +20,10 @@
                 <input asp-for=Email type="email" class="form-control" id="email" placeholder="E-postadress">
                 <span class="small text-danger" asp-validation-for="Email"></span>
             </div>
-            <div class="form-group">
-                <input asp-for=Password type="password" class="form-control" id="password" rows="3" placeholder="Lösenord" />
+            <div class="form-group toggle-password-visibility">
+                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lösenord" />
                 <span class="small text-danger" asp-validation-for="Password"></span>
+                <div class="" id="togglePassword"><i class="fa-solid fa-eye-slash"></i></div>
             </div>
             <button type="submit" class="button purple-bg-button">Skapa konto</button>
         </form>

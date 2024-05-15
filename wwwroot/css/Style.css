@@ -439,6 +439,18 @@ header .header-container .header-links a {
   padding: 0.6rem 0;
   padding-left: 1rem;
 }
+.auth-container form .toggle-password-visibility {
+  position: relative;
+}
+.auth-container form .toggle-password-visibility #togglePassword {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  height: 35px;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+}
 .auth-container .auth-container--footer {
   width: 100%;
   align-self: end;
