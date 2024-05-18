@@ -156,7 +156,16 @@
     }
 
     <a class="logout-link text-decoration-underline" asp-controller="Authentication" asp-action="ForgotPassword">Återställ lösenord</a>
-    <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
+    <button class="logout-link text-decoration-underline mt-2 d-block" onclick='openModal("logoutModal")'>Logga ut</button>
+
+    <!-- logout Modal -->
+    <div id="logoutModal" class="product-card--content--modal __modal">
+        <div class="modal-content bg-danger p-5 border">
+            <div class="close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="close">Avbryt</div>
+            <a class="logout-link text-decoration-underline mt-2 d-block" asp-action="LogoutUser" asp-controller="Authentication">Logga ut</a>
+        </div>
+    </div>
 </section>
 
 <!-- jQuery library -->

@@ -44,8 +44,8 @@
             <p class="product-price">@product.Price kr</p>
         }
 
-        <!-- Trigger/Open The Modal -->
         <div class="d-flex justify-content-between">
+            <!-- Trigger/Open The Modal -->
             <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='openModal("seeMoreModal-@product.Id")'>Se mer</button>
             @if (User != null && loggedInUser != null)
             {
