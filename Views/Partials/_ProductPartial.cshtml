@@ -46,7 +46,7 @@
 
         <!-- Trigger/Open The Modal -->
         <div class="d-flex justify-content-between">
-            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='seeMoreProductInfo("seeMoreModal-@product.Id")'>Se mer</button>
+            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='openModal("seeMoreModal-@product.Id")'>Se mer</button>
             @if (User != null && loggedInUser != null)
             {
                 if (product.UserId == loggedInUser.Id || User.IsInRole("Admin"))

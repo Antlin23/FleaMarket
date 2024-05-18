@@ -14,16 +14,8 @@ if (toggleButton != null) {
     });
 }
 
-//MODAL POPUPS --
-//Delete all products modal
-const openDeletProductsModal = () => {
-    // Get the modal
-    var modal = document.getElementById("deleteAllProductsModal");
-    modal.style.display = "block";
-}
-
-//See more product info modal
-const seeMoreProductInfo = (modalId) => {
+//MODAL POPUPS ----
+const openModal = (modalId) => {
 // Get the modal
 var modal = document.getElementById(modalId);
     modal.style.display = "block";
