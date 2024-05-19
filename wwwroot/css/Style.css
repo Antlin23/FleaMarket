@@ -319,14 +319,19 @@ header .header-container .header-links {
   display: flex;
   align-items: center;
 }
+header .header-container .header-links i {
+  color: black;
+}
 header .header-container .header-links .vertical-line {
   margin: 0 1rem;
 }
 header .header-container .header-links #dropdownMenuButton {
   background-color: transparent;
   border: none;
+  outline: none;
   display: flex;
   align-items: center;
+  padding: 0;
 }
 header .header-container .header-links .dropdown-menu {
   border: none;
@@ -334,11 +339,20 @@ header .header-container .header-links .dropdown-menu {
   text-align: left;
   padding: 0;
 }
+header .header-container .header-links .dropdown-menu .dropdown-item {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
 header .header-container .header-links .dropdown-menu a {
-  padding: 0.9rem 1.6rem;
+  padding: 1.2rem 1.8rem;
+  font-size: 1rem;
+  padding-right: 4rem;
 }
 header .header-container .header-links .dropdown-menu .border-bottom-dropdown-item {
   border-bottom: 1px solid lightgray;
+  border-radius: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 header .header-container .header-links img {
   max-width: 1.7rem;
@@ -351,6 +365,7 @@ header .header-container .header-links a .location-icon {
   max-width: 0.9rem;
   position: relative;
   bottom: 2px;
+  left: 1px;
   margin-right: 0;
 }
 
@@ -468,7 +483,7 @@ header .header-container .header-links a .location-icon {
 .auth-container hr {
   margin: 1.6rem auto;
   margin-bottom: 2rem;
-  max-width: 60%;
+  max-width: 10%;
 }
 .auth-container form input, .auth-container form select {
   padding: 0.6rem 0;
@@ -492,7 +507,7 @@ header .header-container .header-links a .location-icon {
   padding-top: 2rem;
 }
 .auth-container .auth-container--footer hr {
-  max-width: 20%;
+  max-width: 10%;
   margin: 0 auto;
 }
 .auth-container .auth-container--footer .auth-container--footer--content {
