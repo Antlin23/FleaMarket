@@ -21,6 +21,11 @@ a:hover {
   color: #575757;
 }
 
+.vertical-line {
+  border-left: 1px solid lightgray;
+  height: 1.8rem;
+}
+
 .breadcrumb-container {
   margin-top: 1rem;
 }
@@ -289,7 +294,7 @@ form .button {
 /*Header*/
 header {
   background-color: white;
-  padding: 0.8rem 0.2rem;
+  padding: 1rem 0.2rem;
   border-bottom: 1px solid lightgray;
 }
 header a {
@@ -312,11 +317,41 @@ header .header-container .header-logo a {
 }
 header .header-container .header-links {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+}
+header .header-container .header-links .vertical-line {
+  margin: 0 1rem;
+}
+header .header-container .header-links #dropdownMenuButton {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+header .header-container .header-links .dropdown-menu {
+  border: none;
+  border-radius: 0.8rem;
+  text-align: left;
+  padding: 0;
+}
+header .header-container .header-links .dropdown-menu a {
+  padding: 0.9rem 1.6rem;
+}
+header .header-container .header-links .dropdown-menu .border-bottom-dropdown-item {
+  border-bottom: 1px solid lightgray;
+}
+header .header-container .header-links img {
+  max-width: 1.7rem;
+  margin-right: 0.5rem;
 }
 header .header-container .header-links a {
-  text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+header .header-container .header-links a .location-icon {
+  max-width: 0.9rem;
+  position: relative;
+  bottom: 2px;
+  margin-right: 0;
 }
 
 .home-showcase {

@@ -8,24 +8,23 @@
             <a asp-controller="Home" asp-action="Index"><span>Tra</span>de<span>Tra</span>ils</a>
         </div>
         <div class="header-links">
-            @if (!signInManager.IsSignedIn(User))
-            {
-                <a asp-controller="Product" asp-action="Index">
-                    <i class="fa-regular fa-shop"></i>
-                    Marknader
-                </a>
-                <a asp-controller="Authentication" asp-action="RegisterUser">
-                    <i class="fa-regular fa-user"></i>
-                    Mitt konto
-                </a>
-            }
-            else
-            {
-                <a asp-action="Index" asp-controller="Account">
-                    <i class="fa-regular fa-user"></i>
-                    Mitt konto
-                </a>
-            }
+
+            <a asp-controller="Product" asp-action="Index">
+                <img class="location-icon" src="/Images/Icons/location_icon.png" alt="location icon">
+                Marknader
+            </a>
+
+            <div class="vertical-line"></div>
+
+            <button class="" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="/Images/Icons/user_icon.png" alt="user icon">
+                <div><i class="fa-solid fa-bars"></i></div>
+            </button>
+            <div class="dropdown-menu shadow-lg bg-body" aria-labelledby="dropdownMenuButton">
+                <a asp-action="LoginUser" asp-controller="Authentication" class="dropdown-item border-bottom-dropdown-item">Logga in</a>
+                <a asp-action="RegisterUser" asp-controller="Authentication" class="dropdown-item">Registrera konto</a>
+            </div>
+
         </div>
 
     </div>
