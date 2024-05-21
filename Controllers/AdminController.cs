@@ -11,11 +11,12 @@ namespace FleaMarket.Controllers
     {
         private readonly MarketService _marketService;
         private readonly ProductService _productService;
-
-        public AdminController(MarketService marketService, ProductService productService)
+        private readonly ImageService _imageService;
+        public AdminController(MarketService marketService, ProductService productService, ImageService imageService)
         {
             _marketService = marketService;
             _productService = productService;
+            _imageService = imageService;
         }
 
         public IActionResult RegisterMarket()
@@ -27,7 +28,12 @@ namespace FleaMarket.Controllers
         {
             if(ModelState.IsValid)
             {
-                await _marketService.RegisterMarketAsync(viewModel);
+                var entity = await _marketService.RegisterMarketAsync(viewModel);
+
+                if (viewModel.Image != null)
+                {
+                    await _imageService.UploadMarketImageAsync(entity, viewModel.Image);
+                }
                 return RedirectToAction("Index", "Account");
             }
             return View(viewModel);

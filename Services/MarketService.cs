@@ -21,18 +21,18 @@ namespace FleaMarket.Services
             return await _context.Markets.ToListAsync();
         }
         //register new market
-        public async Task<bool> RegisterMarketAsync(RegisterMarketViewModel viewModel)
+        public async Task<MarketEntity> RegisterMarketAsync(MarketEntity entity)
         {
             try
             {
-                await _context.Markets.AddAsync(viewModel);
+                await _context.Markets.AddAsync(entity);
                 //might not need this one
                 await _context.SaveChangesAsync();
-                return true;
+                return entity;
             }
             catch
             {
-                return false;
+                return entity;
             }
         }
     }

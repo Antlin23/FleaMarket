@@ -7,10 +7,17 @@ namespace FleaMarket.Models.ViewModels
     {
         [Required(ErrorMessage = "Du måste ange en titel på marknaden")]
         public string MarketTitle { get; set; } = null!;
+
+        [Required(ErrorMessage = "Du måste välja en bild")]
+        [DataType(DataType.Upload)]
+        public IFormFile? Image { get; set; }
+
         [Required(ErrorMessage = "Du måste ange vilken stad")]
         public string City { get; set; } = null!;
+
         [Required(ErrorMessage = "Du måste ange adressen hit, Ex. Storvägen 1, 123 45 Uppsala")]
         public string Address { get; set; } = null!;
+
         public string? TimeOpen { get; set; }
         public string? MapLink { get; set; }
         public string? MarketLink { get; set; }
@@ -28,6 +35,11 @@ namespace FleaMarket.Models.ViewModels
                 MarketLink = viewModel.MarketLink,
                 marketDescription = viewModel.MarketDescription
             };
+
+            if (viewModel.Image != null)
+            {
+                entity.ImageUrl = $"{entity.Id}_{viewModel.Image?.FileName}";
+            }
 
             return entity;
         }

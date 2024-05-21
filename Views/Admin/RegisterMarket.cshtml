@@ -16,11 +16,17 @@
         <h2>Skapa marknad</h2>
         <p>Skapa marknad, detta är till för admin. Är du ej admin och kan se denna sida kontakta oss något har blivit fel.</p>
         <hr />
-        <form method="post" asp-action="RegisterMarket" asp-controller="Admin" novalidate>
+            <form method="post" asp-action="RegisterMarket" asp-controller="Admin" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input asp-for="MarketTitle" type="text" class="form-control" id="marketTitle" placeholder="Ange titel">
                 <span class="small text-danger" asp-validation-for="MarketTitle"></span>
+            </div>
+
+            <div class="upload-picture">
+                <label class="form-label d-block" for="Image">Bild</label>
+                <input asp-for="Image" class="" />
+                <span class="small text-danger d-block" asp-validation-for="Image"></span>
             </div>
 
             <div class="form-group">
