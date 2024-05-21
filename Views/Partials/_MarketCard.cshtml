@@ -1,8 +1,8 @@
 ﻿@using FleaMarket.Models.Entities;
 @model MarketEntity;
 
-<div class="market-card">
-    <a class="market-title" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">@Model.MarketTitle</a>
+<a class="market-card" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">
+    <p class="market-title">@Model.MarketTitle</p>
 
     @if (Model.marketDescription != null)
     {
@@ -10,7 +10,7 @@
             @Model.marketDescription
             @if (Model.MarketLink != null)
             {
-                <a class="market-link" href="@Model.MarketLink" target="_blank">Till webbplatsen <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <div class="market-link">Till webbplatsen <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
             }
         </p>
     }
@@ -27,7 +27,7 @@
         {
             <div>
                 <p class="market-undertitle">Address</p>
-                <a class="address" href="@Model.MapLink" target="_blank">@Model.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <p class="address" href="@Model.MapLink" target="_blank">@Model.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
             </div>
         }
         else
@@ -38,5 +38,4 @@
             </div>
         }
     </div>
-    <a class="button orange-button" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">Se produkter</a>
-</div>
+</a>

@@ -151,51 +151,6 @@ form {
     }
 }
 
-//market-card
-.market-card {
-    background-color: $color-orange-background;
-    padding: 0.6rem 1.2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.3rem;
-
-    a {
-        margin-bottom: 0;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    .market-title {
-        font-size: 1.4rem;
-        font-weight: 400;
-        color: $color-purple-10;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    .market-description {
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .market-undertitle {
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-
-    .market-time {
-        margin-bottom: 0.3rem;
-    }
-
-    .address {
-        margin-bottom: 0;
-    }
-}
-
 //Place info popup
 #popupButton {
     font-size: 1.4rem;

@@ -128,42 +128,6 @@ form .button {
   border-radius: 8px;
 }
 
-.market-card {
-  background-color: rgba(246, 229, 141, 0.5);
-  padding: 0.6rem 1.2rem;
-  margin-bottom: 2rem;
-  border-radius: 0.3rem;
-}
-.market-card a {
-  margin-bottom: 0;
-}
-.market-card a:hover {
-  text-decoration: underline;
-}
-.market-card .market-title {
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: #130f40;
-  text-decoration: none;
-}
-.market-card .market-title:hover {
-  text-decoration: none;
-}
-.market-card .market-description {
-  margin-top: 0.2rem;
-  margin-bottom: 0.4rem;
-}
-.market-card .market-undertitle {
-  font-weight: 500;
-  margin-bottom: 0;
-}
-.market-card .market-time {
-  margin-bottom: 0.3rem;
-}
-.market-card .address {
-  margin-bottom: 0;
-}
-
 #popupButton {
   font-size: 1.4rem;
   border: none;
@@ -707,4 +671,34 @@ header .header-container .header-links a .location-icon {
 .create-product-container .button {
   font-weight: 400;
   margin-top: 1.2rem;
+}
+
+.market-card {
+  background-color: rgba(246, 229, 141, 0.5);
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+}
+.market-card .market-title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #130f40;
+  text-decoration: none;
+}
+.market-card .market-title:hover {
+  text-decoration: none;
+}
+.market-card .market-description {
+  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
+}
+.market-card .market-undertitle {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.market-card .market-time {
+  margin-bottom: 0.3rem;
+}
+.market-card .address {
+  margin-bottom: 0;
 }
