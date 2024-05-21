@@ -2,40 +2,21 @@
 @model MarketEntity;
 
 <a class="market-card" asp-controller="Product" asp-action="Market" asp-route-marketName="@Model.MarketTitle">
-    <p class="market-title">@Model.MarketTitle</p>
-
-    @if (Model.marketDescription != null)
-    {
-        <p class="market-description">
-            @Model.marketDescription
-            @if (Model.MarketLink != null)
-            {
-                <div class="market-link">Till webbplatsen <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-            }
+    <img src="~/Images/Markets/@Model.ImageUrl" alt="Bild kan ej visas." />
+    <div class="market-card--content">
+        <p class="market-card--icon-group market-card--time-open">
+            <i class="fa-solid fa-clock"></i>
+            @Model.TimeOpen
         </p>
-    }
-    <div class="d-flex gap-4">
-        @if (Model.TimeOpen != null)
-        {
-            <div>
-                <p class="market-undertitle">Öppettider</p>
-                <p class="market-time">@Model.TimeOpen</p>
-            </div>
-        }
+        <p class="market-card--icon-group market-card--adress">
+            <i class="input-icon fa-solid fa-location-dot"></i>
+            @Model.Address
+        </p>
 
-        @if (Model.MapLink != null)
-        {
-            <div>
-                <p class="market-undertitle">Address</p>
-                <p class="address" href="@Model.MapLink" target="_blank">@Model.Address <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
-            </div>
-        }
-        else
-        {
-            <div>
-                <p class="market-undertitle">Address</p>
-                <p class="address">@Model.Address</p>
-            </div>
-        }
+        <h3>@Model.MarketTitle </h3>
+        <p class="market-card--icon-group market-card--more-info">
+            Mer information
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </p>
     </div>
 </a>

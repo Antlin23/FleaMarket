@@ -73,9 +73,13 @@ header {
             }
 
 
-            img {
+            img, .header-links-icon {
                 max-width: 1.7rem;
                 margin-right: 0.5rem;
+            }
+
+            .header-links-icon{
+                margin-right: 0;
             }
 
             a {

@@ -219,7 +219,7 @@ namespace FleaMarket.Controllers
         public async Task<IActionResult> LogoutUser()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LoginUser", "Authentication");
         }
     }
 }

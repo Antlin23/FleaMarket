@@ -1,6 +1,5 @@
 ﻿.home-showcase {
     padding-top: 0.8rem;
-    background-color: $background-color-10;
 
     .home-showcase--form {
         background-color: white;
@@ -50,10 +49,11 @@
 }
 
 .home-markets {
-    margin-top: 4.8rem;
+    padding-top: 4rem;
     color: #130f40;
-    h1{
-        padding-bottom: 1.6rem;
+
+    h1 {
+        padding-bottom: 1.4rem;
     }
 }
 
