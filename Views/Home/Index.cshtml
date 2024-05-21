@@ -8,58 +8,57 @@
     var markets = await marketService.GetAllAsync();
     ViewData["Title"] = "Hem";
 }
-
+<!--    <img src="/Images/marketlp.jpg" /> -->
 <section class="home-showcase">
-    <img src="/Images/marketlp.jpg" />
-    <div class="home-showcase--content">
-        <form id="searchForm" method="post" asp-controller="Product" asp-action="Market">
-            <div class="form-group">
-                <label>Vad letar du efter idag?</label>
+    <form id="searchForm" method="post" asp-controller="Product" asp-action="Market">
+        <div class="container">
+            <h1>Vad letar du efter idag?</h1>
+            <p>Hitta ditt nästa loppisfynd här på Fixo</p>
+
+            <div class="home-showcase--form">
                 <div class="form-group">
-                    <i class="input-icon fa-solid fa-magnifying-glass"></i>
-                    <input asp-for=SearchString type="text" placeholder="Sök" />
+                    <label asp-for="SearchString">Sök</label>
+                    <div class="form-group">
+                        <i class="input-icon fa-solid fa-magnifying-glass"></i>
+                        <input asp-for=SearchString type="text" placeholder="Vad vill du söka efter?" />
+                    </div>
+                </div> 
+
+                <label asp-for="MarketName">Loppis</label>
+                <div class="form-group">
+                    <i class="input-icon fa-solid fa-location-dot"></i>
+                    <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                    <select required id="marketSelect" asp-for=MarketName>
+                        @if (markets.Count() < 1)
+                        {
+                            <option>Det finns inga aktiva marknader just nu.</option>
+                        }
+                        else
+                        {
+                            @foreach (var market in markets)
+                            {
+                                <option value="@market.MarketTitle">@market.MarketTitle</option>
+                            }
+                        }
+                    </select>
+                    <span id="searchErrorMessage" class="small">Du måste välja loppis</span>
                 </div>
             </div>
-            <div class="form-group">
-                <i class="input-icon fa-solid fa-location-dot"></i>
-                <i class="dropdown-icon fa-solid fa-caret-down"></i>
-                <select required id="marketSelect" asp-for=MarketName>
-                    @if (markets.Count() < 1)
-                    {
-                        <option>Det finns inga aktiva marknader just nu.</option>
-                    }
-                    else
-                    {
-                        @foreach (var market in markets)
-                        {
-                            <option value="@market.MarketTitle">@market.MarketTitle</option>
-                        }
-                    }
-                </select>
-                <span id="searchErrorMessage" class="small">Du måste välja marknad</span>
+        </div>
+        <div class="home-showcase--bottom-content">
+            <div class="container">
+                <div class="home-showcase--bc-content">
+                    <button class="button orange-bg-button" type="submit">SÖK</button>
+                </div>
             </div>
-            <button class="button orange-bg-button" type="submit">Sök</button>
-        </form>
-
-        <script>
-            document.getElementById("searchForm").addEventListener("submit", function(event) {
-                var marketSelect = document.getElementById("marketSelect");
-                var errorMessage = document.getElementById("searchErrorMessage");
-
-                if (marketSelect.value == "0") {
-                    errorMessage.style.display = "block";
-                    event.preventDefault(); // Prevent form submission
-                } else {
-                    errorMessage.style.display = "none";
-                }
-            });
-        </script>
-
-    </div>
+        </div>
+    </form>
 </section>
 
-<section class="container home-container">
-    <h5>Aktiva marknader</h5>
+
+
+<section class="container home-markets">
+    <h1>Loppisar och marknader</h1>
     <div>
         @foreach (var market in markets)
         {
@@ -68,3 +67,19 @@
     </div>
 
 </section>
+
+
+<script>
+    //curretly not in use
+    document.getElementById("searchForm").addEventListener("submit", function (event) {
+        var marketSelect = document.getElementById("marketSelect");
+        var errorMessage = document.getElementById("searchErrorMessage");
+
+        if (marketSelect.value == "0") {
+            errorMessage.style.display = "block";
+            event.preventDefault(); // Prevent form submission
+        } else {
+            errorMessage.style.display = "none";
+        }
+    });
+</script>
