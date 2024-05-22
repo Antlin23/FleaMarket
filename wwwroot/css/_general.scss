@@ -37,11 +37,16 @@ a {
 //components
 
 .breadcrumb-container {
-    margin-top: 1rem;
-    .breadcrumb{
-        a{
-            &:hover{
-                text-decoration:underline;
+    padding-bottom: 1rem;
+    background-color: white;
+    margin-bottom: 1rem;
+
+    .breadcrumb {
+        margin-bottom: 0;
+
+        a {
+            &:hover {
+                text-decoration: underline;
             }
         }
     }

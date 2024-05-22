@@ -23,78 +23,91 @@
     </ol>
 </nav>
 
-<div class="container create-product-container">
+<div class="create-product-container">
     <div>
         <form method="post" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
             @if (place == null)
             {
-                <h5 class="create-product-container-header">Vart befinner du dig idag?</h5>
+                <div class="create-product-container--place-section">
+                    <div class="container">
+                        <h5 class="create-product-container-header">Vart befinner du dig idag?</h5>
 
-                <div class="form-group create-product-container--place-form-group">
-                    <input asp-for="Place" type="text" placeholder="Plats* (ex. Tredje raden till höger, röd bil.)"/>
+                        <div class="form-group create-product-container--place-form-group">
+                            <input asp-for=Place type="text" placeholder="Plats* (ex. Tredje raden till höger, röd bil.)" />
 
-                    <div id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
-                </div>
-                <div id="popup">
-                    <div id="popupContent">
-                        <p>Beskriv så kort och enkelt som möjligt hur man kan hitta dig.</p>
-                        <p>Ex. Andra raden till höger, grå bil. Eller: Nära vägen på rad fem till vänster, vit släpvagn.</p>
-                        <button class="button" type="button" id="closeButton">Stäng</button>
+                            <div id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+                        </div>
+                        <div id="popup">
+                            <div id="popupContent">
+                                <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
+                                <p>Ex. Andra raden till höger, grå bil.</p>
+                                <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
+                                <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+                            </div>
+                        </div>
+                        <span class="small text-danger d-block" asp-validation-for="Place"></span>
+
+                        <h5 class="create-product-container-header">Bild på ditt bord</h5>
+
+                        <input class="upload-picture" asp-for="PlaceImage" value="@user.PlaceImgUrl" />
                     </div>
+                    
                 </div>
-                <span class="small text-danger d-block" asp-validation-for="Place"></span>
             }
 
-            <h5 class="create-product-container-header mb-2">Välj marknad*</h5>
+            <div class="container">
+                <h5 class="create-product-container-header mb-2">Välj marknad*</h5>
 
-            <div class="form-group mb-3">
-                <i class="input-icon fa-solid fa-list"></i>
-                <i class="dropdown-icon fa-solid fa-caret-down"></i>
-                <select asp-for="@Model.MarketId" name="MarketId">
-                    @foreach (var market in markets)
-                    {
-                        <option value="@market.Id">@market.MarketTitle</option>
-                    }
-                </select>
-                <span class="small text-danger d-block" asp-validation-for="MarketId"></span>
+                <div class="form-group mb-3">
+                    <i class="input-icon fa-solid fa-list"></i>
+                    <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                    <select asp-for="@Model.MarketId" name="MarketId">
+                        @foreach (var market in markets)
+                        {
+                            <option value="@market.Id">@market.MarketTitle</option>
+                        }
+                    </select>
+                    <span class="small text-danger d-block" asp-validation-for="MarketId"></span>
+                </div>
+
+                <h5 class="create-product-container-header">Vad vill du sälja?</h5>
+
+                <div class="form-group">
+                    <input asp-for="Title" type="text" placeholder="Rubrik*" />
+                    <span class="small text-danger d-block" asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-group price-form-group">
+                    <input asp-for="Price" type="number" placeholder="Pris*" />
+                </div>
+                <div class="create-product-container--price-formgroup">
+                    <input id="noPriceCheckbox" asp-for="NoPrice" type="checkbox" />
+                    <label asp-for="NoPrice" for="noPriceCheckbox">Inget pris bestämt</label>
+                    <span class="small text-danger d-block" asp-validation-for="Price"></span>
+                </div>
+
+                <div class="upload-picture">
+                    <label class="form-label d-block" for="Image">Bild</label>
+                    <input asp-for="Image" class="" />
+                    <span class="small text-danger d-block" asp-validation-for="Image"></span>
+                </div>
+
+                <h5 class="create-product-container-header mb-2">Välj kategori</h5>
+
+                <div class="form-group">
+                    <i class="input-icon fa-solid fa-list"></i>
+                    <i class="dropdown-icon fa-solid fa-caret-down"></i>
+                    <partial name="/Views/Partials/_CategoryOptionsPartial.cshtml" />
+
+                    <span class="small text-danger d-block" asp-validation-for="Category"></span>
+                </div>
+
+                <input asp-for="UserId" value="@userId" hidden />
+                <hr />
+                <button class="button orange-bg-button" type="submit">Publicera</button>
             </div>
 
-            <h5 class="create-product-container-header">Vad vill du sälja?</h5>
-
-            <div class="form-group">
-                <input asp-for="Title" type="text" placeholder="Rubrik*"/>
-                <span class="small text-danger d-block" asp-validation-for="Title"></span>
-            </div>
-
-            <div class="form-group price-form-group">
-                <input asp-for="Price" type="number" placeholder="Pris*"/>
-            </div>
-            <div class="create-product-container--price-formgroup">
-                <input id="noPriceCheckbox" asp-for="NoPrice" type="checkbox" />
-                <label asp-for="NoPrice" for="noPriceCheckbox">Inget pris bestämt</label>
-                <span class="small text-danger d-block" asp-validation-for="Price"></span>
-            </div> 
-
-            <div class="upload-picture">
-                <label class="form-label d-block" for="Image">Bild</label>
-                <input asp-for="Image" class="" />
-                <span class="small text-danger d-block" asp-validation-for="Image"></span>
-            </div>
-
-            <h5 class="create-product-container-header mb-2">Välj kategori</h5>
-
-            <div class="form-group">
-                <i class="input-icon fa-solid fa-list"></i>
-                <i class="dropdown-icon fa-solid fa-caret-down"></i>
-                <partial name="/Views/Partials/_CategoryOptionsPartial.cshtml" />
-
-                <span class="small text-danger d-block" asp-validation-for="Category"></span>
-            </div>
-
-            <input asp-for="UserId" value="@userId" hidden />
-            <hr />
-            <button class="button orange-bg-button" type="submit">Publicera</button>
         </form>
     </div>
 </div>

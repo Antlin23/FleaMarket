@@ -2,8 +2,18 @@
     text-align: start;
 
     form {
-        .create-product-container--place-form-group {
-            display: flex;
+        .create-product-container--place-section {
+            padding-top: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+
+            .create-product-container--place-form-group {
+                display: flex;
+            }
+
+            .create-product-container--place-img{
+                color: red;
+            }
         }
 
         input {

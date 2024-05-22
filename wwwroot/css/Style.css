@@ -33,7 +33,12 @@ a:hover {
 }
 
 .breadcrumb-container {
-  margin-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+.breadcrumb-container .breadcrumb {
+  margin-bottom: 0;
 }
 .breadcrumb-container .breadcrumb a:hover {
   text-decoration: underline;
@@ -609,8 +614,16 @@ header .header-container .header-links a .location-icon {
 .create-product-container {
   text-align: start;
 }
-.create-product-container form .create-product-container--place-form-group {
+.create-product-container form .create-product-container--place-section {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+.create-product-container form .create-product-container--place-section .create-product-container--place-form-group {
   display: flex;
+}
+.create-product-container form .create-product-container--place-section .create-product-container--place-img {
+  color: red;
 }
 .create-product-container form input {
   border: none;

@@ -45,6 +45,23 @@ namespace FleaMarket.Services
             catch { return false; }
         }
 
+        public async Task<bool> AddPlaceImageToUser(AddProductViewModel viewModel)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == viewModel.UserId);
+
+                if (viewModel.PlaceImage != null)
+                {
+                    user.PlaceImgUrl = $"{user.Id}_{viewModel.PlaceImage?.FileName}";
+                }
+
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch { return false; }
+        }
+
         public async Task<bool> UpdatePlaceAsync(UpdatePlaceViewModel viewModel)
         {
             try

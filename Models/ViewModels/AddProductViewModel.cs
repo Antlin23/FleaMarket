@@ -25,6 +25,9 @@ namespace FleaMarket.Models.ViewModels
         [Display(Name = "Plats")]
         public string? Place { get; set; }
 
+        [DataType(DataType.Upload)]
+        public IFormFile? PlaceImage { get; set; }
+
         [Display(Name = "Bild")]
         [DataType(DataType.Upload)]
         public IFormFile? Image { get; set; }
