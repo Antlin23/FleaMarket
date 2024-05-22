@@ -382,6 +382,8 @@ header .header-container .header-links a .location-icon {
 .home-showcase .home-showcase--bottom-content .container .home-showcase--bc-content button {
   width: 100%;
   margin: 0;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .home-markets {
