@@ -4,9 +4,11 @@
     display: block;
 
     img {
-        max-width: 100%;
+        width: 100%;
+        max-height: 233px;
         border-radius: 16px;
         margin-bottom: 0.7rem;
+        object-fit: cover;
     }
 
     .market-card--content {
@@ -35,15 +37,20 @@
 
         .market-card--adress {
         }
+    }
 
-        .market-card--more-info {
+    .market-card--more-info {
+        margin: 0;
+        color: black;
+        font-size: 16px;
+
+        i {
             margin: 0;
-            color: black;
-            font-size: 16px;
-            i {
-                margin: 0;
-                margin-left: 0.5rem;
-            }
+            margin-left: 0.5rem;
+        }
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 }

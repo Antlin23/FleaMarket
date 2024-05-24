@@ -695,9 +695,11 @@ header .header-container .header-links a .location-icon {
   display: block;
 }
 .market-card img {
-  max-width: 100%;
+  width: 100%;
+  max-height: 233px;
   border-radius: 16px;
   margin-bottom: 0.7rem;
+  object-fit: cover;
 }
 .market-card .market-card--content h3 {
   margin: 0.6rem 0;
@@ -716,12 +718,15 @@ header .header-container .header-links a .location-icon {
 .market-card .market-card--content .market-card--time-open i {
   color: #f0932b;
 }
-.market-card .market-card--content .market-card--more-info {
+.market-card .market-card--more-info {
   margin: 0;
   color: black;
   font-size: 16px;
 }
-.market-card .market-card--content .market-card--more-info i {
+.market-card .market-card--more-info i {
   margin: 0;
   margin-left: 0.5rem;
+}
+.market-card .market-card--more-info:hover {
+  text-decoration: underline;
 }
