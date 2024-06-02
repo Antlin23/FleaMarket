@@ -115,19 +115,20 @@
                                 Ta bort produkter</button>
                         </div>
                     </div>
-                    <!--Admin del all products-->
+                    <!--Admin part, ALL products-->
                     @if (User.IsInRole("Admin"))
                     {
                         <div>
                             <p>Admin</p>
+                            <p>Ta bort alla produkter, gör alla activeSeller = false och tar bort alla userPlaces</p>
                             <div id="deleteAllProductsConGroup" class="d-none btnConfirmationGroup">
-                                <form method="post" asp-controller="Admin" asp-action="DeleteAllProducts">
+                                <form method="post" asp-controller="Admin" asp-action="DailyReset">
                                     <button onclick='hideConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                     <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                                 </form>
                             </div>
                             <div id="deleteAllProductsGroup" class="singleBtnGroup">
-                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort alla produkter</button>
+                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort allt</button>
                             </div>
                         </div>
                     }

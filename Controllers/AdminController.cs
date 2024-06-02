@@ -12,11 +12,14 @@ namespace FleaMarket.Controllers
         private readonly MarketService _marketService;
         private readonly ProductService _productService;
         private readonly ImageService _imageService;
-        public AdminController(MarketService marketService, ProductService productService, ImageService imageService)
+        private readonly UserService _userService;
+
+        public AdminController(MarketService marketService, ProductService productService, ImageService imageService, UserService userService)
         {
             _marketService = marketService;
             _productService = productService;
             _imageService = imageService;
+            _userService = userService;
         }
 
         public IActionResult RegisterMarket()
@@ -40,13 +43,14 @@ namespace FleaMarket.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteAllProducts()
+        public async Task<IActionResult> DailyReset()
         {
             try
             {
                 await _productService.DeleteAllProductsAsync();
+                await _userService.ResetUserPlacesAndActiveSeller();
 
-                TempData["SuccessMessage"] = "Admin: Allas produkter togs bort";
+                TempData["SuccessMessage"] = "Admin: Allting återställdes";
 
                 return RedirectToAction("Index", "Account");
             }

@@ -27,7 +27,7 @@ public class DailyResetService : BackgroundService
             }
 
             // Logic to reset the boolean property
-            await _userService.ResetActiveSellerPropertyAsync();
+            await _userService.ResetUserPlacesAndActiveSeller();
 
             // Wait for a day
             await Task.Delay(TimeSpan.FromDays(1), stoppingToken);

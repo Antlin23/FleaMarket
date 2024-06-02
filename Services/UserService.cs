@@ -26,6 +26,13 @@ namespace FleaMarket.Services
             return users;
         }
 
+        public async Task<IEnumerable<UserEntity>> GetAllActiveUsersAsync()
+        {
+            IEnumerable<UserEntity> activeUsers = await _context.Users.Where(x => x.IsActiveSeller == true).ToListAsync();
+
+            return activeUsers;
+        }
+
         public async Task<UserEntity> GetUserAsync(Expression<Func<UserEntity, bool>> expression)
         {
             // if I need to include something; Include(x => x.ProductTags).ThenInclude(x => x.Tag).
@@ -80,12 +87,14 @@ namespace FleaMarket.Services
             catch { return false; }
         }
 
-        public async Task ResetActiveSellerPropertyAsync()
+        public async Task ResetUserPlacesAndActiveSeller()
         {
             IEnumerable<UserEntity> users = await GetAllUsersAsync();
 
             foreach (var user in users)
             {
+                user.Place = null;
+                user.PlaceImgUrl = null;
                 user.IsActiveSeller = false;
             }
             await _context.SaveChangesAsync();
