@@ -36,7 +36,7 @@ namespace FleaMarket.Controllers
                 {
                     UserEntity entity = await _userService.GetUserAsync(x => x.UserName == User.Identity.Name);
 
-                    await _imageService.UploadUserPlaceImageAsync(entity, viewModel.Image);
+                    //await _imageService.UploadUserPlaceImageAsync(entity, viewModel.Image);
                 }
                 return View();
             }

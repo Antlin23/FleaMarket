@@ -16,14 +16,15 @@
     </ol>
 </nav>
 
-<div class="container">
-    <h1 class="mb-4">Aktiva marknader</h1>
-
-    @foreach (var market in markets)
-    {
-        <partial name="/Views/Partials/_MarketCard.cshtml" model="market" />
-    }
-</div>
+<section class="container home-markets">
+    <h1>Loppisar och marknader</h1>
+    <div class="home-markets--markets">
+        @foreach (var market in markets)
+        {
+            <partial name="/Views/Partials/_MarketCard.cshtml" model="market" />
+        }
+    </div>
+</section>
 
 
 

@@ -4,6 +4,7 @@ using FleaMarket.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleaMarket.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240604072322_FilesAdded1")]
+    partial class FilesAdded1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,29 @@ namespace FleaMarket.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("FleaMarket.Models.Entities.FileEntity", b =>
+                {
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ContainerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FileName");
+
+                    b.ToTable("Files");
+                });
 
             modelBuilder.Entity("FleaMarket.Models.Entities.MarketEntity", b =>
                 {
@@ -73,8 +99,7 @@ namespace FleaMarket.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("HasImage")
-                        .IsRequired()
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<Guid>("MarketId")
@@ -189,16 +214,16 @@ namespace FleaMarket.Migrations
                         {
                             Id = "0cc0714b-7e95-47ff-9b50-460f04f29426",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c52e8d7-a513-42b2-a1c1-26d6423f2c7e",
+                            ConcurrencyStamp = "0355b21c-9cd4-47db-a443-80d73a89c647",
                             Email = "anton.jumkil@gmail.com",
                             EmailConfirmed = true,
                             IsActiveSeller = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "anton.jumkil@gmail.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ1ENg8kRbTLeU2Ei9iiLvidYp6gqDc1la3ofreiWLLacjhJoni976SXeaw8kY8jNQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENlXv48yDtFU4o6G6s9CeREqwWcxe86vuUBuvv4p9m9yYtqlULwwER8rYxIIGzJ3mQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9ebb48dc-59e2-436f-b9f4-06c076bfcf89",
+                            SecurityStamp = "34df70c8-f8ce-4e94-bdcc-2134821fc90b",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -234,14 +259,14 @@ namespace FleaMarket.Migrations
                         new
                         {
                             Id = "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4",
-                            ConcurrencyStamp = "45f1020b-25e3-470d-8ee3-04a79cccfea6",
+                            ConcurrencyStamp = "cf229079-af64-4fbf-bec0-8acf1f16d5f0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "972b6232-0d25-46f9-a3e6-eec6fd127ff0",
-                            ConcurrencyStamp = "fc5fbd7f-4e2d-4bf7-b773-40dbaa1bbc0d",
+                            ConcurrencyStamp = "c0633788-c10a-456e-988c-4a6b27a4acb1",
                             Name = "User",
                             NormalizedName = "USER"
                         });

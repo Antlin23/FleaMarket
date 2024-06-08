@@ -9,7 +9,7 @@
     ViewData["Title"] = "Hem";
 }
 <!--    <img src="/Images/marketlp.jpg" /> -->
-<section class="home-showcase">
+<section class="home-showcase pb-4">
     <form id="searchForm" method="post" asp-controller="Product" asp-action="Market">
         <div class="container">
             <h1>Vad letar du efter idag?</h1>
@@ -55,11 +55,9 @@
     </form>
 </section>
 
-
-
-<section class="container home-markets">
+<section class="container home-markets mt-5">
     <h1>Loppisar och marknader</h1>
-    <div>
+    <div class="home-markets--markets">
         @foreach (var market in markets)
         {
             <partial name="/Views/Partials/_MarketCard.cshtml" model="market" />
