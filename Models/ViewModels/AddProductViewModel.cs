@@ -28,6 +28,10 @@ namespace FleaMarket.Models.ViewModels
         [DataType(DataType.Upload)]
         public IFormFile? PlaceImage { get; set; }
 
+        [Display(Name = "Bild")]
+        [DataType(DataType.Upload)]
+        public IFormFile? Image { get; set; }
+
         [Display(Name = "Kategori")]
         public string? Category { get; set; }
 
@@ -36,16 +40,11 @@ namespace FleaMarket.Models.ViewModels
         public DateTime TimeAdded { get; set; } = DateTime.Now;
 
         public string UserId { get; set; } = null!;
-        public Guid Id { get; set; }
-
-        [DataType(DataType.Upload)]
-        public IFormFile? Image { get; set; }
 
         public static implicit operator ProductEntity(AddProductViewModel viewModel)
         {
             ProductEntity entity = new()
             {
-                Id = viewModel.Id,
                 Title = viewModel.Title,
                 MarketId = viewModel.MarketId,
                 Category = viewModel.Category,
@@ -53,6 +52,10 @@ namespace FleaMarket.Models.ViewModels
                 UserId = viewModel.UserId
             };
 
+            if (viewModel.Image != null)
+            {
+                entity.ImageUrl = $"{entity.Id}_{viewModel.Image?.FileName}";
+            }
             if(viewModel.Price != null)
             {
                 var tempPrice = viewModel.Price;
@@ -65,14 +68,6 @@ namespace FleaMarket.Models.ViewModels
             if(viewModel.NoPrice == true) 
             {
                 entity.Price = 0;
-            }
-
-            if (viewModel.Image != null) { 
-                entity.HasImage = true;
-            }
-            else
-            {
-                entity.HasImage = false;
             }
 
             return entity;

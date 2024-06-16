@@ -75,15 +75,20 @@ namespace FleaMarket.Controllers
                         await _userService.AddPlaceToUser(user.Id, viewModel.Place);
                     }
 
-                    //if (viewModel.PlaceImage != null)
-                    //{
-                    //    await _userService.AddPlaceImageToUser(viewModel);
+                    if (viewModel.PlaceImage != null)
+                    {
+                        await _userService.AddPlaceImageToUser(viewModel);
 
-                    //    await _imageService.UploadUserPlaceImageAsync(user, viewModel.PlaceImage);
-                    //}
+
+                        await _imageService.UploadUserPlaceImageAsync(user, viewModel.PlaceImage);
+                    }
 
                     var entity = await _productService.AddProduct(viewModel);
 
+                    if (viewModel.Image != null)
+                    {
+                        await _imageService.UploadProductImageAsync(entity, viewModel.Image);
+                    }
 
                     TempData["SuccessMessage"] = "Produkten lades till";
 

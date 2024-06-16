@@ -34,8 +34,8 @@ a:hover {
 
 .breadcrumb-container {
   padding-bottom: 1rem;
+  background-color: white;
   margin-bottom: 1rem;
-  margin-top: 0.8rem;
 }
 .breadcrumb-container .breadcrumb {
   margin-bottom: 0;
@@ -160,21 +160,6 @@ form .button {
   padding: 0.1rem 0.8rem;
 }
 
-.home-markets {
-  color: #130f40;
-}
-.home-markets h1 {
-  padding-bottom: 1.4rem;
-}
-
-@media (min-width: 576px) {
-  .home-markets .home-markets--markets {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    gap: 1.6rem;
-  }
-}
 /* The Modal (background) */
 .product-card--content--modal {
   display: none; /* Hidden by default */
@@ -404,6 +389,14 @@ header .header-container .header-links a .location-icon {
   margin: 0;
   font-weight: 700;
   font-size: 16px;
+}
+
+.home-markets {
+  padding-top: 4rem;
+  color: #130f40;
+}
+.home-markets h1 {
+  padding-bottom: 1.4rem;
 }
 
 #searchErrorMessage {
@@ -736,10 +729,4 @@ header .header-container .header-links a .location-icon {
 }
 .market-card .market-card--more-info:hover {
   text-decoration: underline;
-}
-
-@media (min-width: 576px) {
-  .market-card {
-    max-width: 28rem;
-  }
 }

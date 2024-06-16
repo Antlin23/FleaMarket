@@ -13,8 +13,6 @@
     var place = user.Place;
 
     IEnumerable<MarketEntity> markets = await _marketService.GetAllAsync();
-
-    Guid newProductId = Guid.NewGuid();
 }
 
 <nav class="container breadcrumb-container" aria-label="breadcrumb">
@@ -27,7 +25,7 @@
 
 <div class="create-product-container">
     <div>
-        <form method="post" enctype="multipart/form-data" onsubmit="handleSubmit(event)" novalidate>
+        <form method="post" enctype="multipart/form-data" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
             @if (place == null)
             {
@@ -90,8 +88,9 @@
                 </div>
 
                 <div class="upload-picture">
-                    <label class="form-label d-block" asp-for="Image">Bild</label>
-                    <input asp-for="Image" name="file" class="" />
+                    <label class="form-label d-block" for="Image">Bild</label>
+                    <input asp-for="Image" class="" />
+                    <span class="small text-danger d-block" asp-validation-for="Image"></span>
                 </div>
 
                 <h5 class="create-product-container-header mb-2">Välj kategori</h5>
@@ -105,7 +104,6 @@
                 </div>
 
                 <input asp-for="UserId" value="@userId" hidden />
-                <input asp-for="Id" value="@newProductId" hidden />
                 <hr />
                 <button class="button orange-bg-button" type="submit">Publicera</button>
             </div>
@@ -116,25 +114,6 @@
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!--Img upload-->
-<script>
-    const handleSubmit = async (e) => {
-        const formData = new FormData();
-        formData.append("file", e.target["file"].files[0]);
-        formData.append("parentId", "@newProductId");
-
-        const res = await fetch("http://localhost:7036/api/Upload?containerName=products", {
-            method: "post",
-            body: formData,
-        })
-
-        if (res.status == 200) {
-            const result = await res.json();
-        }
-    }
-</script>
-
 
 <script>
     //no price button
