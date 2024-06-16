@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FleaMarket.Migrations
 {
     /// <inheritdoc />
-    public partial class FMInitDb021115 : Migration
+    public partial class INitNewDbFixo16 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +34,10 @@ namespace FleaMarket.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Place = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PlaceImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActiveSeller = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -55,21 +59,22 @@ namespace FleaMarket.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Markets",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Price = table.Column<string>(type: "varchar(20)", nullable: false),
-                    SelectMarket = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    TableNumber = table.Column<string>(type: "varchar(30)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Brand = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    TimeAdded = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    MarketTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TimeOpen = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MapLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MarketLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    marketDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Markets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,25 +184,26 @@ namespace FleaMarket.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserProducts",
+                name: "Products",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Price = table.Column<string>(type: "varchar(20)", nullable: false),
+                    MarketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Brand = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    TimeAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserProducts", x => new { x.UserId, x.ProductId });
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserProducts_AspNetUsers_UserId",
+                        name: "FK_Products_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserProducts_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -207,14 +213,14 @@ namespace FleaMarket.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "972b6232-0d25-46f9-a3e6-eec6fd127ff0", "99972bcd-da5e-49f1-a167-78af9210c6e6", "User", "USER" },
-                    { "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4", "8ce1905b-4af8-4306-bb97-e10ceee8cadd", "Admin", "ADMIN" }
+                    { "972b6232-0d25-46f9-a3e6-eec6fd127ff0", "2cd30798-c935-45d5-9016-6a529a74b4e3", "User", "USER" },
+                    { "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4", "c8a88fca-a3a6-491c-91dd-a3e1bd06a8b5", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "0cc0714b-7e95-47ff-9b50-460f04f29426", 0, "c678d071-a1f6-4454-b200-7829a7130745", "anton.jumkil@gmail.com", false, null, null, false, null, "anton.jumkil@gmail.com", "ADMIN", "AQAAAAIAAYagAAAAEL2B+FzvipIK+LE/Hg4daG6/BuH7DCNfKddvV8bUSopE/pgSlFEmCb4zpFZYGLxkSw==", null, false, "8dd06b6f-68c0-4fdb-ba80-8dee2d7c4cdd", false, "admin" });
+                columns: new[] { "Id", "AccessFailedCount", "CompanyName", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsActiveSeller", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Place", "PlaceImgUrl", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "0cc0714b-7e95-47ff-9b50-460f04f29426", 0, null, "b482ef5a-5323-4327-8efe-b80b906bdd19", "anton.jumkil@gmail.com", true, null, false, null, false, null, "anton.jumkil@gmail.com", "ADMIN", "AQAAAAIAAYagAAAAEAUdePXF3D0/Ls/ZOcH27N6WCfIyipmkWMKvEckrmAds9Kt1Jcl8AHX4uqPd9jOSMg==", null, false, null, null, "0dd818da-8e81-4f58-8153-68ae29d0030f", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -261,9 +267,9 @@ namespace FleaMarket.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserProducts_ProductId",
-                table: "UserProducts",
-                column: "ProductId");
+                name: "IX_Products_UserId",
+                table: "Products",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -285,16 +291,16 @@ namespace FleaMarket.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "UserProducts");
+                name: "Markets");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Products");
         }
     }
 }

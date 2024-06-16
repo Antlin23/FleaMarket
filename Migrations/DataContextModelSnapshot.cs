@@ -188,16 +188,16 @@ namespace FleaMarket.Migrations
                         {
                             Id = "0cc0714b-7e95-47ff-9b50-460f04f29426",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2635f303-012d-4d5d-b966-846bcea9bad7",
+                            ConcurrencyStamp = "b482ef5a-5323-4327-8efe-b80b906bdd19",
                             Email = "anton.jumkil@gmail.com",
                             EmailConfirmed = true,
                             IsActiveSeller = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "anton.jumkil@gmail.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHKZTcot/ha1QYGL/a3IsLisTW/gHuaM5rU2uLu13GcbmixPXAT+C+T4f6YnYdbirA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAUdePXF3D0/Ls/ZOcH27N6WCfIyipmkWMKvEckrmAds9Kt1Jcl8AHX4uqPd9jOSMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fd3c634f-0d14-4200-81cc-57ea070a436a",
+                            SecurityStamp = "0dd818da-8e81-4f58-8153-68ae29d0030f",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -233,14 +233,14 @@ namespace FleaMarket.Migrations
                         new
                         {
                             Id = "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4",
-                            ConcurrencyStamp = "20fb0f41-079e-4baa-b744-f4068955d93e",
+                            ConcurrencyStamp = "c8a88fca-a3a6-491c-91dd-a3e1bd06a8b5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "972b6232-0d25-46f9-a3e6-eec6fd127ff0",
-                            ConcurrencyStamp = "f1b483a7-7e51-41e3-b6ec-8b9918656a0d",
+                            ConcurrencyStamp = "2cd30798-c935-45d5-9016-6a529a74b4e3",
                             Name = "User",
                             NormalizedName = "USER"
                         });

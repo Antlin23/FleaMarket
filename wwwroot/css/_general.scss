@@ -38,8 +38,8 @@ a {
 
 .breadcrumb-container {
     padding-bottom: 1rem;
-    background-color: white;
     margin-bottom: 1rem;
+    margin-top: 0.8rem;
 
     .breadcrumb {
         margin-bottom: 0;
@@ -184,5 +184,25 @@ form {
         margin-top: 0.4rem;
         font-size: 1rem;
         padding: 0.1rem 0.8rem;
+    }
+}
+
+//market cards
+.home-markets {
+    color: #130f40;
+
+    h1 {
+        padding-bottom: 1.4rem;
+    }
+}
+
+@media(min-width: 576px) {
+    .home-markets {
+        .home-markets--markets {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            gap: 1.6rem;
+        }
     }
 }

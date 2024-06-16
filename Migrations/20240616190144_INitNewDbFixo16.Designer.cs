@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleaMarket.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240521122914_AddedMarketPicture3")]
-    partial class AddedMarketPicture3
+    [Migration("20240616190144_INitNewDbFixo16")]
+    partial class INitNewDbFixo16
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,16 +191,16 @@ namespace FleaMarket.Migrations
                         {
                             Id = "0cc0714b-7e95-47ff-9b50-460f04f29426",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "72080ee0-2a43-48fa-9969-1b49e049181c",
+                            ConcurrencyStamp = "b482ef5a-5323-4327-8efe-b80b906bdd19",
                             Email = "anton.jumkil@gmail.com",
                             EmailConfirmed = true,
                             IsActiveSeller = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "anton.jumkil@gmail.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAECqD5MRbsIvwTc82HtObnKwYHrc1vN+mDWnk3tqNeGJPT9bgVuWS6TDOdHdcQehCqA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAUdePXF3D0/Ls/ZOcH27N6WCfIyipmkWMKvEckrmAds9Kt1Jcl8AHX4uqPd9jOSMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "10be0d58-438e-4514-b52d-9b7a4454b42e",
+                            SecurityStamp = "0dd818da-8e81-4f58-8153-68ae29d0030f",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -236,14 +236,14 @@ namespace FleaMarket.Migrations
                         new
                         {
                             Id = "fcf9ba4c-3c7c-4a9b-abb2-083ae56904a4",
-                            ConcurrencyStamp = "d91e9a23-974b-4504-85cd-1a8efb576e1a",
+                            ConcurrencyStamp = "c8a88fca-a3a6-491c-91dd-a3e1bd06a8b5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "972b6232-0d25-46f9-a3e6-eec6fd127ff0",
-                            ConcurrencyStamp = "1d4dfb83-61d9-4107-a2e7-c6586a31c549",
+                            ConcurrencyStamp = "2cd30798-c935-45d5-9016-6a529a74b4e3",
                             Name = "User",
                             NormalizedName = "USER"
                         });
