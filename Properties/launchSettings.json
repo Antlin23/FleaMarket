@@ -5,7 +5,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c74e_mssqdbtradetrails;User Id=db_a9c74e_mssqdbtradetrails_admin;Password=database1",
+        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
         "SendGridApiKey": "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"
       },
       "dotnetRunMessages": true,
@@ -16,7 +16,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c74e_mssqdbtradetrails;User Id=db_a9c74e_mssqdbtradetrails_admin;Password=database1",
+        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
         "SendGridApiKey": "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"
       },
       "dotnetRunMessages": true,
@@ -27,7 +27,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c74e_mssqdbtradetrails;User Id=db_a9c74e_mssqdbtradetrails_admin;Password=database1",
+        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
         "SendGridApiKey": "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"
       }
     }

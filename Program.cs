@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2"));
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("DbConnectionString")));
 
 builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>
 {
