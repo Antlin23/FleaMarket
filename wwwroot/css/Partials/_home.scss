@@ -1,12 +1,33 @@
 ﻿.home-showcase {
     padding-top: 0.8rem;
 
+    .home-showcase--top img {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .home-showcase--top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+
+            .home-showcase--undertext {
+                font-size: 20px;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+        }
+    }
+
     .home-showcase--form {
         background-color: white;
         padding: 1.2rem;
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
-        box-shadow: 0 .5rem 1rem rgba(black, .15);
 
         label {
             font-weight: 700;
@@ -25,11 +46,88 @@
         }
     }
 
+    @media(min-width: 768px) {
+        .home-showcase--form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            align-items: end;
+            padding: 0 32px 24px 32px;
+            box-shadow: rgba(51, 51, 51, 0.1) 0px 4.1px 12px;
+            border-radius: 12px;
+            position: absolute;
+        }
+
+        input, select, button {
+            margin-bottom: 0 !important;
+            height: 56px;
+        }
+
+        .form-group {
+            .input-icon {
+                font-size: 0.9rem;
+                left: 0.7rem;
+                top: 1.3rem;
+            }
+
+            .dropdown-icon {
+                font-size: 1rem;
+                right: 1rem;
+                top: 1.2rem;
+            }
+        }
+    }
+
+    @media(min-width: 992px) {
+        .home-showcase--form {
+            padding: 16px 32px 40px 32px;
+        }
+    }
+    //this makes the element act like a .container class
+    .home-showcase--form {
+        width: 100%;
+        padding-right: var(--bs-gutter-x, 0.75rem);
+        padding-left: var(--bs-gutter-x, 0.75rem);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    @media (min-width: 576px) {
+        .home-showcase--form {
+            max-width: 540px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .home-showcase--form {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .home-showcase--form {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .home-showcase--form {
+            max-width: 1140px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .home-showcase--form {
+            max-width: 1320px;
+        }
+    }
+
+
     .home-showcase--bottom-content {
-        background-image: url("/Images/marketlp.jpg");
-        background-size: cover;
-        height: 280px;
-        background-repeat: no-repeat;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
         .container {
             .home-showcase--bc-content {
@@ -38,6 +136,7 @@
                 border-bottom-right-radius: 12px;
                 box-shadow: 0 .8rem 1rem rgba(black, 0.08);
                 padding: 0 1.2rem 1.2rem 1.2rem;
+                position: relative;
 
                 button {
                     width: 100%;
@@ -47,9 +146,48 @@
                 }
             }
         }
+
+        img {
+            max-width: 100%;
+            max-height: 300px;
+            display: block;
+        }
+    }
+
+    .home--showcase-search-btn {
+        display: none;
+        padding: 0.8rem 1.9rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .home-showcase--bottom-content {
+            display: none;
+        }
+
+        .home--showcase-search-btn {
+            display: block;
+        }
+    }
+}
+@media (min-width: 768px) {
+    .home-showcase {
+        background-color: white;
+        padding-bottom: 3.4rem !important;
+        margin-bottom: 8rem;
     }
 }
 
-#searchErrorMessage{
+@media(min-width: 992px) {
+    .home-showcase {
+        padding-bottom: 4.4rem !important;
+        margin-bottom: 8rem;
+    }
+}
+
+#searchErrorMessage {
     display: none;
 }
+
+

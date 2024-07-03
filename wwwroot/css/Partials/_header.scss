@@ -2,6 +2,8 @@
 header {
     background-color: white;
     padding: 1.3rem 0.2rem;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 12px;
 
     a {
         color: $color-purple-10;
@@ -65,7 +67,6 @@ header {
 
                 .border-bottom-dropdown-item {
                     border-bottom: 1px solid lightgray;
-
                     border-radius: 0;
                     border-top-left-radius: 1rem;
                     border-top-right-radius: 1rem;
@@ -78,7 +79,7 @@ header {
                 margin-right: 0.5rem;
             }
 
-            .header-links-icon{
+            .header-links-icon {
                 margin-right: 0;
             }
 
@@ -94,6 +95,12 @@ header {
                 }
             }
         }
+    }
+}
+
+@media (min-width: 768px){
+    header {
+        //might come in handy
     }
 }
 

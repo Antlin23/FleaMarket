@@ -10,6 +10,12 @@ h1 {
   font-size: 30px;
 }
 
+@media (min-width: 768px) {
+  h1 {
+    margin-bottom: 32px;
+    font-size: 40px;
+  }
+}
 h4 {
   font-size: 1.6rem;
   margin-bottom: 2rem;
@@ -287,6 +293,8 @@ form .button {
 header {
   background-color: white;
   padding: 1.3rem 0.2rem;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 12px;
 }
 header a {
   color: #130f40;
@@ -366,12 +374,29 @@ header .header-container .header-links a .location-icon {
 .home-showcase {
   padding-top: 0.8rem;
 }
+.home-showcase .home-showcase--top img {
+  display: none;
+}
+@media (min-width: 768px) {
+  .home-showcase .home-showcase--top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .home-showcase .home-showcase--top .home-showcase--undertext {
+    font-size: 20px;
+  }
+  .home-showcase .home-showcase--top img {
+    max-width: 100%;
+    display: block;
+  }
+}
 .home-showcase .home-showcase--form {
   background-color: white;
   padding: 1.2rem;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 .home-showcase .home-showcase--form label {
   font-weight: 700;
@@ -386,11 +411,74 @@ header .header-container .header-links a .location-icon {
 .home-showcase .home-showcase--form select {
   margin: 0;
 }
+@media (min-width: 768px) {
+  .home-showcase .home-showcase--form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: end;
+    padding: 0 32px 24px 32px;
+    box-shadow: rgba(51, 51, 51, 0.1) 0px 4.1px 12px;
+    border-radius: 12px;
+    position: absolute;
+  }
+  .home-showcase input, .home-showcase select, .home-showcase button {
+    margin-bottom: 0 !important;
+    height: 56px;
+  }
+  .home-showcase .form-group .input-icon {
+    font-size: 0.9rem;
+    left: 0.7rem;
+    top: 1.3rem;
+  }
+  .home-showcase .form-group .dropdown-icon {
+    font-size: 1rem;
+    right: 1rem;
+    top: 1.2rem;
+  }
+}
+@media (min-width: 992px) {
+  .home-showcase .home-showcase--form {
+    padding: 16px 32px 40px 32px;
+  }
+}
+.home-showcase .home-showcase--form {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .home-showcase .home-showcase--form {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .home-showcase .home-showcase--form {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .home-showcase .home-showcase--form {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .home-showcase .home-showcase--form {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .home-showcase .home-showcase--form {
+    max-width: 1320px;
+  }
+}
 .home-showcase .home-showcase--bottom-content {
-  background-image: url("/Images/marketlp.jpg");
-  background-size: cover;
-  height: 280px;
-  background-repeat: no-repeat;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .home-showcase .home-showcase--bottom-content .container .home-showcase--bc-content {
   background-color: white;
@@ -398,6 +486,7 @@ header .header-container .header-links a .location-icon {
   border-bottom-right-radius: 12px;
   box-shadow: 0 0.8rem 1rem rgba(0, 0, 0, 0.08);
   padding: 0 1.2rem 1.2rem 1.2rem;
+  position: relative;
 }
 .home-showcase .home-showcase--bottom-content .container .home-showcase--bc-content button {
   width: 100%;
@@ -405,7 +494,39 @@ header .header-container .header-links a .location-icon {
   font-weight: 700;
   font-size: 16px;
 }
+.home-showcase .home-showcase--bottom-content img {
+  max-width: 100%;
+  max-height: 300px;
+  display: block;
+}
+.home-showcase .home--showcase-search-btn {
+  display: none;
+  padding: 0.8rem 1.9rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .home-showcase .home-showcase--bottom-content {
+    display: none;
+  }
+  .home-showcase .home--showcase-search-btn {
+    display: block;
+  }
+}
 
+@media (min-width: 768px) {
+  .home-showcase {
+    background-color: white;
+    padding-bottom: 3.4rem !important;
+    margin-bottom: 8rem;
+  }
+}
+@media (min-width: 992px) {
+  .home-showcase {
+    padding-bottom: 4.4rem !important;
+    margin-bottom: 8rem;
+  }
+}
 #searchErrorMessage {
   display: none;
 }
