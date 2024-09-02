@@ -7,6 +7,8 @@
 @{
     var markets = await marketService.GetAllAsync();
     ViewData["Title"] = "Hem";
+
+    string noActiveMarkets = "Ingen aktiv marknad just nu";
 }
 
 <section class="home-showcase pb-4">
@@ -38,7 +40,7 @@
                         <select required id="marketSelect" asp-for=MarketName>
                             @if (markets.Count() < 1)
                             {
-                                <option>Det finns inga aktiva marknader just nu.</option>
+                                <option>@noActiveMarkets</option>
                             }
                             else
                             {
@@ -48,11 +50,10 @@
                                 }
                             }
                         </select>
-                        @* <span id="searchErrorMessage" class="small">Du måste välja loppis</span>*@
                     </div>
                 </div>
-
                 <button class="home--showcase-search-btn button orange-bg-button" type="submit">SÖK</button>
+                <span id="searchErrorMessage" class="small">Du måste välja loppis</span>
             </div>
         </div>
         <div class="home-showcase--bottom-content">
@@ -80,16 +81,29 @@
 
 
 <script>
-    //curretly not in use
     document.getElementById("searchForm").addEventListener("submit", function (event) {
         var marketSelect = document.getElementById("marketSelect");
         var errorMessage = document.getElementById("searchErrorMessage");
 
-        if (marketSelect.value == "0") {
+        if (marketSelect.value == "Ingen aktiv marknad just nu") {
             errorMessage.style.display = "block";
+            errorMessage.innerText = "Ingen aktiv marknad just nu tyvärr";
             event.preventDefault(); // Prevent form submission
         } else {
             errorMessage.style.display = "none";
         }
     });
+
+    //curretly not in use
+    // document.getElementById("searchForm").addEventListener("submit", function (event) {
+    //     var marketSelectDropDown = document.getElementById("marketSelect");
+    //     var errorMessage = document.getElementById("searchErrorMessage");
+
+    //     if (marketSelect.value == "") {
+    //         errorMessage.style.display = "block";
+    //         event.preventDefault(); // Prevent form submission
+    //     } else {
+    //         errorMessage.style.display = "none";
+    //     }
+    // });
 </script>
