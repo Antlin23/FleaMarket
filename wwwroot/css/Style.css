@@ -63,9 +63,6 @@ a:hover {
   transition: all ease-in-out 150ms;
   font-size: 1.1rem;
 }
-.button:hover {
-  transform: scale(0.99);
-}
 
 .orange-button {
   background-color: white;
@@ -100,7 +97,7 @@ a:hover {
   border: none;
 }
 .purple-bg-button:hover {
-  color: white;
+  background-color: #22a6b3;
 }
 
 form .form-group {
@@ -439,7 +436,7 @@ header .header-container .header-links a .location-icon {
 }
 @media (min-width: 992px) {
   .home-showcase .home-showcase--form {
-    padding: 16px 32px 40px 32px;
+    padding-top: 16px;
   }
 }
 .home-showcase .home-showcase--form {
@@ -614,6 +611,7 @@ header .header-container .header-links a .location-icon {
   margin: 0;
   padding: 1rem;
   font-size: 1rem;
+  cursor: pointer;
 }
 .auth-container .auth-container--footer {
   width: 100%;
@@ -636,6 +634,10 @@ header .header-container .header-links a .location-icon {
   background-color: transparent;
   color: #22a6b3;
   max-width: 14rem;
+}
+.auth-container .auth-container--footer .auth-container--footer--content .register-btn:hover {
+  background-color: #22a6b3;
+  color: white;
 }
 .auth-container .auth-container--footer .auth-container--footer--content .register-company-link {
   text-decoration: underline;
@@ -820,7 +822,7 @@ header .header-container .header-links a .location-icon {
 
 .market-card {
   margin-bottom: 1.4rem;
-  padding-bottom: 1.4rem;
+  padding: 0;
   display: block;
   background-color: white;
   border-radius: 16px;
