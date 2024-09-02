@@ -1,7 +1,7 @@
 ﻿/*Header*/
 header {
     background-color: white;
-    padding: 1.3rem 0.2rem;
+    padding: 1.1rem 0;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 12px;
 
@@ -15,7 +15,7 @@ header {
         align-items: center;
 
         .header-logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
 
             span {
                 color: $color-purple-10;

@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("DbConnectionString")));
+//How to use env var: Environment.GetEnvironmentVariable("DbConnectionString"))
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("sqllocal")));
 
 builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>
 {
