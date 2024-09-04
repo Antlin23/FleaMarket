@@ -9,3 +9,14 @@
         margin-top: 0.6rem;
     }
 }
+
+.info--header{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.market--products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}

@@ -23,7 +23,7 @@
 
     var place = user.Place;
 }
-<div class="product-card">
+<div id="seeMoreBtn-@product.Id" onclick='openModal("seeMoreModal-@product.Id")' class="product-card">
     @if (product.ImageUrl != null)
     {
         <div class="product-card--img-container">
@@ -32,8 +32,8 @@
     }
     <div class="product-card--content">
         <div>
-            <h4 class="product-title">@product.Title</h4>
             <p class="market-title">@market.MarketTitle</p>
+            <h4 class="product-title">@product.Title</h4>
             @if (product.Brand != null)
             {
                 <p>Märke: @product.Brand</p>
@@ -46,7 +46,6 @@
 
         <div class="d-flex justify-content-between">
             <!-- Trigger/Open The Modal -->
-            <button class="button purple-button product-card--see-more-btn" id="seeMoreBtn-@product.Id" onclick='openModal("seeMoreModal-@product.Id")'>Se mer</button>
             @if (User != null && loggedInUser != null)
             {
                 if (product.UserId == loggedInUser.Id || User.IsInRole("Admin"))

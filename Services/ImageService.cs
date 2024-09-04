@@ -8,6 +8,10 @@ namespace FleaMarket.Services
     public class ImageService
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+
+        private readonly int imgWidth = 800;
+        private readonly int imgHeight = 600;
+
         public ImageService(IWebHostEnvironment webHostEnvironment)
         {
             _webHostEnvironment = webHostEnvironment;
@@ -26,7 +30,7 @@ namespace FleaMarket.Services
                     using (var imageSharp = Image.Load(stream))
                     {
                         // Resize the image to a smaller size
-                        imageSharp.Mutate(x => x.Resize(800, 600));
+                        imageSharp.Mutate(x => x.Resize(imgWidth, imgHeight));
 
                         // Save the compressed image
                         imageSharp.Save(imagePath);
@@ -53,8 +57,8 @@ namespace FleaMarket.Services
 
                     using (var imageSharp = Image.Load(stream))
                     {
-                        // Resize the image to a smaller size (optional)
-                        imageSharp.Mutate(x => x.Resize(800, 600));
+                        // Resize the image to a smaller size
+                        imageSharp.Mutate(x => x.Resize(imgWidth, imgHeight));
 
                         // Save the compressed image
                         imageSharp.Save(imagePath);
@@ -81,8 +85,8 @@ namespace FleaMarket.Services
 
                     using (var imageSharp = Image.Load(stream))
                     {
-                        // Resize the image to a smaller size (optional)
-                        imageSharp.Mutate(x => x.Resize(800, 600));
+                        // Resize the image to a smaller size
+                        imageSharp.Mutate(x => x.Resize(imgWidth, imgHeight));
 
                         // Save the compressed image
                         imageSharp.Save(imagePath);

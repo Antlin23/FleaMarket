@@ -537,22 +537,34 @@ header .header-container .header-links a .location-icon {
   margin-top: 0.6rem;
 }
 
-.product-card {
-  display: grid;
-  grid-template-columns: 11rem auto auto;
+.info--header {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.market--products {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
+}
+
+.product-card {
   border-bottom: 1px solid lightgray;
   padding: 0.8rem 0;
+  flex: 1;
+  flex-basis: 120px;
+  max-width: 230px;
 }
 .product-card .product-card--img-container {
-  height: 7.5rem;
+  height: 175px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  border-radius: 0.3rem;
 }
 .product-card .product-card--img-container img {
-  max-width: 100%;
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
 }
 .product-card .product-card--content {
   display: flex;
@@ -564,14 +576,20 @@ header .header-container .header-links a .location-icon {
 .product-card .product-card--content p {
   margin-bottom: 0;
 }
+.product-card .product-card--content .market-title {
+  font-size: 12px;
+  margin-top: 0.5rem;
+}
 .product-card .product-card--content .product-title {
-  font-size: 1rem;
+  margin-top: 0.3rem;
+  font-size: 14px;
   margin-bottom: 0.6rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 .product-card .product-card--content .product-price {
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
 }
 .product-card .product-card--content .product-card-content--place-img img {
   margin: 1rem 0;
@@ -585,6 +603,11 @@ header .header-container .header-links a .location-icon {
   font-size: 1rem;
 }
 
+@media (min-width: 350px) {
+  .product-card {
+    flex-basis: 150px;
+  }
+}
 .auth-container {
   margin-top: 1rem;
   text-align: center;
