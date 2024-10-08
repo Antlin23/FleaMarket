@@ -13,8 +13,9 @@
 }
 /* Modal Content/Box */
 .modal-content {
-    margin: 10% auto; /* 10% from the top and centered */
-    width: 80%; /* Could be more or less, depending on screen size */
+    margin: 20px auto; /* 10% from the top and centered */
+    width: 85%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
 
     .modal-content--img-group {
         position: relative;
