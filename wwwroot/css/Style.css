@@ -653,13 +653,14 @@ header .header-container .header-links a .location-icon {
 }
 .auth-container .auth-container--footer .auth-container--footer--content .register-btn {
   margin-top: 0;
-  border: 1px solid #22a6b3;
+  border: 1px solid;
+  border-color: #130f40;
   background-color: transparent;
-  color: #22a6b3;
+  color: #130f40;
   max-width: 14rem;
 }
 .auth-container .auth-container--footer .auth-container--footer--content .register-btn:hover {
-  background-color: #22a6b3;
+  background-color: #130f40;
   color: white;
 }
 .auth-container .auth-container--footer .auth-container--footer--content .register-company-link {

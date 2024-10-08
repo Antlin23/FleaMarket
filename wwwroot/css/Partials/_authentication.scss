@@ -52,13 +52,14 @@
 
             .register-btn {
                 margin-top: 0;
-                border: 1px solid $color-blue-20;
+                border: 1px solid;
+                border-color: $color-purple-10;
                 background-color: transparent;
-                color: $color-blue-20;
+                color: $color-purple-10;
                 max-width: 14rem;
 
                 &:hover {
-                    background-color: $color-blue-20;
+                    background-color: $color-purple-10;
                     color: white;
                 }
             }

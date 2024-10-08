@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //How to use env var: Environment.GetEnvironmentVariable("DbConnectionString"))
+//local database: builder.Configuration.GetConnectionString("sqllocal"))
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("sqllocal")));
 
 builder.Services.AddIdentity<UserEntity, IdentityRole>( x =>

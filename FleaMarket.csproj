@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Certificates\Swish_Merchant_TestCertificate_1234679304.pem" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.Ui" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
