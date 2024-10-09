@@ -23,7 +23,8 @@
 
     var place = user.Place;
 }
-<div id="seeMoreBtn-@product.Id" onclick='openModal("seeMoreModal-@product.Id")' class="product-card">
+@*  onclick='openModal("seeMoreModal-@product.Id")'*@
+<div id="seeMoreBtn-@product.Id" data-modalId="seeMoreModal-@product.Id" class="product-card modal-parent">
     @if (product.ImageUrl != null)
     {
         <div class="product-card--img-container">

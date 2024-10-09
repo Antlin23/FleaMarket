@@ -1,7 +1,6 @@
 //TOGGLE PASSWORD VISABILITY
 const passwordInput = document.getElementById('password');
 const toggleButton = document.getElementById('togglePassword');
-
 if (toggleButton != null) {
     toggleButton.addEventListener('click', () => {
         if (passwordInput.type === 'password') {
@@ -14,11 +13,24 @@ if (toggleButton != null) {
     });
 }
 
-//MODAL POPUPS ----
-const openModal = (modalId) => {
-// Get the modal
-var modal = document.getElementById(modalId);
-    modal.style.display = "block";
+const productCards = document.getElementsByClassName("modal-parent");
+
+for (let i = 0; i < productCards.length; i++) {
+    productCards[i].addEventListener("click", (e) => {
+        // Find the closest parent element with the data-modalId attribute
+        const card = e.target.closest('.product-card');
+        console.log(card);
+        if (card) {
+            const modalId = card.dataset.modalid; // Get the data-modalId from the product card
+
+            const modal = document.getElementById(modalId); // Get the modal by its ID
+            if (modal) {
+                modal.style.display = "block"; // Show the modal
+            } else {
+                console.error("Modal not found for ID:", modalId);
+            }
+        }
+    });
 }
 
 // Get the <spans> elements that closes the modal
@@ -28,10 +40,12 @@ for (var i = 0; i < spans.length; i++) {
     spans[i].onclick = function () {
         let modals = document.getElementsByClassName("__modal");
         for (const modal of modals) {
+            console.log(modal);
             modal.style.display = "none";
         }
     };
 }
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -39,6 +53,7 @@ window.onclick = function (event) {
 
     for (const modal of modals) {
         if (event.target == modal) {
+            console.log(modal);
             modal.style.display = "none";
         }
     }
