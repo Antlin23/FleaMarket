@@ -4,9 +4,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
-        "SendGridApiKey": "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"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5130"
@@ -15,9 +13,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
-        "SendGridApiKey": "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"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7011;http://localhost:5130"
@@ -26,9 +22,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DbConnectionString": "Data Source=SQL8006.site4now.net;Initial Catalog=db_a9c74e_fixosqldb;User Id=db_a9c74e_fixosqldb_admin;Password=database2",
-        "SendGridApiKey": "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"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   },

@@ -17,12 +17,14 @@ namespace FleaMarket.Services
 
         public async Task SendEmailAsync(SendGridMessage message)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SendGridApiKey");
+
+            var apiKey = _config["SendGridAPIKey"];
+            //Environment.GetEnvironmentVariable("SendGridApiKey");
 
             var client = new SendGridClient(apiKey);
 
-            //Use this in production
-            //msg.AddTo(new EmailAddress(userToConfirm.Email, userToConfirm.UserName));
+            //change this in production
+            //message.AddTo(new EmailAddress(userToConfirm.Email, userToConfirm.UserName));
             message.AddTo(new EmailAddress("anton.jumkil@gmail.com", "Användarnamn"));
             var response = await client.SendEmailAsync(message);
         }
