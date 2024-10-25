@@ -212,3 +212,8 @@ form {
         }
     }
 }
+
+.full-bleed {
+    box-shadow: 0 0 0 100vmax $color-orange-background;
+    clip-path: inset(0 -100vmax);
+}

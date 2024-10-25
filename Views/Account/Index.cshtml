@@ -5,29 +5,36 @@
 @inject UserService _userService;
 @model UpdatePlaceViewModel
 @{
-    string userId = User.FindFirst("Id")?.Value;
-
-    IEnumerable<ProductEntity> userProducts = productService.GetAllUserProducts(userId);
+    var userId = User.FindFirst("Id")?.Value;
+    List<ProductEntity> userProducts = new List<ProductEntity>();
+    if(userId != null){
+        userProducts = productService.GetAllUserProducts(userId).ToList();
+    }
 
     var user = await _userService.GetUserAsync(x => x.Id == userId);
 
     ViewData["Title"] = "Mitt konto";
 }
-<nav class="container breadcrumb-container" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
-        <li class="breadcrumb-item active">Mitt konto</li>
-    </ol>
-</nav>
 
-<section class="container account-section">
+<section class="account-section">
+    <nav class="breadcrumb-container" aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Hem</a></li>
+                <li class="breadcrumb-item active">Mitt konto</li>
+            </ol>
+        </div>
+    </nav>
+    <div class="container">
     @if(user.CompanyName == null)
     {
-        <h2>@user.UserName <span class="email-span">- @user.Email</span></h2>
+        <h2 class="account-section--userName">@user.UserName</h2>
+        <p class="account-section--email">@user.Email</p>
     }
     else
     {
         <h2>@user.CompanyName</h2>
+        <p class="account-section--email">@user.Email</p>
     }
 
     @if (@TempData["SuccessMessage"] != null)
@@ -39,7 +46,7 @@
         <p class="bg-success">@TempData["ProductDeletedMessage"]</p>
     }
 
-    <!--If the user isActiveSeller is false-->
+    <!--If the users isActiveSeller is false-->
     @if (user.IsActiveSeller == false)
     {
         <div class="account-active-selleraccount">
@@ -53,36 +60,46 @@
     }
     else
     {
-        <form class="update-place-form full-bleed" method="post" enctype="multipart/form-data" novalidate>
-            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-            <div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
-                    <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
-                </div>
-                <div class="update-place-form--form-group">
-                    <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
-                    <button class="button purple-button" type="submit">Uppdatera</button>
-                </div>
-                <div id="popup">
-                    <div id="popupContent">
-                        <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
-                        <p>Ex. Andra raden till höger, grå bil.</p>
-                        <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
-                        <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+    //Place
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Redigera plats
+            </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form class="update-place-form" method="post" enctype="multipart/form-data" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
+                            <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+                        </div>
+                        <div class="update-place-form--form-group">
+                            <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
+                        </div>
+                        <div id="popup">
+                            <div id="popupContent">
+                                <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
+                                <p>Ex. Andra raden till höger, grå bil.</p>
+                                <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
+                                <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+                            </div>
+                        </div>
                     </div>
+                    <div class="mt-1 update-place-form--form-group update-place-form--image-group">
+                        <label class="d-block" asp-for="@Model.NewPlace">Platsbild</label>
+                        <input asp-for="Image" value="@user.PlaceImgUrl" />
+                    </div>
+                    <button class="button purple-button update-place-form--update-button" type="submit">Uppdatera</button>
+                    <input asp-for="@Model.UserId" value="@userId" hidden />
+                </form>                
                 </div>
             </div>
-
-            <div>
-                <div class="mt-1 update-place-form--form-group update-place-form--image-group">
-                    <input asp-for="Image" value="@user.PlaceImgUrl" />
-                    <button class="button purple-button" type="submit">Uppdatera</button>
-                </div>
-            </div>
-
-            <input asp-for="@Model.UserId" value="@userId" hidden />
-        </form>
+        </div>
+    </div>
 
         <a class="button orange-button account-section--add-product-btn" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
@@ -158,6 +175,7 @@
 
     <a class="logout-link text-decoration-underline" asp-controller="Authentication" asp-action="ForgotPassword">Återställ lösenord</a>
 
+    </div>
 </section>
 
 <!-- jQuery library -->

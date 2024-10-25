@@ -1,11 +1,19 @@
 ﻿.account-section {
-    h2 {
-        font-weight: normal;
+    background-color: white;
+    .breadcrumb-container{
+        margin-top: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 0;
+    }
+    .account-section--userName {
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 0;
     }
 
-    .email-span {
-        font-size: 1rem;
-        font-weight: normal;
+    .account-section--email {
+
     }
     .account-active-selleraccount {
         margin-top: 1rem;
@@ -29,13 +37,30 @@
         }
     }
 
+    .collapseButton{
+        background-color: white;
+        color: black;
+        width: 100%;
+        border-color: lightgray;
+        border-radius: 4px;
+        padding: 8px;
+        font-weight: 600;
+        text-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p{
+            margin: 0;
+        }
+        i{
+        }
+    }
+
     .update-place-form {
-        background-color: $color-orange-background;
+        border-radius: 0 0 4px 4px;
         margin-bottom: 1rem;
 
-
         .update-place-form--form-group {
-            position: relative;
             margin-bottom: 1rem;
             border: 1px solid lightgray;
             border-radius: 0.2rem;
@@ -43,25 +68,14 @@
 
             input {
                 height: 50px;
-                width: 75%;
                 border: none;
-                text-indent: 1rem;
+                padding: 0.8rem;
+                width: 100%;
 
                 &:focus {
                     border: none;
                     outline: none;
                 }
-            }
-
-            .button {
-                position: absolute;
-                top: 7.5px;
-                right: 5px;
-                height: 35px;
-                width: fit-content;
-                margin: 0;
-                padding: 0 0.4rem;
-                font-size: 0.8rem;
             }
         }
         //Image
@@ -71,25 +85,21 @@
             background-color: transparent;
 
             input {
+                margin-top: 5px;
                 text-indent: 0;
+                padding: 0;
             }
+        }
 
-            .button {
-                border: none;
-                text-decoration: underline;
-                font-size: 1rem;
-                font-weight: normal;
-                background-color: transparent;
-            }
+        .update-place-form--update-button{
+            padding: 6px 13px;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: normal;
         }
     }
 
     .account-section--add-product-btn {
-        margin-top: 0;
+        margin-top: 1rem;
     }
-}
-
-.full-bleed {
-    box-shadow: 0 0 0 100vmax $color-orange-background;
-    clip-path: inset(0 -100vmax);
 }

@@ -208,13 +208,6 @@ form .button {
   }
 }
 
-.full-bleed {
-  -webkit-box-shadow: 0 0 0 100vmax rgba(246, 229, 141, 0.5);
-          box-shadow: 0 0 0 100vmax rgba(246, 229, 141, 0.5);
-  -webkit-clip-path: inset(0 -100vmax);
-          clip-path: inset(0 -100vmax);
-}
-
 /* The Modal (background) */
 .product-card--content--modal {
   display: none;
@@ -879,21 +872,14 @@ header .header-container .header-links a .location-icon {
   margin-top: 1rem;
 }
 
-.account-section {
-  background-color: white;
-}
-
-.account-section .breadcrumb-container {
-  margin-top: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 0;
-}
-
 .account-section .account-section--userName {
   font-weight: 600;
-  font-size: 1.3rem;
-  margin-bottom: 0;
+  font-size: 10rem;
+}
+
+.account-section .email-span {
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .account-section .account-active-selleraccount {
@@ -918,36 +904,13 @@ header .header-container .header-links a .location-icon {
   margin: 0;
 }
 
-.account-section .collapseButton {
-  background-color: white;
-  color: black;
-  width: 100%;
-  border-color: lightgray;
-  border-radius: 4px;
-  padding: 8px;
-  font-weight: 600;
-  text-align: start;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.account-section .collapseButton p {
-  margin: 0;
-}
-
 .account-section .update-place-form {
-  border-radius: 0 0 4px 4px;
+  background-color: rgba(246, 229, 141, 0.5);
   margin-bottom: 1rem;
 }
 
 .account-section .update-place-form .update-place-form--form-group {
+  position: relative;
   margin-bottom: 1rem;
   border: 1px solid lightgray;
   border-radius: 0.2rem;
@@ -956,14 +919,27 @@ header .header-container .header-links a .location-icon {
 
 .account-section .update-place-form .update-place-form--form-group input {
   height: 50px;
+  width: 75%;
   border: none;
-  padding: 0.8rem;
-  width: 100%;
+  text-indent: 1rem;
 }
 
 .account-section .update-place-form .update-place-form--form-group input:focus {
   border: none;
   outline: none;
+}
+
+.account-section .update-place-form .update-place-form--form-group .button {
+  position: absolute;
+  top: 7.5px;
+  right: 5px;
+  height: 35px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
 }
 
 .account-section .update-place-form .update-place-form--image-group {
@@ -973,20 +949,26 @@ header .header-container .header-links a .location-icon {
 }
 
 .account-section .update-place-form .update-place-form--image-group input {
-  margin-top: 5px;
   text-indent: 0;
-  padding: 0;
 }
 
-.account-section .update-place-form .update-place-form--update-button {
-  padding: 6px 13px;
-  border-radius: 0;
+.account-section .update-place-form .update-place-form--image-group .button {
+  border: none;
+  text-decoration: underline;
   font-size: 1rem;
   font-weight: normal;
+  background-color: transparent;
 }
 
 .account-section .account-section--add-product-btn {
-  margin-top: 1rem;
+  margin-top: 0;
+}
+
+.full-bleed {
+  -webkit-box-shadow: 0 0 0 100vmax rgba(246, 229, 141, 0.5);
+          box-shadow: 0 0 0 100vmax rgba(246, 229, 141, 0.5);
+  -webkit-clip-path: inset(0 -100vmax);
+          clip-path: inset(0 -100vmax);
 }
 
 .payment-activate-account {
