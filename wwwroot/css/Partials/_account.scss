@@ -56,9 +56,30 @@
         }
     }
 
+    .accordion{
+        .accordion-body{
+            background-color: #f7f7f7;
+            border: 1px solid black;
+        }
+        .show{
+            background-color: red;
+        }
+
+        #editPlaceButton{
+            padding: 8px 16px;
+            font-size: 1rem;
+            border: 1px solid black;
+            border-radius: 0;
+            outline: none !important;
+            &:focus-visible{
+                outline: none !important;
+            }
+        }
+
+    }
+
     .update-place-form {
         border-radius: 0 0 4px 4px;
-        margin-bottom: 1rem;
 
         .update-place-form--form-group {
             margin-bottom: 1rem;
@@ -89,6 +110,10 @@
                 text-indent: 0;
                 padding: 0;
             }
+            img{
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
         }
 
         .update-place-form--update-button{
@@ -96,10 +121,41 @@
             border-radius: 0;
             font-size: 1rem;
             font-weight: normal;
+            border: 1px solid lightgray;
         }
     }
 
-    .account-section--add-product-btn {
+    .account-section--addAndDoneBtns{
         margin-top: 1rem;
+        margin-bottom: 1rem;
+        button, a{
+            &:hover{
+                border: 1px solid lightgray;
+            }
+        }
+    }
+}
+
+#popup {
+    display: none;
+    background-color: white;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid lightgray;
+
+    p {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    #closeButton {
+        margin: 0rem;
+        margin-top: 0.4rem;
+        padding: 3px 13px;
+        border-radius: 0;
+        font-size: 1rem;
+        font-weight: normal;
+        border: 1px solid lightgray;
+        background-color: #f7f7f7;
     }
 }

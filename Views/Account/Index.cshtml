@@ -64,105 +64,109 @@
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <button id="editPlaceButton" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Redigera plats
             </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <form class="update-place-form" method="post" enctype="multipart/form-data" novalidate>
-                    <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
-                    <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
-                            <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
-                        </div>
-                        <div class="update-place-form--form-group">
-                            <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
-                        </div>
-                        <div id="popup">
-                            <div id="popupContent">
-                                <p>Beskriv kort och enkelt hur man kan hitta dig.</p>
-                                <p>Ex. Andra raden till höger, grå bil.</p>
-                                <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
-                                <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+                <div class="accordion-body">
+                    <form class="update-place-form" method="post" enctype="multipart/form-data" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="d-block" asp-for="@Model.NewPlace">Plats</label>
+                                <div class="mb-2" id="popupButton"><i class="fa-regular fa-circle-question"></i></div>
+                            </div>
+                            <div id="popup">
+                                <div id="popupContent">
+                                    <p>Beskriv kort och enkelt hur man kan hitta dig. T.ex. andra raden till höger, grå bil.</p>
+                                    <p class="mt-2">Ladda gärna upp en bild på ditt bord också, så att kunderna enkelt kan hitta dig.</p>
+                                    <button class="button purple-button" type="button" id="closeButton">Stäng</button>
+                                </div>
+                            </div>
+                            <div class="update-place-form--form-group">
+                                <input asp-for="@Model.NewPlace" type="text" value="@user.Place" placeholder="Plats (ex. Till höger om ingången)" />
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-1 update-place-form--form-group update-place-form--image-group">
-                        <label class="d-block" asp-for="@Model.NewPlace">Platsbild</label>
-                        <input asp-for="Image" value="@user.PlaceImgUrl" />
-                    </div>
-                    <button class="button purple-button update-place-form--update-button" type="submit">Uppdatera</button>
-                    <input asp-for="@Model.UserId" value="@userId" hidden />
-                </form>                
+                        <div class="mt-1 update-place-form--form-group update-place-form--image-group">
+                            <label class="d-block" asp-for="@Model.NewPlace">Platsbild</label>
+                            <input asp-for="Image" value="@user.PlaceImgUrl" />
+                            <img src="~/Images/UserPlaces/@user.PlaceImgUrl" alt="Platsbild" />
+                        </div>
+                        <button class="button purple-button update-place-form--update-button" type="submit">Uppdatera</button>
+                        <input asp-for="@Model.UserId" value="@userId" hidden />
+                    </form>                
                 </div>
             </div>
         </div>
     </div>
 
-        <a class="button orange-button account-section--add-product-btn" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
+    <div class="account-section--addAndDoneBtns">
+    <a class="btn" asp-action="CreateProduct" asp-controller="Product">Skapa produkt</a>
 
-        @if(user.Products.Count == 0)
-        {
-        }
-        else
-        {
-            <button class="button purple-button product-card--see-more-btn modal-parent" id="openDeleteAllProductsBtn" data-modalid="deleteAllProductsModal">Jag är klar för idag</button>
+    @if(user.Products.Count > 0){
+        <button class="btn product-card--see-more-btn modal-parent" id="openDeleteAllProductsBtn" data-modalid="deleteAllProductsModal">Jag är klar för idag</button>
+    }
 
-            <!-- The delete all products Modal -->
-            <div id="deleteAllProductsModal" class="product-card--content--modal __modal">
-                <div class="modal-content bg-danger p-5">
-                    <div class="close"><i class="fa-solid fa-xmark"></i></div>
-                    <h4>Stort tack för att du väljer att använda våran tjänst. <br /> <br /> Vi hoppas att du hade en bra sälj-dag.</h4>
-                    <p>När du är klar för dagen ska du ta bort dina produkter så att besökare inte försöker hitta din plats i onödan.</p>
-                    <p>Klicka på knappen nedan för att ta bort alla dina produkter.</p>
-                    <p>Tack för idag!</p>
-                    <p class="small-text">Hälsningar TradeTrails Teamet</p>
+    </div>
+    @if(user.Products.Count > 0)
+    {
+        <!-- The delete all products Modal -->
+        <div id="deleteAllProductsModal" class="product-card--content--modal __modal">
+            <div class="modal-content bg-danger p-5">
+                <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                <h4>Stort tack för att du väljer att använda våran tjänst. <br /> <br /> Vi hoppas att du hade en bra sälj-dag.</h4>
+                <p>När du är klar för dagen ska du ta bort dina produkter så att besökare inte försöker hitta din plats i onödan.</p>
+                <p>Klicka på knappen nedan för att ta bort alla dina produkter.</p>
+                <p>Tack för idag!</p>
+                <p class="small-text">Hälsningar TradeTrails Teamet</p>
 
+                <div>
+                    <div id="deleteProductsConGroup" class="d-none btnConfirmationGroup">
+                        <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
+                            <button onclick='hideConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                            <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
+                        </form>
+                    </div>
+                    <div id="deleteProductsGroup" class="singleBtnGroup">
+                        <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">
+                            Ta bort produkter</button>
+                    </div>
+                </div>
+                <!--Admin part, ALL products-->
+                @if (User.IsInRole("Admin"))
+                {
                     <div>
-                        <div id="deleteProductsConGroup" class="d-none btnConfirmationGroup">
-                            <form method="post" asp-controller="Account" asp-action="DeleteAllUserProducts">
-                                <button onclick='hideConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
+                        <p>Admin</p>
+                        <p>Ta bort alla produkter, gör alla activeSeller = false och tar bort alla userPlaces</p>
+                        <div id="deleteAllProductsConGroup" class="d-none btnConfirmationGroup">
+                            <form method="post" asp-controller="Admin" asp-action="DailyReset">
+                                <button onclick='hideConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
                                 <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
                             </form>
                         </div>
-                        <div id="deleteProductsGroup" class="singleBtnGroup">
-                            <button onclick='showConfirmationGroup("deleteProductsGroup", "deleteProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">
-                                Ta bort produkter</button>
+                        <div id="deleteAllProductsGroup" class="singleBtnGroup">
+                            <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort allt</button>
                         </div>
                     </div>
-                    <!--Admin part, ALL products-->
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <div>
-                            <p>Admin</p>
-                            <p>Ta bort alla produkter, gör alla activeSeller = false och tar bort alla userPlaces</p>
-                            <div id="deleteAllProductsConGroup" class="d-none btnConfirmationGroup">
-                                <form method="post" asp-controller="Admin" asp-action="DailyReset">
-                                    <button onclick='hideConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button purple-button product-card--delete-button" type="button">Avbryt</button>
-                                    <button class="button orange-button product-card--delete-button" type="submit">Bekräfta</button>
-                                </form>
-                            </div>
-                            <div id="deleteAllProductsGroup" class="singleBtnGroup">
-                                <button onclick='showConfirmationGroup("deleteAllProductsGroup", "deleteAllProductsConGroup")' class="button orange-button product-card--delete-button show-congroup-btn">Ta bort allt</button>
-                            </div>
-                        </div>
-                    }
+                }
 
                 </div>
             </div>
-            <h5>Dina produkter</h5>
-            @foreach (var product in userProducts)
-            {
-                <div>
-                    @{
-                        ViewData["productId"] = product.Id.ToString();
-                        <partial name="/Views/Partials/_ProductPartial.cshtml" />
-                    }
-                </div>
-            }
+            <section class="account-section--products">
+                <h5>Dina produkter</h5>
+                @foreach (var product in userProducts)
+                {
+                    <div>
+                        @{
+                            ViewData["productId"] = product.Id.ToString();
+                            <partial name="/Views/Partials/_ProductPartial.cshtml" />
+                        }
+                    </div>
+                }
+            </section>
         }
+
         <div class="mt-4">
             <p>Ditt säljkonto är aktiverat, du kan lägga ut hur många produkter du vill idag.</p>
         </div>
